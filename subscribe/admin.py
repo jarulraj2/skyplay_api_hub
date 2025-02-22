@@ -20,3 +20,8 @@ class PaymentLogAdmin(admin.ModelAdmin):
 
 # Register PaymentLog in admin
 admin.site.register(PaymentLog, PaymentLogAdmin)
+
+# Set a custom header, title, and index title for the admin site
+admin.site.site_header = "Skyplay API Hub"
+admin.site.site_title = "Skyplay API Hub"
+admin.site.index_title = "Welcome to Skyplay API Hub"

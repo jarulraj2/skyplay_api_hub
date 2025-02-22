@@ -1,33 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Failed</title>
-    
-    {% load static %}
+
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <script>
-        // Function to extract query parameters from URL
-        function getQueryParam(param) {
-            let urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
-
-        window.onload = function() {
-            let errorMsg = getQueryParam("error");
-            if (errorMsg) {
-                document.getElementById("error-message").innerText = decodeURIComponent(errorMsg);
-            }
-        };
+        document.addEventListener("DOMContentLoaded", function() {
+            let params = new URLSearchParams(window.location.search);
+            let errorMsg = params.get("error") || "An error occurred. Please try again.";
+            document.getElementById("error-message").textContent = decodeURIComponent(errorMsg);
+        });
     </script>
 </head>
 <body>
     <div class="container">
         <h2>Payment Failed</h2>
-        <p id="error-message" class="error-message">An error occurred. Please try again.</p>
-        <a href="/subscribe/27580/2025-10-10/1/7466/" class="back-btn">Go Back</a>
+        <p id="error-message" class="error-message"></p>
+        <a href="/subscribe/27580/2025-10-10/1/7466/" class="btm-event" >Go Back</a>
     </div>
 </body>
 </html>

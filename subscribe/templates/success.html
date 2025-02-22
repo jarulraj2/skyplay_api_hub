@@ -1,18 +1,118 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Successful</title>
+{% extends 'base.html' %}
 
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <div class="container success">
-        <h2>🎉 Payment Successful!</h2>
-        <p class="success-message">Thank you for your payment.</p>
-        <a href="/" class="home-btn">Go to Homepage</a>
+{% block title %}Payment Successful{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="container" id="capture">
+    <div class="image-wrap">
+        <img src="{% static 'images/bg.svg' %}" alt="Payment Success" width="100%">
     </div>
-</body>
-</html>
+    <h2> Payment Successful!</h2>
+
+    <div class="data-row-wrap">
+
+        <div class="data-row">
+            <span class="data-label">Client ID</span>
+            <span class="data-value" id="client-id"></span>
+        </div>
+        <div class="data-row">
+            <span class="data-label">Client Name</span>
+            <span class="data-value" id="client-name"></span>
+        </div>
+        <div class="data-row">
+            <span class="data-label">End Date</span>
+            <span class="data-value" id="end-date"></span>
+        </div>
+        <div class="data-row">
+            <span class="data-label">Amount</span>
+            <span class="data-value" id="amount"></span>
+        </div>
+        <div class="data-row">
+            <span class="data-label">Payment ID</span>
+            <span class="data-value" id="payment-id"></span>
+        </div>
+        <div class="data-row">
+            <span class="data-label">Order ID</span>
+            <span class="data-value" id="order-id"></span>
+        </div>
+        <div class="data-row">
+            <span class="data-label">Signature</span>
+            <span class="data-value" id="signature"></span>
+        </div>
+
+        <div class="data-row">
+            <span class="data-label">Device ID</span>
+            <span class="data-value" id="device-id"></span>
+        </div>
+        <div class="data-row">
+            <span class="data-label">Channel ID</span>
+            <span class="data-value" id="channel-id"></span>
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <button id="shareBtn" class="btm-event">📷 Share as Image</button>
+</div>
+
+<!-- Include html2canvas library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+    function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+            payment_id: params.get("payment_id") || "N/A",
+            order_id: params.get("order_id") || "N/A",
+            signature: params.get("signature") || "N/A",
+            amount: params.get("amount") || "N/A",
+            currency: params.get("currency") || "N/A",
+            client_id: params.get("clientId") || "N/A",
+            client_name: params.get("clientName") || "N/A",
+            end_date: params.get("endDate") || "N/A",
+            device_id: params.get("deviceId") || "N/A",
+            channel_id: params.get("channelId") || "N/A"
+        };
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const paymentData = getQueryParams();
+
+        document.getElementById("payment-id").textContent = paymentData.payment_id;
+        document.getElementById("order-id").textContent = paymentData.order_id;
+        document.getElementById("signature").textContent = paymentData.signature;
+        document.getElementById("amount").textContent = paymentData.currency + " " + paymentData.amount;
+        document.getElementById("client-id").textContent = paymentData.client_id;
+        document.getElementById("client-name").textContent = paymentData.client_name;
+        document.getElementById("end-date").textContent = paymentData.end_date;
+        document.getElementById("device-id").textContent = paymentData.device_id;
+        document.getElementById("channel-id").textContent = paymentData.channel_id;
+
+        document.getElementById("shareBtn").addEventListener("click", function () {
+            html2canvas(document.getElementById("capture")).then(canvas => {
+                canvas.toBlob(blob => {
+                    const file = new File([blob], "payment_success.png", { type: "image/png" });
+
+                    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                        navigator.share({
+                            files: [file],
+                            title: "Payment Successful",
+                            text: "Payment Successful! See the details in the image.",
+                        }).then(() => {
+                            console.log("Shared successfully!");
+                        }).catch(error => {
+                            console.error("Error sharing:", error);
+                        });
+                    } else {
+                        // If sharing is not supported, download the image
+                        const link = document.createElement("a");
+                        link.href = URL.createObjectURL(blob);
+                        link.download = "payment_success.png";
+                        link.click();
+                    }
+                });
+            });
+        });
+    });
+</script>
+{% endblock %}

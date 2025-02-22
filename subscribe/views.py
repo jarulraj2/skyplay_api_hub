@@ -16,8 +16,8 @@ from .models import PaymentLog
 logger = logging.getLogger(__name__)
 
 # ✅ Initialize Razorpay client (Replace with your actual keys)
-RAZORPAY_KEY_ID = "YOUR_RAZORPAY_KEY_ID"
-RAZORPAY_SECRET = "YOUR_RAZORPAY_SECRET"
+RAZORPAY_KEY_ID = "rzp_test_qcFb099Pizad7S"
+RAZORPAY_SECRET = "z2ZULiDyrWgcu6GVYILGmVbt"
 
 if RAZORPAY_KEY_ID and RAZORPAY_SECRET:
     razorpay_client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_SECRET))
@@ -81,7 +81,7 @@ def create_order(request):
         client_id = data.get("client_id", "Unknown")
         client_name = data.get("client_name", "Unknown")
         device_id = data.get("device_id", "Unknown")
-        pack_or_channel_id = data.get("pack_or_channel_id", "Unknown")
+        channel_id = data.get("channel_id", "Unknown")
         amount = int(data.get("amount", 0)) * 100
         currency = data.get("currency", "INR")
 
@@ -101,7 +101,7 @@ def create_order(request):
             client_id=client_id,
             client_name=client_name,
             device_id=device_id,
-            pack_or_channel_id=pack_or_channel_id,
+            pack_or_channel_id=channel_id,
             amount=amount / 100,  # Convert back to normal amount
             currency=currency,
             request_data=data,
@@ -168,6 +168,8 @@ def verify_payment(request):
             request_data=data,
             response_data={"success": "Payment verified successfully"}
         )
+
+        # need to call the channel activate api 
 
         return JsonResponse({"success": "Payment verified successfully"})
 

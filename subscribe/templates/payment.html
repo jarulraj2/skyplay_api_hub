@@ -8,50 +8,58 @@
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     </style>
 </head>
 
 <body>
     <div class="container">
+        <div class="image-wrap">
+            <img src="{% static 'images/bg.svg' %}" alt="Subscription QR Code" width="100%">
+        </div>
         <h2>Pay with Razorpay</h2>
+        <div class="data-row-wrap">
+            <div class="data-row">
+                <span class="data-label">Client ID</span>
+                <span class="data-colon"></span>
+                <span class="data-value">{{ clientId }}</span>
+            </div>
 
-        <div class="data-row">
-            <span class="data-label">Client ID</span>
-            <span class="data-colon">:</span>
-            <span class="data-value">{{ clientId }}</span>
+            <div class="data-row">
+                <span class="data-label">Name</span>
+                <span class="data-colon"></span>
+                <span class="data-value">{{ clientName }}</span>
+            </div>
+
+            <div class="data-row">
+                <span class="data-label">End Date</span>
+                <span class="data-colon"></span>
+                <span class="data-value">{{ endDate }}</span>
+            </div>
+
+            <div class="data-row">
+                <span class="data-label">Device ID</span>
+                <span class="data-colon"></span>
+                <span class="data-value">{{ deviceId }}</span>
+            </div>
+
+            <div class="data-row">
+                <span class="data-label">Channel ID</span>
+                <span class="data-colon"></span>
+                <span class="data-value">{{ channelId }}</span>
+            </div>
+
+            <div class="data-row">
+                <span class="data-label">Channel Name</span>
+                <span class="data-colon"></span>
+                <span class="data-value">{{ channelName }}</span>
+            </div>
         </div>
-
-        <div class="data-row">
-            <span class="data-label">Name</span>
-            <span class="data-colon">:</span>
-            <span class="data-value">{{ clientName }}</span>
-        </div>
-
-        <div class="data-row">
-            <span class="data-label">End Date</span>
-            <span class="data-colon">:</span>
-            <span class="data-value">{{ endDate }}</span>
-        </div>
-
-        <div class="data-row">
-            <span class="data-label">Device ID</span>
-            <span class="data-colon">:</span>
-            <span class="data-value">{{ deviceId }}</span>
-        </div>
-
-        <div class="data-row">
-            <span class="data-label">Channel ID</span>
-            <span class="data-colon">:</span>
-            <span class="data-value">{{ channelId }}</span>
-        </div>
-
-        <div class="data-row">
-            <span class="data-label">Channel Name</span>
-            <span class="data-colon">:</span>
-            <span class="data-value">{{ channelName }}</span>
-        </div>
-
-        <button id="pay-btn">Pay Now</button>
+        <button class="btm-event" id="pay-btn">Pay Now</button>
     </div>
 
 
@@ -60,74 +68,100 @@
 </html>
 
 <script>
-   document.getElementById('pay-btn').onclick = function () {
-    console.log("🛎️ Pay button clicked");
+    document.getElementById('pay-btn').onclick = function () {
+        console.log("🛎️ Pay button clicked");
 
-    let csrfToken = getCookie("csrftoken");
-    console.log("🔑 CSRF Token:", csrfToken);
+        let csrfToken = getCookie("csrftoken");
+        console.log("🔑 CSRF Token:", csrfToken);
 
-    fetch('/subscribe/create_order/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': csrfToken
-        },
-        body: JSON.stringify({ amount: 500 })  // Amount in INR
-    })
-    .then(response => response.json())
-    .then(order => {
-        console.log("📜 Order Data:", order);
+         // Extract data from the template
+         let clientId = "{{ clientId }}";
+        let clientName = "{{ clientName }}";
+        let endDate = "{{ endDate }}";
+        let deviceId = "{{ deviceId }}";
+        let channelId = "{{ channelId }}";
+        let channelName = "{{ channelName }}";
 
-        if (order.error) {
-            console.error("❌ Order Creation Failed:", order.error);
-            window.location.href = "/subscribe/error/?error=" + encodeURIComponent(order.error);
-            return;
-        }
-
-        var options = {
-            "key": "{{ RAZORPAY_KEY_ID }}",
-            "amount": order.amount,
-            "currency": order.currency,
-            "name": "Your Company Name",
-            "description": "Test Transaction",
-            "order_id": order.order_id,
-            "handler": function (response) {
-                console.log("💰 Payment Successful, Response:", response);
-
-                fetch('/subscribe/verify_payment/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': csrfToken
-                    },
-                    body: JSON.stringify({
-                        razorpay_order_id: response.razorpay_order_id,
-                        razorpay_payment_id: response.razorpay_payment_id,
-                        razorpay_signature: response.razorpay_signature
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log("✅ Payment verification success. Redirecting to:", data.redirect_url);
-                    window.location.href = data.redirect_url;
-                })
-                .catch(error => {
-                    console.error("🚨 Error verifying payment:", error);
-                    window.location.href = "/subscribe/error/?error=" + encodeURIComponent("Payment verification failed. Please try again.");
-                });
-            },
-            "theme": { "color": "#3399cc" }
+         // Prepare the request payload
+         let requestData = {
+            amount: 500, // Amount in INR
+            client_id: clientId,
+            client_name: clientName,
+            end_date: endDate,
+            device_id: deviceId,
+            channel_id: channelId,
+            channel_name: channelName
         };
 
-        console.log("⚙️ Initializing Razorpay with options:", options);
-        var rzp1 = new Razorpay(options);
-        rzp1.open();
-    })
-    .catch(error => {
-        console.error("🚨 Error creating order:", error);
-        window.location.href = "/subscribe/error/?error=" + encodeURIComponent("Failed to create payment order. Please try again.");
-    });
-};
+        fetch('/subscribe/create_order/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify(requestData)  // Amount in INR
+        })
+            .then(response => response.json())
+            .then(order => {
+                console.log("📜 Order Data:", order);
+
+                if (order.error) {
+                    console.error("❌ Order Creation Failed:", order.error);
+                    window.location.href = "/subscribe/error/?error=" + encodeURIComponent(order.error);
+                    return;
+                }
+
+                var options = {
+                    "key": "{{ RAZORPAY_KEY_ID }}",
+                    "amount": order.amount,
+                    "currency": order.currency,
+                    "name": "Your Company Name",
+                    "description": "Test Transaction",
+                    "order_id": order.order_id,
+                    "handler": function (response) {
+                        console.log("💰 Payment Successful, Response:", response);
+
+                        fetch('/subscribe/verify_payment/', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': csrfToken
+                            },
+                            body: JSON.stringify({
+                                razorpay_order_id: response.razorpay_order_id,
+                                razorpay_payment_id: response.razorpay_payment_id,
+                                razorpay_signature: response.razorpay_signature
+                            })
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log("✅ Payment verification success. Redirecting to data:", data);
+                                console.log("response:", response);
+                                //const redirectUrl = `/subscribe/success?payment_id=${encodeURIComponent(response.razorpay_payment_id)}&order_id=${encodeURIComponent(response.razorpay_order_id)}&signature=${encodeURIComponent(response.razorpay_signature)}&amount=${encodeURIComponent(order.amount)}&currency=${encodeURIComponent(order.currency)}`;
+
+                                const redirectUrl = `/subscribe/success?payment_id=${encodeURIComponent(response.razorpay_payment_id)}&order_id=${encodeURIComponent(response.razorpay_order_id)}&signature=${encodeURIComponent(response.razorpay_signature)}&amount=${encodeURIComponent(order.amount)}&currency=${encodeURIComponent(order.currency)}&clientId=${encodeURIComponent(clientId)}&clientName=${encodeURIComponent(clientName)}&endDate=${encodeURIComponent(endDate)}&deviceId=${encodeURIComponent(deviceId)}&channelId=${encodeURIComponent(channelName)}`;
+
+
+                                // Redirect to success page with response data
+                                window.location.href = redirectUrl;
+                            })
+                            .catch(error => {
+                                console.error("🚨 Error verifying payment:", error);
+                                window.location.href = "/subscribe/error/?error=" + encodeURIComponent("Payment verification failed. Please try again.");
+                            });
+                    },
+                    "theme": { "color": "#3399cc" }
+                };
+
+                console.log("⚙️ Initializing Razorpay with options:", options);
+                var rzp1 = new Razorpay(options);
+                rzp1.open();
+            })
+            .catch(error => {
+                console.error("🚨 Error creating order:", error);
+                window.location.href = "/subscribe/error/?error=" + encodeURIComponent("Failed to create payment order. Please try again.");
+            });
+    };
 
 
     function getCookie(name) {
