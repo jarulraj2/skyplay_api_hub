@@ -1,0 +1,82 @@
+/* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8d7da; /* Light red background */
+    margin: 0;
+    padding: 20px;
+}
+
+/* Container */
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Heading */
+h2 {
+    color: #a94442;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Label-Value Pair Styling */
+.data-row {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.data-row:last-child {
+    border-bottom: none;
+}
+
+.data-label {
+    font-weight: bold;
+    color: #333;
+    text-align: right;
+    flex: 1;
+    padding-right: 5px;
+}
+
+.data-colon {
+    text-align: center;
+    width: 10px; /* Fixed width for colon */
+    font-weight: bold;
+    color: #333;
+}
+
+.data-value {
+    text-align: left;
+    flex: 1;
+    color: #555;
+    padding-left: 5px;
+}
+
+/* Centered Button */
+#pay-btn, .back-btn {
+    display: block;
+    background-color: #d9534f;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin: 20px auto 0;
+    transition: background 0.3s ease-in-out;
+    text-align: center;
+}
+
+#pay-btn:hover {
+    background-color: #c9302c;
+}
