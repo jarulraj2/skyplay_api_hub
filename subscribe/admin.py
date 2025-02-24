@@ -15,8 +15,8 @@ class PaymentLogAdmin(admin.ModelAdmin):
     def has_change_permission(self, request, obj=None):
         return False  # ❌ Disable editing logs in admin
 
-    def has_delete_permission(self, request, obj=None):
-        return False  # ❌ Disable delete option in admin
+    # def has_delete_permission(self, request, obj=None):
+    #     return False  # ❌ Disable delete option in admin
 
 # Register PaymentLog in admin
 admin.site.register(PaymentLog, PaymentLogAdmin)

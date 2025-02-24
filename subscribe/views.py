@@ -50,7 +50,7 @@ def get_channel_name(channel_id):
         return "API Error"
 
 # ✅ Payment Page
-def payment_view(request, clientId, endDate, deviceId, channelId):
+def payment_view(request, clientId, endDate, deviceId, channelId, amount):
     try:
         endDate = datetime.strptime(endDate, "%Y-%m-%d").date()
     except ValueError:
@@ -62,7 +62,8 @@ def payment_view(request, clientId, endDate, deviceId, channelId):
         "endDate": endDate,
         "deviceId": deviceId,
         "channelId": channelId,
-        "channelName": get_channel_name(channelId)
+        "channelName": get_channel_name(channelId),
+        "amount": amount,
     }
     return render(request, "payment.html", context)
 
@@ -104,8 +105,11 @@ def create_order(request):
             pack_or_channel_id=channel_id,
             amount=amount / 100,  # Convert back to normal amount
             currency=currency,
+            order_id=order["id"],
             request_data=data,
-            response_data=order
+            response_data=order,
+            status="ORDER_CREATED",
+            final_status="PENDING"
         )
 
         return JsonResponse({
@@ -141,9 +145,10 @@ def verify_payment(request):
         client_id = data.get("client_id", "Unknown")
         client_name = data.get("client_name", "Unknown")
         device_id = data.get("device_id", "Unknown")
-        pack_or_channel_id = data.get("pack_or_channel_id", "Unknown")
+        channel_id = data.get("channel_id", "Unknown")
         amount = data.get("amount", 0)
         currency = data.get("currency", "INR")
+        end_date = data.get("end_date", "Unknown")
 
         required_fields = ["razorpay_order_id", "razorpay_payment_id", "razorpay_signature"]
 
@@ -151,76 +156,43 @@ def verify_payment(request):
             logger.error("❌ Missing payment details")
             return JsonResponse({"error": "Missing payment details"}, status=400)
 
-        razorpay_client.utility.verify_payment_signature({
+        result =  razorpay_client.utility.verify_payment_signature({
             "razorpay_order_id": data["razorpay_order_id"],
             "razorpay_payment_id": data["razorpay_payment_id"],
             "razorpay_signature": data["razorpay_signature"]
         })
-
-        # ✅ Log Payment Verification Request & Response
-        PaymentLog.objects.create(
-            client_id=client_id,
-            client_name=client_name,
-            device_id=device_id,
-            pack_or_channel_id=pack_or_channel_id,
-            amount=amount,
-            currency=currency,
-            request_data=data,
-            response_data={"success": "Payment verified successfully"}
-        )
-
+      
         # need to call the channel activate api 
-
-        return JsonResponse({"success": "Payment verified successfully"})
-
-    except SignatureVerificationError:
-        logger.error("❌ Payment signature verification failed")
-        return JsonResponse({"error": "Payment verification failed"}, status=400)
-    
-    except (json.JSONDecodeError, Exception) as e:
-        logger.error(f"❌ Error: {str(e)}")
-        return JsonResponse({"error": "Internal server error"}, status=500)
-
-    if request.method != "POST":
-        return JsonResponse({"error": "Method not allowed"}, status=405)
-
-    if not razorpay_client:
-        logger.error("❌ Razorpay client not initialized")
-        return JsonResponse({"error": "Razorpay client not initialized"}, status=500)
-
-    try:
-        data = json.loads(request.body)
-        client_id = data.get("client_id", "Unknown")
-        client_name = data.get("client_name", "Unknown")
-        required_fields = ["razorpay_order_id", "razorpay_payment_id", "razorpay_signature"]
-
-        if not all(data.get(field) for field in required_fields):
-            logger.error("❌ Missing payment details")
-            return JsonResponse({"error": "Missing payment details"}, status=400)
-
-        razorpay_client.utility.verify_payment_signature({
-            "razorpay_order_id": data["razorpay_order_id"],
-            "razorpay_payment_id": data["razorpay_payment_id"],
-            "razorpay_signature": data["razorpay_signature"]
-        })
-
-        # ✅ Log Payment Verification Request & Response
-        PaymentLog.objects.create(
-            client_id=client_id,
-            client_name=client_name,
-            request_data=data,
-            response_data={"success": "Payment verified successfully"}
+        # ✅ Update or Create Payment Log
+        payment_log, created = PaymentLog.objects.update_or_create(
+            order_id=data["razorpay_order_id"],  # Lookup field
+            defaults={               
+                "varified_resonse": data,  # ✅ Store verification response
+                "status": "PAYMENT_VERIFIED",
+                "final_status": "SUCCESS",
+            }
         )
 
         return JsonResponse({"success": "Payment verified successfully"})
 
     except SignatureVerificationError:
         logger.error("❌ Payment signature verification failed")
+        # ✅ Update Payment Log for Failed Verification
+        PaymentLog.objects.update_or_create(
+            order_id=data.get("razorpay_order_id", ""),
+            defaults={"status": "SIGNATURE_VERIFICATION_FAILED", "final_status": "FAILED"}
+        )
         return JsonResponse({"error": "Payment verification failed"}, status=400)
     
-    except (json.JSONDecodeError, Exception) as e:
-        logger.error(f"❌ Error: {str(e)}")
+    except BadRequestError as e:
+        logger.error(f"❌ Razorpay API Error: {str(e)}")
+        return JsonResponse({"error": str(e)}, status=400)
+
+    except Exception as e:
+        logger.error(f"❌ Unexpected Error: {str(e)}")
         return JsonResponse({"error": "Internal server error"}, status=500)
+
+   
     
 
 # ✅ Success and Error Pages
@@ -229,3 +201,25 @@ def payment_success(request):
 
 def payment_error(request):
     return render(request, "error.html")
+# ✅ Subscribe the channel Page
+def set_subscribe_to_channel(client_id, end_date, device_id, channel_id):
+    url = f"http://api.skyplay.in/subscribeToChannel/{client_id}/{end_date}/{device_id}/{channel_id}"
+    headers = {
+        "Accept": "application/json",
+        "Token": "84a0103ea1780372cbc410e49114633e",
+        "Content-Type": "application/json"
+    }
+    payload = {}  # Keep empty unless the API requires body data
+
+    try:
+        response = requests.patch(url, json=payload, headers=headers)
+        data = response.json()
+
+        if data.get("result") == "ok":
+            return {"status": "success", "message": "Subscription successful"}
+        else:
+            return {"status": "error", "message": data.get("errorText", "Unknown error")}
+
+    except requests.exceptions.RequestException as e:
+        logger.error(f"❌ API request failed: {str(e)}")
+        return {"status": "error", "message": "API request failed"}

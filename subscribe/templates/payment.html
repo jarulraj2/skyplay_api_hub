@@ -58,6 +58,12 @@
                 <span class="data-colon"></span>
                 <span class="data-value">{{ channelName }}</span>
             </div>
+            
+            <div class="data-row">
+                <span class="data-label">Amount</span>
+                <span class="data-colon"></span>
+                <span class="data-value"> ₹ {{ amount }}</span>
+            </div>
         </div>
         <button class="btm-event" id="pay-btn">Pay Now</button>
     </div>
@@ -81,10 +87,11 @@
         let deviceId = "{{ deviceId }}";
         let channelId = "{{ channelId }}";
         let channelName = "{{ channelName }}";
+        let amount = "{{ amount }}";
 
          // Prepare the request payload
          let requestData = {
-            amount: 500, // Amount in INR
+            amount: amount, // Amount in INR
             client_id: clientId,
             client_name: clientName,
             end_date: endDate,
@@ -130,7 +137,14 @@
                             body: JSON.stringify({
                                 razorpay_order_id: response.razorpay_order_id,
                                 razorpay_payment_id: response.razorpay_payment_id,
-                                razorpay_signature: response.razorpay_signature
+                                razorpay_signature: response.razorpay_signature  ,
+                                client_id: clientId,
+                                client_name: clientName,
+                                end_date: endDate,
+                                device_id: deviceId,
+                                channel_id: channelId,
+                                channel_name: channelName                           
+
                             })
                         })
                             .then(response => response.json())

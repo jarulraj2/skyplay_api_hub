@@ -81,7 +81,7 @@
         document.getElementById("payment-id").textContent = paymentData.payment_id;
         document.getElementById("order-id").textContent = paymentData.order_id;
         document.getElementById("signature").textContent = paymentData.signature;
-        document.getElementById("amount").textContent = paymentData.currency + " " + paymentData.amount;
+        document.getElementById("amount").textContent = paymentData.currency + " " + (paymentData.amount/ 100 );
         document.getElementById("client-id").textContent = paymentData.client_id;
         document.getElementById("client-name").textContent = paymentData.client_name;
         document.getElementById("end-date").textContent = paymentData.end_date;
