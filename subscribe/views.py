@@ -3,7 +3,7 @@ import json
 import logging
 from django.conf import settings
 from django.shortcuts import render, redirect
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse, HttpResponse, HttpResponseNotFound
 from django.views.decorators.csrf import csrf_exempt
 from razorpay.errors import BadRequestError, SignatureVerificationError
 from datetime import datetime
@@ -55,14 +55,26 @@ def payment_view(request, clientId, endDate, deviceId, channelId, amount):
         endDate = datetime.strptime(endDate, "%Y-%m-%d").date()
     except ValueError:
         return JsonResponse({"error": "Invalid date format"}, status=400)
+    
+
+
+    # ✅ Validate Client
+    client_name = get_client_name(clientId)
+    # if not client_name:
+    #     return HttpResponseNotFound("❌ Client not found")
+
+    # ✅ Validate Channel
+    channel_name = get_channel_name(channelId)
+    # if not channel_name:
+    #     return HttpResponseNotFound("❌ Channel not found")
 
     context = {
         "clientId": clientId,
-        "clientName": get_client_name(clientId),
+        "clientName":client_name,
         "endDate": endDate,
         "deviceId": deviceId,
         "channelId": channelId,
-        "channelName": get_channel_name(channelId),
+        "channelName": channel_name,
         "amount": amount,
     }
     return render(request, "payment.html", context)
