@@ -44,7 +44,7 @@ document.getElementById('pay-btn').onclick = function () {
             "key": razorpayKeyId,  
             "amount": order.amount,
             "currency": order.currency,
-            "name": "Your Company Name",
+            "name": "Skylink",
             "description": "Test Transaction",
             "order_id": order.order_id,
             "handler": function (response) {

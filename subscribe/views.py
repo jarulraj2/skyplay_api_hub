@@ -104,7 +104,10 @@ def create_order(request):
         order = razorpay_client.order.create({
             "amount": amount,
             "currency": currency,
-            "payment_capture": 1
+            "payment_capture": 1,
+            'notes': {
+                'company_name': 'SkyPlay APIs'  # You can add the company name here if needed
+            },
         })
 
         request.session["razorpay_order_id"] = order["id"]
