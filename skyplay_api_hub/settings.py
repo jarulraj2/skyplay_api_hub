@@ -33,7 +33,12 @@ INSTALLED_APPS = [
     'subscribe',
     'razorpay',
     'django_extensions',
+    'users' # Add this
+   
 ]
+
+AUTH_USER_MODEL = "users.User"
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
