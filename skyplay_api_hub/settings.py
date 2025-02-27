@@ -33,7 +33,9 @@ INSTALLED_APPS = [
     'subscribe',
     'razorpay',
     'django_extensions',
-    'users' # Add this
+    'users',
+    'wallet',
+    'skyplay_api'
    
 ]
 
@@ -98,7 +100,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "staticfiles"),  # You can change this if needed
+]
+STATIC_ROOT = os.path.join(BASE_DIR, "static")  # Using "static" instead of "staticfiles"
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

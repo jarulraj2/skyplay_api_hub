@@ -1,0 +1,148 @@
+{% extends "admin/base_site.html" %}
+
+{% block title %}Payment Successful{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<div class="module aligned" 
+     style="
+        /* Center the box and set max width */
+        max-width: 600px; 
+        margin: 40px auto; 
+        padding: 20px; 
+        
+        /* White background with rounded corners */
+        background: white; 
+        border-radius: 8px; 
+        
+        /* Subtle box shadow for a floating effect */
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+     ">
+     
+    <!-- Success Message -->
+    <h2 style="
+        text-align: center; 
+        color: #28a745; /* Green color for success message */
+    ">✅ Payment Successful</h2>
+    
+    <!-- Payment Details Container -->
+    <div class="data-row-wrap" style="margin-top: 20px;">
+        
+        <!-- Amount Row -->
+        <div class="data-row" style="
+            display: flex; 
+            justify-content: space-between; 
+            padding: 8px 0; 
+            border-bottom: 1px solid #ddd; /* Light gray separator */
+        ">
+            <span class="data-label"><strong>Amount:</strong></span>
+            <span class="data-value" id="amount" style="color: #28a745; font-weight: bold;"></span>
+        </div>
+        
+        <!-- Payment ID Row -->
+        <div class="data-row" style="
+            display: flex; 
+            justify-content: space-between; 
+            padding: 8px 0; 
+            border-bottom: 1px solid #ddd;
+        ">
+            <span class="data-label"><strong>Payment ID:</strong></span>
+            <span class="data-value" id="payment-id"></span>
+        </div>
+        
+        <!-- Order ID Row -->
+        <div class="data-row" style="
+            display: flex; 
+            justify-content: space-between; 
+            padding: 8px 0; 
+            border-bottom: 1px solid #ddd;
+        ">
+            <span class="data-label"><strong>Order ID:</strong></span>
+            <span class="data-value" id="order-id"></span>
+        </div>
+        
+        <!-- Signature Row -->
+        <div class="data-row" style="
+            display: flex; 
+            justify-content: space-between; 
+            padding: 8px 0;
+        ">
+            <span class="data-label"><strong>Signature:</strong></span>
+            <span class="data-value" id="signature"></span>
+        </div>
+        
+    </div>
+
+    <!-- Buttons -->
+    <div style="
+        text-align: center; 
+        margin-top: 20px;
+    ">
+        <!-- Share Button -->
+        <button id="shareBtn" class="btn btn-success" 
+                style="margin-right: 10px;">
+            📷 Share as Image
+        </button>
+        
+        <!-- Back to Wallet Button -->
+        <a href="http://127.0.0.1:8000/wallet/" class="btn btn-primary">
+            ⬅ Back to Wallet
+        </a>
+    </div>
+</div>
+
+<!-- Include html2canvas library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+    // Function to get query parameters from URL
+    function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+            payment_id: params.get("payment_id") || "N/A",
+            order_id: params.get("order_id") || "N/A",
+            signature: params.get("signature") || "N/A",
+            amount: params.get("amount") || "N/A",
+            currency: params.get("currency") || "N/A",
+        };
+    }
+
+    // Populate Payment Details on Page Load
+    document.addEventListener("DOMContentLoaded", function () {
+        const paymentData = getQueryParams();
+
+        document.getElementById("payment-id").textContent = paymentData.payment_id;
+        document.getElementById("order-id").textContent = paymentData.order_id;
+        document.getElementById("signature").textContent = paymentData.signature;
+        document.getElementById("amount").textContent = paymentData.currency + " " + (paymentData.amount / 100);
+
+        // Share Button Click Event
+        document.getElementById("shareBtn").addEventListener("click", function () {
+            html2canvas(document.querySelector(".module.aligned")).then(canvas => {
+                canvas.toBlob(blob => {
+                    const file = new File([blob], "payment_success.png", { type: "image/png" });
+
+                    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                        navigator.share({
+                            files: [file],
+                            title: "Payment Successful",
+                            text: "Payment Successful! See the details in the image.",
+                        }).then(() => {
+                            console.log("Shared successfully!");
+                        }).catch(error => {
+                            console.error("Error sharing:", error);
+                        });
+                    } else {
+                        // If sharing is not supported, download the image
+                        const link = document.createElement("a");
+                        link.href = URL.createObjectURL(blob);
+                        link.download = "payment_success.png";
+                        link.click();
+                    }
+                });
+            });
+        });
+    });
+</script>
+{% endblock %}

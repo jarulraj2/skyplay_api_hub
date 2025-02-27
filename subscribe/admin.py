@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import PaymentLog
+from .models import PaymentLog, Activation 
 
 class PaymentLogAdmin(admin.ModelAdmin):
     list_display = ("client_id", "client_name", "amount", "currency", "device_id", "pack_or_channel_id", "created_at")
@@ -25,3 +25,14 @@ admin.site.register(PaymentLog, PaymentLogAdmin)
 admin.site.site_header = "Skyplay API Hub"
 admin.site.site_title = "Skyplay API Hub"
 admin.site.index_title = "Welcome to Skyplay API Hub"
+
+
+
+
+class ActivationAdmin(admin.ModelAdmin):
+    list_display = ('client_id', 'channel_id', 'end_date', 'device_id')  # Use actual model fields
+    search_fields = ('client_id', 'channel_id', 'device_id')
+    list_filter = ('end_date',)
+    class Media:
+        js = ('js/admin_activation.js',)  # Path to your script
+admin.site.register(Activation, ActivationAdmin)

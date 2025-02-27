@@ -1,0 +1,84 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<meta name="csrf-token" content="{{ csrf_token }}">
+<div class="wallet-container">
+    <h2 class="wallet-balance">Your Wallet Balance: ₹{{ wallet.balance }}</h2>
+
+    <!-- Hidden Elements to Pass Data to JS -->
+    <div id="razorpay-key" data-key="{{ razorpay_key }}"></div>
+    <div id="user-id" data-user="{{ user_id }}"></div>
+
+    <!-- Payment Form -->
+    <form id="payment-form" class="wallet-payment-form">
+        <label for="amount" class="wallet-label">Boost Wallet Balance</label>
+        <input type="number" id="amount" name="amount" class="wallet-amount" placeholder="Enter Amount" required
+            min="1">
+
+        <div class="wallet-actions">
+            <button type="button" class="wallet-btn" id="pay-btn">Pay Now</button>
+        </div>
+    </form>
+</div>
+
+<!-- Transaction History Table -->
+<h3>Your Transaction History</h3>
+<table id="transactionTable" class="display transaction-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Amount (₹)</th>
+            <th>Transaction Type</th>
+            <th>Description</th>
+            <th>Razorpay Payment ID</th>
+            <th>Razorpay Signature</th>
+            <th>Razorpay Order ID</th>
+            <th>Payment Verified</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for transaction in transactions %}
+        <tr>
+            <td>{{ transaction.created_at|date:"d M Y, H:i" }}</td>
+            <td>₹{{ transaction.amount|floatformat:2 }}</td>
+            <td>{{ transaction.transaction_type }}</td>
+            <td>{{ transaction.description|default:"No description" }}</td>
+            <td>{{ transaction.razorpay_payment_id|default:"N/A" }}</td>
+            <td>{{ transaction.razorpay_signature|default:"N/A" }}</td>
+            <td>{{ transaction.razorpay_order_id|default:"N/A" }}</td>
+            <td>{{ transaction.payment_verified|yesno:"Yes,No" }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="8" class="no-data">No transactions found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="{% static 'js/wallet_payment.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#transactionTable').DataTable({
+            "paging": true,          // Enable pagination
+            "searching": true,       // Enable search filter
+            "ordering": true,        // Enable sorting
+            "info": true,            // Show table information
+            "lengthMenu": [10, 25, 50, 100], // Set page length options
+            "order": [[0, "desc"]]   // Default sorting (by date)
+        });
+    });
+</script>
+
+
+{% endblock %}

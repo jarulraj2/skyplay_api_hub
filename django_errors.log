@@ -1,4 +1,4 @@
-Internal Server Error: /admin/subscribe/paymentlog/
+Internal Server Error: /admin/wallet/activationmenu/
 Traceback (most recent call last):
   File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
     return self.cursor.execute(sql, params)
@@ -14,7 +14,209 @@ Traceback (most recent call last):
   File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
     _mysql.connection.query(self, query)
     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-MySQLdb.OperationalError: (1054, "Unknown column 'subscribe_paymentlog.status' in 'field list'")
+MySQLdb.ProgrammingError: (1146, "Table 'skyplay_api_hub2.wallet_activationmenu' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 1926, in changelist_view
+    cl = self.get_changelist_instance(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 836, in get_changelist_instance
+    return ChangeList(
+        request,
+    ...<12 lines>...
+        self.search_help_text,
+    )
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\views\main.py", line 123, in __init__
+    self.get_results(request)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\views\main.py", line 279, in get_results
+    result_count = paginator.count
+                   ^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\paginator.py", line 93, in count
+    return c()
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 608, in count
+    return self.query.get_count(using=self.db)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 568, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 554, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: (1146, "Table 'skyplay_api_hub2.wallet_activationmenu' doesn't exist")
+"GET /admin/wallet/activationmenu/ HTTP/1.1" 500 204747
+Internal Server Error: /admin/wallet/activation/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.ProgrammingError: (1146, "Table 'skyplay_api_hub2.wallet_activation' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 1926, in changelist_view
+    cl = self.get_changelist_instance(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 836, in get_changelist_instance
+    return ChangeList(
+        request,
+    ...<12 lines>...
+        self.search_help_text,
+    )
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\views\main.py", line 123, in __init__
+    self.get_results(request)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\views\main.py", line 279, in get_results
+    result_count = paginator.count
+                   ^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\paginator.py", line 93, in count
+    return c()
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 608, in count
+    return self.query.get_count(using=self.db)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 568, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 554, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: (1146, "Table 'skyplay_api_hub2.wallet_activation' doesn't exist")
+"GET /admin/wallet/activation/ HTTP/1.1" 500 204511
+Internal Server Error: /admin/subscribe/activation/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.OperationalError: (1054, "Unknown column 'subscribe_activation.client_id' in 'field list'")
 
 The above exception was the direct cause of the following exception:
 
@@ -83,9 +285,9 @@ Traceback (most recent call last):
   File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
     _mysql.connection.query(self, query)
     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-django.db.utils.OperationalError: (1054, "Unknown column 'subscribe_paymentlog.status' in 'field list'")
-"GET /admin/subscribe/paymentlog/ HTTP/1.1" 500 191502
-Internal Server Error: /admin/subscribe/paymentlog/
+django.db.utils.OperationalError: (1054, "Unknown column 'subscribe_activation.client_id' in 'field list'")
+"GET /admin/subscribe/activation/ HTTP/1.1" 500 184077
+Internal Server Error: /admin/subscribe/activation/
 Traceback (most recent call last):
   File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
     return self.cursor.execute(sql, params)
@@ -101,7 +303,7 @@ Traceback (most recent call last):
   File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
     _mysql.connection.query(self, query)
     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-MySQLdb.OperationalError: (1054, "Unknown column 'subscribe_paymentlog.status' in 'field list'")
+MySQLdb.OperationalError: (1054, "Unknown column 'subscribe_activation.client_id' in 'field list'")
 
 The above exception was the direct cause of the following exception:
 
@@ -170,9 +372,9 @@ Traceback (most recent call last):
   File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
     _mysql.connection.query(self, query)
     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-django.db.utils.OperationalError: (1054, "Unknown column 'subscribe_paymentlog.status' in 'field list'")
-"GET /admin/subscribe/paymentlog/ HTTP/1.1" 500 191639
-Internal Server Error: /admin/subscribe/paymentlog/
+django.db.utils.OperationalError: (1054, "Unknown column 'subscribe_activation.client_id' in 'field list'")
+"GET /admin/subscribe/activation/ HTTP/1.1" 500 183949
+Internal Server Error: /admin/subscribe/activation/
 Traceback (most recent call last):
   File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
     return self.cursor.execute(sql, params)
@@ -188,7 +390,7 @@ Traceback (most recent call last):
   File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
     _mysql.connection.query(self, query)
     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-MySQLdb.OperationalError: (1054, "Unknown column 'subscribe_paymentlog.status' in 'field list'")
+MySQLdb.OperationalError: (1054, "Unknown column 'subscribe_activation.client_id' in 'field list'")
 
 The above exception was the direct cause of the following exception:
 
@@ -257,9 +459,9 @@ Traceback (most recent call last):
   File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
     _mysql.connection.query(self, query)
     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-django.db.utils.OperationalError: (1054, "Unknown column 'subscribe_paymentlog.status' in 'field list'")
-"GET /admin/subscribe/paymentlog/ HTTP/1.1" 500 191639
-Internal Server Error: /admin/auth/user/
+django.db.utils.OperationalError: (1054, "Unknown column 'subscribe_activation.client_id' in 'field list'")
+"GET /admin/subscribe/activation/ HTTP/1.1" 500 183949
+Internal Server Error: /admin/subscribe/activation/
 Traceback (most recent call last):
   File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
     return self.cursor.execute(sql, params)
@@ -275,10 +477,884 @@ Traceback (most recent call last):
   File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
     _mysql.connection.query(self, query)
     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-MySQLdb.ProgrammingError: (1146, "Table 'skyplay_api_hub.users_user' doesn't exist")
+MySQLdb.OperationalError: (1054, "Unknown column 'subscribe_activation.client_id' in 'field list'")
 
 The above exception was the direct cause of the following exception:
 
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 2065, in changelist_view
+    "selection_note": _("0 of %(cnt)s selected") % {"cnt": len(cl.result_list)},
+                                                           ~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 380, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.OperationalError: (1054, "Unknown column 'subscribe_activation.client_id' in 'field list'")
+"GET /admin/subscribe/activation/ HTTP/1.1" 500 183949
+Internal Server Error: /admin/subscribe/activation/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.OperationalError: (1054, "Unknown column 'subscribe_activation.client_id' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 2065, in changelist_view
+    "selection_note": _("0 of %(cnt)s selected") % {"cnt": len(cl.result_list)},
+                                                           ~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 380, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.OperationalError: (1054, "Unknown column 'subscribe_activation.client_id' in 'field list'")
+"GET /admin/subscribe/activation/ HTTP/1.1" 500 183812
+Internal Server Error: /admin/subscribe/activation/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.OperationalError: (1054, "Unknown column 'subscribe_activation.client_id' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 2065, in changelist_view
+    "selection_note": _("0 of %(cnt)s selected") % {"cnt": len(cl.result_list)},
+                                                           ~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 380, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.OperationalError: (1054, "Unknown column 'subscribe_activation.client_id' in 'field list'")
+"GET /admin/subscribe/activation/ HTTP/1.1" 500 183949
+Internal Server Error: /admin/subscribe/activation/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.OperationalError: (1054, "Unknown column 'subscribe_activation.client_id' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 2065, in changelist_view
+    "selection_note": _("0 of %(cnt)s selected") % {"cnt": len(cl.result_list)},
+                                                           ~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 380, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.OperationalError: (1054, "Unknown column 'subscribe_activation.client_id' in 'field list'")
+"GET /admin/subscribe/activation/ HTTP/1.1" 500 183812
+Internal Server Error: /admin/subscribe/activation/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.OperationalError: (1054, "Unknown column 'subscribe_activation.client_id' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 2065, in changelist_view
+    "selection_note": _("0 of %(cnt)s selected") % {"cnt": len(cl.result_list)},
+                                                           ~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 380, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.OperationalError: (1054, "Unknown column 'subscribe_activation.client_id' in 'field list'")
+"GET /admin/subscribe/activation/ HTTP/1.1" 500 183807
+Internal Server Error: /admin/subscribe/activation/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.ProgrammingError: (1146, "Table 'skyplay_api_hub2.subscribe_activation' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 1926, in changelist_view
+    cl = self.get_changelist_instance(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 836, in get_changelist_instance
+    return ChangeList(
+        request,
+    ...<12 lines>...
+        self.search_help_text,
+    )
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\views\main.py", line 123, in __init__
+    self.get_results(request)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\views\main.py", line 279, in get_results
+    result_count = paginator.count
+                   ^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\paginator.py", line 93, in count
+    return c()
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 608, in count
+    return self.query.get_count(using=self.db)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 568, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 554, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: (1146, "Table 'skyplay_api_hub2.subscribe_activation' doesn't exist")
+"GET /admin/subscribe/activation/ HTTP/1.1" 500 205097
+Internal Server Error: /admin/subscribe/activation/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.ProgrammingError: (1146, "Table 'skyplay_api_hub2.subscribe_activation' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 1926, in changelist_view
+    cl = self.get_changelist_instance(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 836, in get_changelist_instance
+    return ChangeList(
+        request,
+    ...<12 lines>...
+        self.search_help_text,
+    )
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\views\main.py", line 123, in __init__
+    self.get_results(request)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\views\main.py", line 279, in get_results
+    result_count = paginator.count
+                   ^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\paginator.py", line 93, in count
+    return c()
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 608, in count
+    return self.query.get_count(using=self.db)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 568, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 554, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: (1146, "Table 'skyplay_api_hub2.subscribe_activation' doesn't exist")
+"GET /admin/subscribe/activation/ HTTP/1.1" 500 205097
+Internal Server Error: /admin/subscribe/activation/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.ProgrammingError: (1146, "Table 'skyplay_api_hub2.subscribe_activation' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 1926, in changelist_view
+    cl = self.get_changelist_instance(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 836, in get_changelist_instance
+    return ChangeList(
+        request,
+    ...<12 lines>...
+        self.search_help_text,
+    )
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\views\main.py", line 123, in __init__
+    self.get_results(request)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\views\main.py", line 279, in get_results
+    result_count = paginator.count
+                   ^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\paginator.py", line 93, in count
+    return c()
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 608, in count
+    return self.query.get_count(using=self.db)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 568, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 554, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: (1146, "Table 'skyplay_api_hub2.subscribe_activation' doesn't exist")
+"GET /admin/subscribe/activation/ HTTP/1.1" 500 204960
+Internal Server Error: /skyplay_api/set_subscribe_to_channel/33/2025-02-10/33/33/
+"GET /skyplay_api/set_subscribe_to_channel/33/2025-02-10/33/33/ HTTP/1.1" 500 52
+Internal Server Error: /admin/subscribe/paymentlog/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 2063, in changelist_view
+    **self.admin_site.each_context(request),
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 337, in each_context
+    "available_apps": self.get_app_list(request),
+                      ~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\xampp\htdocs\skyplay_api_hub\skyplay_api\admin.py", line 14, in get_app_list
+    app_list = super().get_app_list(request)
+               ~~~~~^^
+RuntimeError: super(): __class__ cell not found
+"GET /admin/subscribe/paymentlog/ HTTP/1.1" 500 104752
+Internal Server Error: /admin/subscribe/paymentlog/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 2063, in changelist_view
+    **self.admin_site.each_context(request),
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 337, in each_context
+    "available_apps": self.get_app_list(request),
+                      ~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\xampp\htdocs\skyplay_api_hub\skyplay_api\admin.py", line 12, in get_app_list
+    app_list = super().get_app_list(request)
+               ~~~~~^^
+RuntimeError: super(): __class__ cell not found
+"GET /admin/subscribe/paymentlog/ HTTP/1.1" 500 104838
+Internal Server Error: /admin/subscribe/activation/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 2063, in changelist_view
+    **self.admin_site.each_context(request),
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 337, in each_context
+    "available_apps": self.get_app_list(request),
+                      ~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\xampp\htdocs\skyplay_api_hub\skyplay_api\admin.py", line 12, in get_app_list
+    app_list = super().get_app_list(request)
+               ~~~~~^^
+RuntimeError: super(): __class__ cell not found
+"GET /admin/subscribe/activation/ HTTP/1.1" 500 104738
+Internal Server Error: /admin/skyplay_api/apilog/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 2063, in changelist_view
+    **self.admin_site.each_context(request),
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 337, in each_context
+    "available_apps": self.get_app_list(request),
+                      ~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\xampp\htdocs\skyplay_api_hub\skyplay_api\admin.py", line 12, in get_app_list
+    app_list = super().get_app_list(request)
+               ~~~~~^^
+RuntimeError: super(): __class__ cell not found
+"GET /admin/skyplay_api/apilog/ HTTP/1.1" 500 104603
+Internal Server Error: /admin/wallet/wallet/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\wallet\admin.py", line 24, in changelist_view
+    return super().changelist_view(request, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 2063, in changelist_view
+    **self.admin_site.each_context(request),
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 337, in each_context
+    "available_apps": self.get_app_list(request),
+                      ~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\xampp\htdocs\skyplay_api_hub\skyplay_api\admin.py", line 12, in get_app_list
+    app_list = super().get_app_list(request)
+               ~~~~~^^
+RuntimeError: super(): __class__ cell not found
+"GET /admin/wallet/wallet/ HTTP/1.1" 500 109048
+Internal Server Error: /admin/
 Traceback (most recent call last):
   File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
     response = get_response(request)
@@ -291,76 +1367,78 @@ Traceback (most recent call last):
     response = view_func(request, *args, **kwargs)
   File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
     response = view_func(request, *args, **kwargs)
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 230, in inner
-    if not self.has_permission(request):
-           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 203, in has_permission
-    return request.user.is_active and request.user.is_staff
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\functional.py", line 266, in inner
-    self._setup()
-    ~~~~~~~~~~~^^
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\functional.py", line 419, in _setup
-    self._wrapped = self._setupfunc()
-                    ~~~~~~~~~~~~~~~^^
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\middleware.py", line 25, in <lambda>
-    request.user = SimpleLazyObject(lambda: get_user(request))
-                                            ~~~~~~~~^^^^^^^^^
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\middleware.py", line 11, in get_user
-    request._cached_user = auth.get_user(request)
-                           ~~~~~~~~~~~~~^^^^^^^^^
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\__init__.py", line 198, in get_user
-    user = backend.get_user(user_id)
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\backends.py", line 161, in get_user
-    user = UserModel._default_manager.get(pk=user_id)
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 633, in get
-    num = len(clone)
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 380, in __len__
-    self._fetch_all()
-    ~~~~~~~~~~~~~~~^^
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1881, in _fetch_all
-    self._result_cache = list(self._iterable_class(self))
-                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 91, in __iter__
-    results = compiler.execute_sql(
-        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
-    )
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
-    cursor.execute(sql, params)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 102, in execute
-    return super().execute(sql, params)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 67, in execute
-    return self._execute_with_wrappers(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        sql, params, many=False, executor=self._execute
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
-    return executor(sql, params, many, context)
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 84, in _execute
-    with self.db.wrap_database_errors:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
-    raise dj_exc_value.with_traceback(traceback) from exc_value
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
-    return self.cursor.execute(sql, params)
-           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
-    return self.cursor.execute(query, args)
-           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
-    res = self._query(mogrified_query)
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
-    db.query(q)
-    ~~~~~~~~^^^
-  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
-    _mysql.connection.query(self, query)
-    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-django.db.utils.ProgrammingError: (1146, "Table 'skyplay_api_hub.users_user' doesn't exist")
-"GET /admin/auth/user/ HTTP/1.1" 500 206614
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 552, in index
+    app_list = self.get_app_list(request)
+  File "C:\xampp\htdocs\skyplay_api_hub\skyplay_api\admin.py", line 12, in get_app_list
+    app_list = super().get_app_list(request)
+               ~~~~~^^
+RuntimeError: super(): __class__ cell not found
+"GET /admin/ HTTP/1.1" 500 86961
+Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 261, in wrapper
+    return self.admin_view(view, cacheable)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 552, in index
+    app_list = self.get_app_list(request)
+  File "C:\xampp\htdocs\skyplay_api_hub\skyplay_api\admin.py", line 12, in get_app_list
+    app_list = super().get_app_list(request)
+               ~~~~~^^
+RuntimeError: super(): __class__ cell not found
+"GET /admin/ HTTP/1.1" 500 87119
+Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 261, in wrapper
+    return self.admin_view(view, cacheable)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 552, in index
+    app_list = self.get_app_list(request)
+  File "C:\xampp\htdocs\skyplay_api_hub\skyplay_api\admin.py", line 12, in get_app_list
+    app_list = super().get_app_list(request)
+               ~~~~~^^
+RuntimeError: super(): __class__ cell not found
+"GET /admin/ HTTP/1.1" 500 86961
+Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 261, in wrapper
+    return self.admin_view(view, cacheable)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 552, in index
+    app_list = self.get_app_list(request)
+  File "C:\xampp\htdocs\skyplay_api_hub\skyplay_api\admin.py", line 12, in get_app_list
+    app_list = super().get_app_list(request)
+               ~~~~~^^
+RuntimeError: super(): __class__ cell not found
+"GET /admin/ HTTP/1.1" 500 87101

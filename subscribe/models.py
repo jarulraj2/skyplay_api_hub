@@ -21,3 +21,17 @@ class PaymentLog(models.Model):
 
     def __str__(self):
         return f"Order {self.order_id} - Status: {self.status}"
+    
+
+from django.utils.timezone import now  # ✅ Import this
+
+class Activation(models.Model):
+    client_id = models.CharField(max_length=255)
+    channel_id = models.CharField(max_length=255)
+    end_date = models.DateField()
+    device_id = models.CharField(max_length=255)
+    created_at = models.DateTimeField(default=now)  # ✅ Use `now()`, NOT auto_now_add
+
+    def __str__(self):
+        return self.client_id
+

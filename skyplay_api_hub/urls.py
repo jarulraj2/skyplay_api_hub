@@ -21,5 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('settings/', include('setting.urls')),  # Add this line
     path("subscribe/", include("subscribe.urls")),
-     path('users/', include('users.urls')),  # Include user URLs
+    path('users/', include('users.urls')),  # Include user URLs
+    path("wallet/", include("wallet.urls")),
+    path('skyplay_api/', include('skyplay_api.urls')), 
 ]

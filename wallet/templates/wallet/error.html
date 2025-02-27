@@ -1,0 +1,27 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+    {% load static %}
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Failed</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let params = new URLSearchParams(window.location.search);
+            let errorMsg = params.get("error") || "An error occurred. Please try again.";
+            document.getElementById("error-message").textContent = decodeURIComponent(errorMsg);
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Payment Failed</h2>
+        <p id="error-message" class="error-message"></p>
+     
+    </div>
+</body>
+{% endblock %}
