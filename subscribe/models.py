@@ -1,4 +1,7 @@
 from django.db import models
+from django.utils import timezone
+from django.contrib.auth.models import User
+from django.conf import settings
 
 class PaymentLog(models.Model):
     client_id = models.CharField(max_length=255)
@@ -35,3 +38,14 @@ class Activation(models.Model):
     def __str__(self):
         return self.client_id
 
+
+
+
+class Deactivation(models.Model):
+    client_id = models.CharField(max_length=255)
+    channel_id = models.CharField(max_length=255)
+    end_date = models.DateField()
+    device_id = models.CharField(max_length=255)
+    deactivated_at = models.DateTimeField(default=timezone.now)
+    deactivated_by =  models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)    
+    status = models.CharField(max_length=255, default='deactivated')

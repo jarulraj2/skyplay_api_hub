@@ -62,6 +62,7 @@ def set_subscribe_to_channel(request, client_id, end_date, device_id, channel_id
     try:
         response = requests.patch(url, json=payload, headers=headers)
         response_data = response.json()
+        
         status_code = response.status_code
 
         if response_data.get("result") == "ok":

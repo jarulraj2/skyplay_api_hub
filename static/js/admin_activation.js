@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (saveButton) {
         saveButton.addEventListener("click", async function (event) {  
-            event.preventDefault(); // Prevent form submission before API call
+            // Remove the event.preventDefault() to allow form submission
+            // event.preventDefault(); 
             
             alert("Button Clicked!");
 
@@ -30,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             // Construct API URL
-            var apiUrl = `skyplay_api/set_subscribe_to_channel/${clientId}/${endDate}/${deviceId}/${channelId}/`;
+            var apiUrl = `/skyplay_api/set_subscribe_to_channel/${clientId}/${endDate}/${deviceId}/${channelId}/`;
 
             try {
                 let response = await fetch(apiUrl, {
@@ -40,6 +41,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 let data = await response.json();
                 console.log("Subscription API Response:", data);
+                
+                // After API call completes, submit the form after a short delay
+                setTimeout(function() {
+                    // Now submit the form (trigger a click event on the save button)
+                    saveButton.click(); 
+                }, 1000);  // Delay in milliseconds (1 second)
               
             } catch (error) {
                 console.error("Error in subscription API:", error);

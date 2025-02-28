@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import PaymentLog, Activation 
+from .models import PaymentLog, Activation, Deactivation
 
 class PaymentLogAdmin(admin.ModelAdmin):
     list_display = ("client_id", "client_name", "amount", "currency", "device_id", "pack_or_channel_id", "created_at")
@@ -35,4 +35,24 @@ class ActivationAdmin(admin.ModelAdmin):
     list_filter = ('end_date',)
     class Media:
         js = ('js/admin_activation.js',)  # Path to your script
+
+    def save_model(self, request, obj, form, change):
+        try:
+            super().save_model(request, obj, form, change)
+        except Exception as e:
+            print("Error saving Activation:", e)
+            raise e
 admin.site.register(Activation, ActivationAdmin)
+
+
+class DeactivationAdmin(admin.ModelAdmin):
+    list_display = ('client_id', 'channel_id', 'deactivated_at', 'deactivated_by', 'status')  # Display deactivation details
+    search_fields = ('client_id', 'channel_id', 'deactivated_by__username')  # Search by deactivated_by (username)
+    list_filter = ('end_date', 'status', 'deactivated_at', 'deactivated_by')  # Filter by deactivation time and user
+
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        # Optional: You could filter the queryset based on the logged-in user or other criteria
+        return queryset
+
+admin.site.register(Deactivation, DeactivationAdmin)

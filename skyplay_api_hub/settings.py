@@ -35,7 +35,10 @@ INSTALLED_APPS = [
     'django_extensions',
     'users',
     'wallet',
-    'skyplay_api'
+    'skyplay_api',
+    'rest_framework',
+    'drf_yasg',
+    'testapp', 
    
 ]
 
@@ -101,9 +104,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "staticfiles"),  # You can change this if needed
+    os.path.join(BASE_DIR, "static"),  # You can change this if needed
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, "static")  # Using "static" instead of "staticfiles"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -132,3 +135,6 @@ LOGGING = {
         },
     },
 }
+
+
+BASE_URL = os.getenv('BASE_URL', 'http://127.0.0.1:8000')
