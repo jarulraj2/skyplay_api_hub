@@ -10,6 +10,9 @@ from datetime import datetime
 import requests
 from django.utils.timezone import now
 from .models import PaymentLog
+import urllib.parse
+import base64
+import sys
 
 
 # Setup logging
@@ -50,7 +53,34 @@ def get_channel_name(channel_id):
         return "API Error"
 
 # ✅ Payment Page
-def payment_view(request, clientId, endDate, deviceId, channelId, amount):
+#def payment_view(request, clientId, endDate, deviceId, channelId, amount):
+def payment_view(request, encoded_data):
+   
+        # First, URL decode the input
+    decoded_data = urllib.parse.unquote(encoded_data)
+    print("URL Decoded Data:", decoded_data)  # Debugging
+
+    # Fix padding and decode Base64
+    decoded_data = decode_base64(decoded_data)
+    if decoded_data is None:
+        return HttpResponse("Invalid Base64 encoding", status=400)
+
+    # Split and validate data
+    parts = decoded_data.split('|')
+    if len(parts) != 5:
+        return HttpResponse(f"Expected 5 values, got {len(parts)}", status=400)
+
+    # Assign values
+    clientId, endDate, deviceId, channelId, amount = parts
+    clientId, deviceId, channelId, amount = map(int, [clientId, deviceId, channelId, amount])
+
+    print(f"Parsed Data: clientId={clientId}, endDate={endDate}, deviceId={deviceId}, channelId={channelId}, amount={amount}")
+
+    clientId = int(clientId)
+    endDate = str(endDate)  # Explicitly setting it as string (optional, since it's already a string)
+    deviceId = int(deviceId)
+    channelId = int(channelId)
+    amount = int(amount)
     try:
         endDate = datetime.strptime(endDate, "%Y-%m-%d").date()
     except ValueError:
@@ -82,13 +112,14 @@ def payment_view(request, clientId, endDate, deviceId, channelId, amount):
 # ✅ Create Order
 @csrf_exempt
 def create_order(request):
+ 
     if request.method != "POST":
         return JsonResponse({"error": "Method not allowed"}, status=405)
 
     if not razorpay_client:
         logger.error("❌ Razorpay client not initialized")
         return JsonResponse({"error": "Razorpay client not initialized"}, status=500)
-
+  
     try:
         data = json.loads(request.body)
         client_id = data.get("client_id", "Unknown")
@@ -238,3 +269,16 @@ def set_subscribe_to_channel(client_id, end_date, device_id, channel_id):
     except requests.exceptions.RequestException as e:
         logger.error(f"❌ API request failed: {str(e)}")
         return {"status": "error", "message": "API request failed"}
+
+def test_view(request):
+    return HttpResponse("Test URL is working!")
+def decode_base64(data):
+    """ Fix padding and decode Base64 safely """
+    try:
+        # Ensure padding is correct
+        data += '=' * (-len(data) % 4)  
+        decoded_bytes = base64.b64decode(data)
+        return decoded_bytes.decode('utf-8')  # Convert bytes to string
+    except Exception as e:
+        print("Base64 Decode Error:", e)
+        return None

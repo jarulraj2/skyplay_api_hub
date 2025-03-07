@@ -19,7 +19,7 @@ from django.urls import path, include, re_path
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
-
+from django.shortcuts import redirect
 
 # Configure Swagger Schema View
 schema_view = get_schema_view(
@@ -36,7 +36,11 @@ schema_view = get_schema_view(
 )
 
 
+def redirect_to_admin(request):
+    return redirect('/admin')
+
 urlpatterns = [
+    path('', lambda request: redirect('/admin/')),  # Redirect root to admin
     path('admin/', admin.site.urls),
     path('settings/', include('setting.urls')),  # Add this line
     path("subscribe/", include("subscribe.urls")),

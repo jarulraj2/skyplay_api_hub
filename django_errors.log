@@ -2331,3 +2331,1311 @@ Traceback (most recent call last):
                 ^^^^
 NameError: name 'json' is not defined. Did you forget to import 'json'?
 "POST /api/subscription/request-watchoplan/ HTTP/1.1" 500 18172
+Internal Server Error: /subscribe/MjcwODAtMjAyNC0xMC0xMHwzO30yMzQwNT8w/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 57, in payment_view
+    clientId, endDate, deviceId, channelId, amount = decoded_data.split('|')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 5, got 2)
+"GET /subscribe/MjcwODAtMjAyNC0xMC0xMHwzO30yMzQwNT8w/ HTTP/1.1" 500 66702
+Internal Server Error: /subscribe/b64decode/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 57, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (9) cannot be 1 more than a multiple of 4
+"GET /subscribe/b64decode/ HTTP/1.1" 500 69805
+Internal Server Error: /subscribe/b64decode/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 57, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (9) cannot be 1 more than a multiple of 4
+"GET /subscribe/b64decode/ HTTP/1.1" 500 70070
+Internal Server Error: /subscribe/b64decode/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 57, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (9) cannot be 1 more than a multiple of 4
+"GET /subscribe/b64decode/ HTTP/1.1" 500 70070
+Internal Server Error: /subscribe/b64decode/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 57, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (9) cannot be 1 more than a multiple of 4
+"GET /subscribe/b64decode/ HTTP/1.1" 500 70070
+Internal Server Error: /subscribe/b64decode/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 57, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (9) cannot be 1 more than a multiple of 4
+"GET /subscribe/b64decode/ HTTP/1.1" 500 70070
+Internal Server Error: /subscribe/b64decode/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 57, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (9) cannot be 1 more than a multiple of 4
+"GET /subscribe/b64decode/ HTTP/1.1" 500 70070
+Internal Server Error: /subscribe/b64decode/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 57, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (9) cannot be 1 more than a multiple of 4
+"GET /subscribe/b64decode/ HTTP/1.1" 500 69805
+Internal Server Error: /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 78, in payment_view
+    endDate = datetime.strptime(endDate, "%Y-%m-%d").date()
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: strptime() argument 1 must be str, not datetime.date
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 67257
+Internal Server Error: /subscribe/b64decode/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 57, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (9) cannot be 1 more than a multiple of 4
+"GET /subscribe/b64decode/?Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy HTTP/1.1" 500 70343
+Internal Server Error: /subscribe/b64decode/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: b64decode() got an unexpected keyword argument 'encoded_data'
+"GET /subscribe/b64decode/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 62351
+Internal Server Error: /subscribe/b64decode/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: b64decode() got an unexpected keyword argument 'encoded_data'
+"GET /subscribe/b64decode/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 62351
+Internal Server Error: /subscribe/b64decode/MjcwODAtMjAyNC0xMC0xMHwzO30yMzQwNT8w/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: b64decode() got an unexpected keyword argument 'encoded_data'
+"GET /subscribe/b64decode/MjcwODAtMjAyNC0xMC0xMHwzO30yMzQwNT8w/ HTTP/1.1" 500 62351
+Internal Server Error: /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 78, in payment_view
+    endDate = datetime.strptime(endDate, "%Y-%m-%d").date()
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: strptime() argument 1 must be str, not datetime.date
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 67257
+Internal Server Error: /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 77, in payment_view
+    endDate = datetime.strptime(endDate, "%Y-%m-%d").date()
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: strptime() argument 1 must be str, not datetime.date
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 67446
+Internal Server Error: /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 77, in payment_view
+    endDate = datetime.strptime(endDate, "%Y-%m-%d").date()
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: strptime() argument 1 must be str, not datetime.date
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 67181
+Internal Server Error: /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 77, in payment_view
+    endDate = datetime.strptime(endDate, "%Y-%m-%d").date()
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: strptime() argument 1 must be str, not datetime.date
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 67446
+Internal Server Error: /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 77, in payment_view
+    endDate = datetime.strptime(endDate, "%Y-%m-%d").date()
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: strptime() argument 1 must be str, not datetime.date
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 67181
+Internal Server Error: /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 78, in payment_view
+    endDate = datetime.strptime(endDate, "%Y-%m-%d").date()
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: strptime() argument 1 must be str, not datetime.date
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 67522
+Internal Server Error: /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 77, in payment_view
+    endDate = datetime.strptime(endDate, "%Y-%m-%d").date()
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: strptime() argument 1 must be str, not datetime.date
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 67446
+Internal Server Error: /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 77, in payment_view
+    endDate = datetime.strptime(endDate, "%Y-%m-%d").date()
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: strptime() argument 1 must be str, not datetime.date
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 67181
+Internal Server Error: /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 77, in payment_view
+    endDate = datetime.strptime(endDate, "%Y-%m-%d").date()
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: strptime() argument 1 must be str, not datetime.date
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 67446
+Internal Server Error: /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 55, in payment_view
+    print(f"Decoded Data: {decoded_data}")
+                           ^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'decoded_data' where it is not associated with a value
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 66568
+Internal Server Error: /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 77, in payment_view
+    endDate = datetime.strptime(endDate, "%Y-%m-%d").date()
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: strptime() argument 1 must be str, not datetime.date
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 67446
+Internal Server Error: /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 77, in payment_view
+    endDate = datetime.strptime(endDate, "%Y-%m-%d").date()
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: strptime() argument 1 must be str, not datetime.date
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 67446
+Internal Server Error: /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 86, in payment_view
+    endDate = datetime.strptime(endDate, '%Y-%m-%d').date()
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: strptime() argument 1 must be str, not datetime.date
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 67543
+Internal Server Error: /subscribe/MjcwODAtMjAyNC0xMC0xMHwzO30yMzQwNT8w/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 67, in payment_view
+    clientId, endDate, deviceId, channelId, amount = decoded_data.split('|')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 5, got 2)
+"GET /subscribe/MjcwODAtMjAyNC0xMC0xMHwzO30yMzQwNT8w/ HTTP/1.1" 500 66439
+Internal Server Error: /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 85, in payment_view
+    endDate = datetime.strptime(endDate, '%Y-%m-%d').date()
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: strptime() argument 1 must be str, not datetime.date
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 67543
+Internal Server Error: /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 88, in payment_view
+    endDate = datetime.strptime(endDate, "%Y-%m-%d").date()
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: strptime() argument 1 must be str, not datetime.date
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 67446
+Internal Server Error: /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 88, in payment_view
+    endDate = datetime.strptime(endDate, "%Y-%m-%d").date()
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: strptime() argument 1 must be str, not datetime.date
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 67446
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb7 in position 1: invalid start byte
+"POST /subscribe/create_order/ HTTP/1.1" 500 66334
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=Failed%20to%20create%20payment%20order.%20Please%20try%20again. HTTP/1.1" 500 70815
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb7 in position 1: invalid start byte
+"POST /subscribe/create_order/ HTTP/1.1" 500 66334
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=Failed%20to%20create%20payment%20order.%20Please%20try%20again. HTTP/1.1" 500 70815
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=Failed%20to%20create%20payment%20order.%20Please%20try%20again. HTTP/1.1" 500 70820
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=Failed%20to%20create%20payment%20order.%20Please%20try%20again. HTTP/1.1" 500 70951
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=Failed%20to%20create%20payment%20order.%20Please%20try%20again. HTTP/1.1" 500 71079
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=Failed%20to%20create%20payment%20order.%20Please%20try%20again. HTTP/1.1" 500 70617
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=Failed%20to%20create%20payment%20order.%20Please%20try%20again. HTTP/1.1" 500 70617
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb7 in position 1: invalid start byte
+"POST /subscribe/create_order/ HTTP/1.1" 500 66334
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=Failed%20to%20create%20payment%20order.%20Please%20try%20again. HTTP/1.1" 500 70815
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb7 in position 1: invalid start byte
+"POST /subscribe/create_order/ HTTP/1.1" 500 66334
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=Failed%20to%20create%20payment%20order.%20Please%20try%20again. HTTP/1.1" 500 70815
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb7 in position 1: invalid start byte
+"POST /subscribe/create_order/ HTTP/1.1" 500 66334
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb7 in position 1: invalid start byte
+"POST /subscribe/create_order/ HTTP/1.1" 500 66334
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=Failed%20to%20create%20payment%20order.%20Please%20try%20again. HTTP/1.1" 500 70684
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb7 in position 1: invalid start byte
+"POST /subscribe/create_order/ HTTP/1.1" 500 66334
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=Failed%20to%20create%20payment%20order.%20Please%20try%20again. HTTP/1.1" 500 70684
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb7 in position 1: invalid start byte
+"POST /subscribe/create_order/ HTTP/1.1" 500 66334
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb7 in position 1: invalid start byte
+"POST /subscribe/create_order/ HTTP/1.1" 500 66334
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb7 in position 1: invalid start byte
+"POST /subscribe/create_order/ HTTP/1.1" 500 66334
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb7 in position 1: invalid start byte
+"POST /subscribe/create_order/ HTTP/1.1" 500 66334
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=An%20unexpected%20error%20occurred. HTTP/1.1" 500 70496
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb7 in position 1: invalid start byte
+"POST /subscribe/create_order/ HTTP/1.1" 500 66334
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=An%20unexpected%20error%20occurred. HTTP/1.1" 500 70496
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb7 in position 1: invalid start byte
+"POST /subscribe/create_order/ HTTP/1.1" 500 66334
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=An%20unexpected%20error%20occurred. HTTP/1.1" 500 70496
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb7 in position 1: invalid start byte
+"POST /subscribe/create_order/ HTTP/1.1" 500 66334
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=An%20unexpected%20error%20occurred. HTTP/1.1" 500 70496
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=An%20unexpected%20error%20occurred. HTTP/1.1" 500 70429
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=An%20unexpected%20error%20occurred. HTTP/1.1" 500 70694
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=An%20unexpected%20error%20occurred. HTTP/1.1" 500 70694
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=An%20unexpected%20error%20occurred. HTTP/1.1" 500 70694
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=An%20unexpected%20error%20occurred. HTTP/1.1" 500 70694
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=An%20unexpected%20error%20occurred. HTTP/1.1" 500 70694
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=An%20unexpected%20error%20occurred. HTTP/1.1" 500 70694
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=An%20unexpected%20error%20occurred. HTTP/1.1" 500 70694
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=An%20unexpected%20error%20occurred. HTTP/1.1" 500 70694
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=An%20unexpected%20error%20occurred. HTTP/1.1" 500 70694
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=An%20unexpected%20error%20occurred. HTTP/1.1" 500 70694
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/ HTTP/1.1" 500 69863
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=An%20unexpected%20error%20occurred. HTTP/1.1" 500 70429
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=An%20unexpected%20error%20occurred. HTTP/1.1" 500 70694
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=gf HTTP/1.1" 500 70204
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=gf HTTP/1.1" 500 70469
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=gf HTTP/1.1" 500 70469
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=gf HTTP/1.1" 500 70341
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=gf HTTP/1.1" 500 70341
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=gf HTTP/1.1" 500 70341
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=gf HTTP/1.1" 500 70341
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=gf HTTP/1.1" 500 70469
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=gf HTTP/1.1" 500 70469
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=gf HTTP/1.1" 500 70204
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 61, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4
+"GET /subscribe/error/?error=gf HTTP/1.1" 500 70341
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 80, in payment_view
+    clientId, endDate, deviceId, channelId, amount = decoded_data.split('|')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 5, got 1)
+"POST /subscribe/create_order/ HTTP/1.1" 500 66112
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 80, in payment_view
+    clientId, endDate, deviceId, channelId, amount = decoded_data.split('|')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 5, got 1)
+"GET /subscribe/error/?error=An%20unexpected%20error%20occurred. HTTP/1.1" 500 66564
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 80, in payment_view
+    clientId, endDate, deviceId, channelId, amount = decoded_data.split('|')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 5, got 1)
+"POST /subscribe/create_order/ HTTP/1.1" 500 66112
+Internal Server Error: /subscribe/error/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 80, in payment_view
+    clientId, endDate, deviceId, channelId, amount = decoded_data.split('|')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 5, got 1)
+"GET /subscribe/error/?error=An%20unexpected%20error%20occurred. HTTP/1.1" 500 66564
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 80, in payment_view
+    clientId, endDate, deviceId, channelId, amount = decoded_data.split('|')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 5, got 1)
+"POST /subscribe/create_order/ HTTP/1.1" 500 66112
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+"POST /subscribe/create_order/ HTTP/1.1" 500 65128
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+"POST /subscribe/create_order/ HTTP/1.1" 500 65128
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+"POST /subscribe/create_order/ HTTP/1.1" 500 65128
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+"POST /subscribe/create_order/ HTTP/1.1" 500 65128
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+"POST /subscribe/create_order/ HTTP/1.1" 500 65128
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+"POST /subscribe/create_order/ HTTP/1.1" 500 65128
+Internal Server Error: /subscribe/27580|2024-10-10|1|7466|222/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 56, in payment_view
+    clientId = int(clientId)
+                   ^^^^^^^^
+UnboundLocalError: cannot access local variable 'clientId' where it is not associated with a value
+"GET /subscribe/27580%7C2024-10-10%7C1%7C7466%7C222/ HTTP/1.1" 500 66272
+Internal Server Error: /subscribe/27580|2024-10-10|1|7466|222/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: payment_view() got an unexpected keyword argument 'encoded_data'
+"GET /subscribe/27580%7C2024-10-10%7C1%7C7466%7C222/ HTTP/1.1" 500 61833
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 57, in payment_view
+    clientId, endDate, deviceId, channelId, amount = decoded_data.split('|')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 5, got 1)
+"POST /subscribe/create_order/ HTTP/1.1" 500 65900
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 57, in payment_view
+    clientId, endDate, deviceId, channelId, amount = decoded_data.split('|')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 5, got 1)
+"GET /subscribe/create_order/ HTTP/1.1" 500 65617
+Internal Server Error: /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 57, in payment_view
+    clientId, endDate, deviceId, channelId, amount = decoded_data.split('|')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 5, got 1)
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 66054
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 57, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Incorrect padding
+"POST /subscribe/create_order/ HTTP/1.1" 500 69556
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 57, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Incorrect padding
+"POST /subscribe/create_order/ HTTP/1.1" 500 69556
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 57, in payment_view
+    decoded_data = base64.b64decode(encoded_data).decode('utf-8')
+                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Incorrect padding
+"POST /subscribe/create_order/ HTTP/1.1" 500 69556
+Internal Server Error: /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 62, in payment_view
+    decoded_data = decode_base64(decoded_data)
+                   ^^^^^^^^^^^^^
+NameError: name 'decode_base64' is not defined
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 66051
+Internal Server Error: /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 58, in payment_view
+    sys.exit("Invalid amount, exiting function", request)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: exit expected at most 1 argument, got 2
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 66003
+Internal Server Error: /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 58, in payment_view
+    sys.exit("Invalid amount, exiting function", request)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: exit expected at most 1 argument, got 2
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 66003
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 59
+"GET /subscribe/Mjc1ODB8MjAyNC0xMC0xMHwxfDc0NjZ8MjIy/ HTTP/1.1" 500 59
+Internal Server Error: /subscribe/create_order/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 115, in create_order
+    sys.exit("Invalid amount, exiting function", request)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: exit expected at most 1 argument, got 2
+"POST /subscribe/create_order/ HTTP/1.1" 500 69155
