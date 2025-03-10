@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activation Page</title>
+</head>
+<body>
+    <h1>Welcome to the Activation Page</h1>
+
+    {% if name %}
+        <p><strong>Name:</strong> {{ name }}</p>
+    {% else %}
+        <p>No name provided.</p>
+    {% endif %}
+
+    {% if client_id %}
+        <p><strong>Client ID:</strong> {{ client_id }}</p>
+    {% else %}
+        <p>No client ID provided.</p>
+    {% endif %}
+
+    {% if device_id %}
+        <p><strong>Device ID:</strong> {{ device_id }}</p>
+    {% else %}
+        <p>No device ID provided.</p>
+    {% endif %}
+
+    {% if channel_id %}
+        <p><strong>Channel ID:</strong> {{ channel_id }}</p>
+    {% else %}
+        <p>No channel ID provided.</p>
+    {% endif %}
+
+    <p>Try visiting the page with a URL like this:</p>
+    <p><code>/activation/?name=America%20HD%20/%20test&clientId=23943&deviceId=59275&channelId=6917</code></p>
+</body>
+</html>

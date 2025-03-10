@@ -1,0 +1,32 @@
+<!-- admin/watcho/enc_dec.html -->
+{% extends "admin/base_site.html" %}
+{% block content %}
+    <h1>Encryption and Decryption</h1>
+
+    <!-- Encryption Form -->
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="plain_text">Plain Text:</label>
+            <input type="text" name="plain_text" id="plain_text" value="{{ plain_text|default:'' }}" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Encrypt</button>
+    </form>
+
+    <hr>
+
+    <!-- Decryption Form -->
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="encrypted_text">Encrypted Text:</label>
+            <input type="text" name="encrypted_text" id="encrypted_text" value="{{ encrypted_text|default:'' }}" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Decrypt</button>
+    </form>
+
+    {% if result_text %}
+        <h4>{{ action }} Result:</h4>
+        <p>{{ result_text }}</p>
+    {% endif %}
+{% endblock %}

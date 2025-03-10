@@ -13,7 +13,9 @@ from .models import PaymentLog
 import urllib.parse
 import base64
 import sys
-
+from django.shortcuts import render
+from django.http import HttpResponse
+from datetime import datetime, timedelta
 
 # Setup logging
 logger = logging.getLogger(__name__)
@@ -54,35 +56,91 @@ def get_channel_name(channel_id):
 
 # ✅ Payment Page
 #def payment_view(request, clientId, endDate, deviceId, channelId, amount):
-def payment_view(request, encoded_data):
+# def payment_view(request, encoded_data):
    
-        # First, URL decode the input
-    decoded_data = urllib.parse.unquote(encoded_data)
-    print("URL Decoded Data:", decoded_data)  # Debugging
+#         # First, URL decode the input
+#     decoded_data = urllib.parse.unquote(encoded_data)
+#     print("URL Decoded Data:", decoded_data)  # Debugging
 
-    # Fix padding and decode Base64
-    decoded_data = decode_base64(decoded_data)
-    if decoded_data is None:
-        return HttpResponse("Invalid Base64 encoding", status=400)
+#     # Fix padding and decode Base64
+#     decoded_data = decode_base64(decoded_data)
+#     if decoded_data is None:
+#         return HttpResponse("Invalid Base64 encoding", status=400)
 
-    # Split and validate data
-    parts = decoded_data.split('|')
-    if len(parts) != 5:
-        return HttpResponse(f"Expected 5 values, got {len(parts)}", status=400)
+#     # Split and validate data
+#     parts = decoded_data.split('|')
+#     if len(parts) != 5:
+#         return HttpResponse(f"Expected 5 values, got {len(parts)}", status=400)
 
-    # Assign values
-    clientId, endDate, deviceId, channelId, amount = parts
-    clientId, deviceId, channelId, amount = map(int, [clientId, deviceId, channelId, amount])
+#     # Assign values
+#     clientId, endDate, deviceId, channelId, amount = parts
+#     clientId, deviceId, channelId, amount = map(int, [clientId, deviceId, channelId, amount])
+
+#     print(f"Parsed Data: clientId={clientId}, endDate={endDate}, deviceId={deviceId}, channelId={channelId}, amount={amount}")
+
+#     clientId = int(clientId)
+#     endDate = str(endDate)  # Explicitly setting it as string (optional, since it's already a string)
+#     deviceId = int(deviceId)
+#     channelId = int(channelId)
+#     amount = int(amount)
+#     try:
+#         endDate = datetime.strptime(endDate, "%Y-%m-%d").date()
+#     except ValueError:
+#         return JsonResponse({"error": "Invalid date format"}, status=400)
+    
+
+
+#     # ✅ Validate Client
+#     client_name = get_client_name(clientId)
+#     # if not client_name:
+#     #     return HttpResponseNotFound("❌ Client not found")
+
+#     # ✅ Validate Channel
+#     channel_name = get_channel_name(channelId)
+#     # if not channel_name:
+#     #     return HttpResponseNotFound("❌ Channel not found")
+
+#     context = {
+#         "clientId": clientId,
+#         "clientName":client_name,
+#         "endDate": endDate,
+#         "deviceId": deviceId,
+#         "channelId": channelId,
+#         "channelName": channel_name,
+#         "amount": amount,
+#     }
+#     return render(request, "payment.html", context)
+
+
+
+
+# ✅ Payment Page
+def payment_view(request):
+
+    # Access query parameters from the URL
+    channel_name = request.GET.get('channelName', None)
+    clientId = request.GET.get('clientId', None)
+    deviceId = request.GET.get('deviceId', None)
+    channelId = request.GET.get('channelId', None)
+    packs = request.GET.get('packs', None)
+
+
+   # Calculate the end date (current date + 30 days)
+    current_date = datetime.now()
+    endDate = current_date + timedelta(days=30)
+
+    amount = 1
 
     print(f"Parsed Data: clientId={clientId}, endDate={endDate}, deviceId={deviceId}, channelId={channelId}, amount={amount}")
 
     clientId = int(clientId)
-    endDate = str(endDate)  # Explicitly setting it as string (optional, since it's already a string)
+    #endDate = str(endDate)  # Explicitly setting it as string (optional, since it's already a string)
     deviceId = int(deviceId)
     channelId = int(channelId)
     amount = int(amount)
     try:
-        endDate = datetime.strptime(endDate, "%Y-%m-%d").date()
+        # Format the endDate to string if needed (optional)
+        endDate_str = endDate.strftime("%Y-%m-%d")  # Format as string for displaying
     except ValueError:
         return JsonResponse({"error": "Invalid date format"}, status=400)
     
@@ -94,7 +152,7 @@ def payment_view(request, encoded_data):
     #     return HttpResponseNotFound("❌ Client not found")
 
     # ✅ Validate Channel
-    channel_name = get_channel_name(channelId)
+    #channel_name = get_channel_name(channelId)
     # if not channel_name:
     #     return HttpResponseNotFound("❌ Channel not found")
 
@@ -108,6 +166,7 @@ def payment_view(request, encoded_data):
         "amount": amount,
     }
     return render(request, "payment.html", context)
+
 
 # ✅ Create Order
 @csrf_exempt
@@ -282,3 +341,23 @@ def decode_base64(data):
     except Exception as e:
         print("Base64 Decode Error:", e)
         return None
+    
+
+
+
+def activation(request):
+    # Get the values from the URL query string
+    name = request.GET.get('name', None)  # Name parameter (e.g., 'America HD / test')
+    client_id = request.GET.get('clientId', None)  # Client ID
+    device_id = request.GET.get('deviceId', None)  # Device ID
+    channel_id = request.GET.get('channelId', None)  # Channel ID
+
+    # Pass all these values to the template for display
+    return render(request, 'activation.html', {
+        'name': name,
+        'client_id': client_id,
+        'device_id': device_id,
+        'channel_id': channel_id
+    })
+
+

@@ -22,17 +22,18 @@ from drf_yasg import openapi
 from django.shortcuts import redirect
 
 # Configure Swagger Schema View
+# Define the schema view for Swagger
 schema_view = get_schema_view(
-    openapi.Info(
-        title="My API",
-        default_version='v1',
-        description="API documentation using Swagger",
-        terms_of_service="https://www.example.com/terms/",
-        contact=openapi.Contact(email="support@example.com"),
-        license=openapi.License(name="BSD License"),
-    ),
-    public=True,
-    permission_classes=(permissions.AllowAny,),
+   openapi.Info(
+      title="Encryption/Decryption API",
+      default_version='v1',
+      description="API for encryption and decryption",
+      terms_of_service="https://www.google.com/policies/terms/",
+      contact=openapi.Contact(email="contact@watcho.local"),
+      license=openapi.License(name="BSD License"),
+   ),
+   public=True,
+   permission_classes=(permissions.AllowAny,),
 )
 
 
@@ -48,8 +49,8 @@ urlpatterns = [
     path("wallet/", include("wallet.urls")),
     path('skyplay_api/', include('skyplay_api.urls')), 
 
-    re_path(r"^swagger(?P<format>\.json|\.yaml)$", schema_view.without_ui(cache_timeout=0), name="schema-json"),
-    path("swagger/", schema_view.with_ui("swagger", cache_timeout=0), name="schema-swagger-ui"),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
     path('api/', include('testapp.urls')),  # Include testapp API
+    path('watcho/', include('watcho.urls')),
 ]

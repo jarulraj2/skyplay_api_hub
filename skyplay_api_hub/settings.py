@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'testapp', 
+    'watcho',
+    'import_export',
+    'channels',
+   
    
 ]
 
@@ -138,3 +142,5 @@ LOGGING = {
 
 
 BASE_URL = os.getenv('BASE_URL', 'http://127.0.0.1:8000')
+
+ENCRYPTION_PASS_PHRASE = "1234"
