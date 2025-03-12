@@ -6,7 +6,6 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse, HttpResponse, HttpResponseNotFound
 from django.views.decorators.csrf import csrf_exempt
 from razorpay.errors import BadRequestError, SignatureVerificationError
-from datetime import datetime
 import requests
 from django.utils.timezone import now
 from .models import PaymentLog
@@ -16,6 +15,9 @@ import sys
 from django.shortcuts import render
 from django.http import HttpResponse
 from datetime import datetime, timedelta
+from channels.models import Channel  
+from skyplay_api.views import set_subscribe_to_channel
+from subscribe.models import Activation  # Import Activation model
 
 # Setup logging
 logger = logging.getLogger(__name__)
@@ -129,7 +131,12 @@ def payment_view(request):
     current_date = datetime.now()
     endDate = current_date + timedelta(days=30)
 
-    amount = 1
+    channel = Channel.objects.filter(channel_id=channelId).first()  
+
+    if channel:
+        amount = channel.price
+    else:
+        amount = 1  # Default price when the channel does not exist
 
     print(f"Parsed Data: clientId={clientId}, endDate={endDate}, deviceId={deviceId}, channelId={channelId}, amount={amount}")
 
@@ -278,6 +285,30 @@ def verify_payment(request):
             }
         )
 
+
+
+
+        # Parse the date string to a datetime object
+        endDate_obj = datetime.fromisoformat(end_date)  # Convert the ISO format to datetime
+
+        # Now format it into the desired format (YYYY-MM-DD)
+        end_date = endDate_obj.strftime('%Y-%m-%d')  # This gives '2025-04-09'
+
+        # Proceed with the API request or whatever logic you need
+        print(f"Formatted endDate: {end_date}")
+
+
+
+        # Call the set_subscribe_to_channel function
+        set_subscribe_to_channel(request, client_id, end_date, device_id, channel_id)
+
+        activation = Activation.objects.create(
+            client_id=client_id,
+            channel_id=channel_id,
+            end_date=end_date,
+            device_id=device_id
+        )
+
         return JsonResponse({"success": "Payment verified successfully"})
 
     except SignatureVerificationError:
@@ -306,42 +337,7 @@ def payment_success(request):
 
 def payment_error(request):
     return render(request, "error.html")
-# ✅ Subscribe the channel Page
-def set_subscribe_to_channel(client_id, end_date, device_id, channel_id):
-    url = f"http://api.skyplay.in/subscribeToChannel/{client_id}/{end_date}/{device_id}/{channel_id}"
-    headers = {
-        "Accept": "application/json",
-        "Token": "84a0103ea1780372cbc410e49114633e",
-        "Content-Type": "application/json"
-    }
-    payload = {}  # Keep empty unless the API requires body data
 
-    try:
-        response = requests.patch(url, json=payload, headers=headers)
-        data = response.json()
-
-        if data.get("result") == "ok":
-            return {"status": "success", "message": "Subscription successful"}
-        else:
-            return {"status": "error", "message": data.get("errorText", "Unknown error")}
-
-    except requests.exceptions.RequestException as e:
-        logger.error(f"❌ API request failed: {str(e)}")
-        return {"status": "error", "message": "API request failed"}
-
-def test_view(request):
-    return HttpResponse("Test URL is working!")
-def decode_base64(data):
-    """ Fix padding and decode Base64 safely """
-    try:
-        # Ensure padding is correct
-        data += '=' * (-len(data) % 4)  
-        decoded_bytes = base64.b64decode(data)
-        return decoded_bytes.decode('utf-8')  # Convert bytes to string
-    except Exception as e:
-        print("Base64 Decode Error:", e)
-        return None
-    
 
 
 

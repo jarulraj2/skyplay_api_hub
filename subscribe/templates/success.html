@@ -8,55 +8,54 @@
     <div class="image-wrap">
         <img src="{% static 'images/bg.svg' %}" alt="Payment Success" width="100%">
     </div>
-    <h2> Payment Successful!</h2>
+    <h2>Payment Successful</h2>
 
     <div class="data-row-wrap">
-
         <div class="data-row">
-            <span class="data-label">Client ID</span>
+            <span class="data-label">Client ID:</span>
             <span class="data-value" id="client-id"></span>
         </div>
         <div class="data-row">
-            <span class="data-label">Client Name</span>
+            <span class="data-label">Client Name:</span>
             <span class="data-value" id="client-name"></span>
         </div>
         <div class="data-row">
-            <span class="data-label">End Date</span>
+            <span class="data-label">End Date:</span>
             <span class="data-value" id="end-date"></span>
         </div>
         <div class="data-row">
-            <span class="data-label">Amount</span>
+            <span class="data-label">Amount:</span>
             <span class="data-value" id="amount"></span>
         </div>
         <div class="data-row">
-            <span class="data-label">Payment ID</span>
+            <span class="data-label">Payment ID:</span>
             <span class="data-value" id="payment-id"></span>
         </div>
         <div class="data-row">
-            <span class="data-label">Order ID</span>
+            <span class="data-label">Order ID:</span>
             <span class="data-value" id="order-id"></span>
         </div>
         <div class="data-row">
-            <span class="data-label">Signature</span>
+            <span class="data-label">Signature:</span>
             <span class="data-value" id="signature"></span>
         </div>
 
         <div class="data-row">
-            <span class="data-label">Device ID</span>
+            <span class="data-label">Device ID:</span>
             <span class="data-value" id="device-id"></span>
         </div>
         <div class="data-row">
-            <span class="data-label">Channel ID</span>
+            <span class="data-label">Channel ID:</span>
             <span class="data-value" id="channel-id"></span>
         </div>
     </div>
 
-    <!-- Buttons -->
-    <button id="shareBtn" class="btm-event">📷 Share as Image</button>
+    <!-- Share PDF Button -->
+    <button id="sharePdfBtn" class="btm-event">📄 Share as PDF</button>
 </div>
 
-<!-- Include html2canvas library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<!-- Include jsPDF library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
     function getQueryParams() {
@@ -78,40 +77,84 @@
     document.addEventListener("DOMContentLoaded", function () {
         const paymentData = getQueryParams();
 
+        // Fill in the data dynamically
         document.getElementById("payment-id").textContent = paymentData.payment_id;
         document.getElementById("order-id").textContent = paymentData.order_id;
         document.getElementById("signature").textContent = paymentData.signature;
-        document.getElementById("amount").textContent = paymentData.currency + " " + (paymentData.amount/ 100 );
+        document.getElementById("amount").textContent = paymentData.currency + " " + (paymentData.amount / 100 );
         document.getElementById("client-id").textContent = paymentData.client_id;
         document.getElementById("client-name").textContent = paymentData.client_name;
         document.getElementById("end-date").textContent = paymentData.end_date;
         document.getElementById("device-id").textContent = paymentData.device_id;
         document.getElementById("channel-id").textContent = paymentData.channel_id;
 
-        document.getElementById("shareBtn").addEventListener("click", function () {
-            html2canvas(document.getElementById("capture")).then(canvas => {
-                canvas.toBlob(blob => {
-                    const file = new File([blob], "payment_success.png", { type: "image/png" });
+        // Handle PDF creation and sharing
+        document.getElementById("sharePdfBtn").addEventListener("click", function () {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
 
-                    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-                        navigator.share({
-                            files: [file],
-                            title: "Payment Successful",
-                            text: "Payment Successful! See the details in the image.",
-                        }).then(() => {
-                            console.log("Shared successfully!");
-                        }).catch(error => {
-                            console.error("Error sharing:", error);
-                        });
-                    } else {
-                        // If sharing is not supported, download the image
-                        const link = document.createElement("a");
-                        link.href = URL.createObjectURL(blob);
-                        link.download = "payment_success.png";
-                        link.click();
-                    }
+            // Set font style for the corporate look
+            doc.setFont("helvetica", "normal");
+
+            // Create formal header
+            doc.setFontSize(16);
+            doc.text("INVOICE", 10, 20);
+
+            doc.setFontSize(12);
+            doc.text("Payment Confirmation", 10, 30);
+
+            // Add company details at the top (you can customize with your own details)
+            doc.setFontSize(10);
+            doc.text("Skyplay", 140, 20);
+            doc.text("Address: Coimbatore", 140, 25);
+            doc.text("Phone: (+91) 99441 99445 ", 140, 30);
+            doc.text("Email: info@skylink.net.in", 140, 35);
+
+            // Add a line to separate the sections
+            doc.setLineWidth(0.5);
+            doc.line(10, 40, 200, 40);
+
+            // Add a title for the payment details
+            doc.setFontSize(12);
+            doc.text("Payment Details", 10, 50);
+
+            // Add Client Information
+            doc.text("Client ID: " + paymentData.client_id, 10, 60);
+            doc.text("Client Name: " + paymentData.client_name, 10, 65);
+            doc.text("Device ID: " + paymentData.device_id, 10, 70);
+            doc.text("Channel ID: " + paymentData.channel_id, 10, 75);
+            doc.text("End Date: " + paymentData.end_date, 10, 80);
+
+            // Add a line for separation
+            doc.line(10, 85, 200, 85);
+
+            // Add Payment Information
+            doc.text("Amount: " + paymentData.currency + " " + (paymentData.amount / 100), 10, 95);
+            doc.text("Payment ID: " + paymentData.payment_id, 10, 100);
+            doc.text("Order ID: " + paymentData.order_id, 10, 105);
+            doc.text("Signature: " + paymentData.signature, 10, 110);
+
+            // Add a footer with a thank-you message
+            doc.setFontSize(10);
+            doc.text("Thank you for your business!", 10, 280);
+
+            // Save the PDF
+            doc.save("Payment_Success_Invoice.pdf");
+
+            // Code to share the PDF using Web Share API (for supported devices)
+            if (navigator.canShare && navigator.canShare({ files: [new File([doc.output()], 'payment_success_invoice.pdf')] })) {
+                navigator.share({
+                    files: [new File([doc.output()], 'payment_success_invoice.pdf')],
+                    title: 'Payment Successful',
+                    text: 'Payment Successful! See the details in the PDF.',
+                }).then(() => {
+                    console.log("PDF shared successfully!");
+                }).catch((error) => {
+                    console.error("Error sharing PDF:", error);
                 });
-            });
+            } else {
+                console.log("Sharing not supported. PDF saved locally.");
+            }
         });
     });
 </script>

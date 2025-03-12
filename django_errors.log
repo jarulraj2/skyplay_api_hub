@@ -6214,3 +6214,40 @@ Traceback (most recent call last):
     raise ValueError("Base64 decoding error: Invalid base64 string") from e
 ValueError: Base64 decoding error: Invalid base64 string
 "POST /watcho/api/decrypt/ HTTP/1.1" 500 18723
+Internal Server Error: /subscribe/activation/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 138, in payment_view
+    amount = channel.price
+             ^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'price'
+"GET /subscribe/activation/?channelName=Sun%20TV&clientId=32406&deviceId=206553&channelId=84434&packs=218,222,223,224,228 HTTP/1.1" 500 69789
+Internal Server Error: /subscribe/activation/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 138, in payment_view
+    amount = channel.price
+             ^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'price'
+"GET /subscribe/activation/?channelName=Sun%20TV&clientId=32406&deviceId=206553&channelId=84434&packs=218,222,223,224,228 HTTP/1.1" 500 69789
+Internal Server Error: /subscribe/activation/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\subscribe\views.py", line 138, in payment_view
+    amount = channel.price
+             ^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'price'
+"GET /subscribe/activation/?channelName=Sun%20TV&clientId=32406&deviceId=206553&channelId=84434&packs=218,222,223,224,228 HTTP/1.1" 500 69654
+Internal Server Error: /subscribe/verify_payment/
+"POST /subscribe/verify_payment/ HTTP/1.1" 500 34
+Internal Server Error: /subscribe/verify_payment/
+"POST /subscribe/verify_payment/ HTTP/1.1" 500 34

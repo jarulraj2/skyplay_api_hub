@@ -79,42 +79,54 @@ class DecryptionAPI(APIView):
     
 
 
-        
 class SubscriptionPlanDetailsAPI(APIView):
-    @csrf_exempt
-    @swagger_auto_schema(request_body=SubscriptionPlanDetailsSerializer)
     def post(self, request):
-        # Pass request data to serializer for validation
-        serializer = SubscriptionPlanDetailsSerializer(data=request.data)
+        # Assume the request data is validated with a serializer
+        input_data = request.data.get("InputData")
 
-
-     
-
+        # API URL
         url = "https://beta2-publicapis.dishtv.in/api/WatchoOne/SubscriptionPlanDetails"
-        input_data = {
-            "InputData": "Tx6oLLb1SBxTAhShSb2t7T1jviEaHPhH4kC2B6OKjb8FMd4uvahsOeubCrvvxgdp7kBWCh19Jfb1Fl/HlPc1xxeskUcP+P+KuW9UlzZSbtg="
-            }
 
+        # Prepare headers and payload
+        headers = {
+            'Content-Type': 'application/json'
+        }
+
+        payload = {
+            "InputData": input_data
+        }
+
+        # Make the POST request to the external API using Basic Authentication
         try:
-            # Send the request using Basic Authentication
+            # Send the request with Basic Authentication
             response = requests.post(
                 url,
-                json=input_data,  # Send JSON data
-                auth=HTTPBasicAuth('152', 'W@tCh0!$p@54321'),  # Basic authentication
-                headers={'Content-Type': 'application/json'}  # Ensure correct content type
+                json=payload,
+                auth=HTTPBasicAuth('152', 'W@tCh0!$p@54321'),  # Ensure username and password are correct
+                headers=headers
             )
 
-            # Check if we received a successful response
+            # Debugging: log request details
+            print("Request Headers:", headers)
+            print("Request Body:", payload)
+
+            # Check the response status
             if response.status_code == 200:
                 return Response({
                     "message": "Successfully fetched subscription plans",
                     "response": response.json()  # Parse the JSON response
                 }, status=status.HTTP_200_OK)
+            elif response.status_code == 401:
+                # Handle Unauthorized error specifically
+                return Response({
+                    "error": "Unauthorized access",
+                    "details": response.text
+                }, status=status.HTTP_401_UNAUTHORIZED)
             else:
-                # If the status code isn't 200, log the error message
+                # Handle other HTTP errors
                 return Response({
                     "error": "Failed to fetch subscription plans",
-                    "details": response.text  # Log the error response text
+                    "details": response.text
                 }, status=status.HTTP_400_BAD_REQUEST)
 
         except requests.exceptions.RequestException as e:
@@ -123,58 +135,3 @@ class SubscriptionPlanDetailsAPI(APIView):
                 "error": "Request failed",
                 "details": str(e)
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
-
-        if serializer.is_valid():
-            # Get the InputData (which is the encrypted data)
-            input_data = serializer.validated_data.get('InputData')
-
-            # Set your username and password for Basic Authentication
-            username = "115"
-            password = "W@tCh0!$p@54321"
-            auth_str = f"{username}:{password}"
-            
-            # Base64 encode the credentials
-            auth_base64 = base64.b64encode(auth_str.encode()).decode('utf-8')
-            
-            # Headers for Basic Authentication and Content-Type as JSON
-            headers = {
-                'Authorization': f'Basic {auth_base64}',
-                'Content-Type': 'application/json'
-            }
-
-            # Prepare the payload with the InputData
-            payload = {
-                "InputData": input_data
-            }
-
-            # External API URL
-            external_api_url = "https://beta2-publicapis.dishtv.in/api/WatchoOne/SubscriptionPlanDetails"
-
-            try:
-                # Make the POST request with the payload and headers
-                response = requests.post(external_api_url, json=payload, headers=headers)
-
-                # Debugging: log the response status code and content
-                print("Response Status Code:", response.status_code)
-                print("Response Body:", response.text)
-                return Response({
-                        "error": "Failed to fetch subscription plans",
-                        "payload": payload,
-                        "response": response
-                    }, status=status.HTTP_400_BAD_REQUEST)
-                # If the response is successful, return the response data
-                if response.status_code == 200:
-                    return Response(response.json(), status=status.HTTP_200_OK)
-                else:
-                    # If failed, return the error message with the details
-                    return Response({
-                        "error": "Failed to fetch subscription plans",
-                        "payload": payload,
-                        "response": response
-                    }, status=status.HTTP_400_BAD_REQUEST)
-
-            except Exception as e:
-                return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

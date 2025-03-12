@@ -5,6 +5,7 @@ from .models import APILog
 import json
 import requests
 
+
 # Set up logger for error handling
 logger = logging.getLogger(__name__)
 
