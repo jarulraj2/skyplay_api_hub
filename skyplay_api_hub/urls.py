@@ -53,4 +53,5 @@ urlpatterns = [
     path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
     path('api/', include('testapp.urls')),  # Include testapp API
     path('watcho/', include('watcho.urls')),
+    path('ott_subscription/', include('ott_subscription.urls')),
 ]

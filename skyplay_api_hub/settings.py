@@ -42,12 +42,34 @@ INSTALLED_APPS = [
     'watcho',
     'import_export',
     'channels',
+    'django.contrib.sites',  # For allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'ott_subscription',  # Your app
    
    
 ]
+SITE_ID = 1
 
 AUTH_USER_MODEL = "users.User"
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # Default
+)
+# Twilio settings (for phone number OTP)
+TWILIO_ACCOUNT_SID = 'your_account_sid'
+TWILIO_AUTH_TOKEN = 'your_auth_token'
+TWILIO_PHONE_NUMBER = 'your_twilio_phone_number'
 
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.example.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'your-email@example.com'
+EMAIL_HOST_PASSWORD = 'your-email-password'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -57,7 +79,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',  # Add this line
 ]
+
+CSRF_COOKIE_HTTPONLY = True  # This makes the CSRF cookie inaccessible to JavaScript.
+CSRF_COOKIE_SECURE = False  # Set to True if you're using HTTPS.
 
 ROOT_URLCONF = 'skyplay_api_hub.urls'
 

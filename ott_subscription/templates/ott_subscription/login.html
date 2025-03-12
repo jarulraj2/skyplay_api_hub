@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Login</title>
+    {% load static %}
+
+      <style>
+        body {
+            font-family: "Montserrat", sans-serif;
+    background: linear-gradient(to right, #c7c7c7, #ffffff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.input-group input::placeholder, button {
+    font-family: 'Montserrat', sans-serif;
+}
+h2{
+    margin: 0px 0px 20px 0px;
+}
+.container {
+    background: #fff;
+    padding: 20px;
+    width: 350px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+}
+
+.input-group {
+    margin: 15px 0;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display:none;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 3px 1px #00000047;
+    height: 48px;
+    padding: 20px;
+}
+
+.button {
+    width: 100%;
+    padding: 14px 30px;
+    background:#f00000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    float: right;
+}
+
+.button:hover {
+    background: #00c3ff;
+}
+
+#extraContent {
+    display: none;
+    margin-top: 20px;
+    padding: 0px;
+    border-top: 2px solid #ddd;
+}
+
+#errorMessage {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+h1 {
+    font-size: 17px;
+    
+    text-align: left;
+}
+p {
+    text-align: left;
+    margin: 0px;
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="container" id="loginContainer">
+        <img src="{% static 'images/login.svg' %}" alt="Subscription QR Code" width="100%">
+        <h2>Login</h2>
+        <form method="POST">
+            {% csrf_token %}
+            
+            <!-- Input for Email or Phone -->
+            <div class="input-group">
+                <label for="contact">Email or Phone Number:</label>
+                <input type="text" id="contact" name="contact" value="{{ contact }}" required>
+            </div>
+
+            <!-- Verification Process Section (visible after sending verification code) -->
+            {% if verification_code_sent %}
+                <div class="verification-section" id="verification-section">
+                    <h3>Enter Verification Code</h3>
+                    <p>We have sent a verification code to your {{ verification_type }}.</p>
+                    <div class="input-group">
+                        <label for="verification_code">Verification Code:</label>
+                        <input type="text" id="verification_code" name="verification_code" value="{{ request.POST.verification_code }}" required>
+                    </div>
+                    <div class="input-group">
+                        <button type="submit" class="button">Verify</button>
+                    </div>
+                </div>
+            {% endif %}
+
+            <!-- Submit Button for Email/Phone -->
+            {% if not verification_code_sent %}
+                <div class="input-group">
+                    <button type="submit" class="button">Send Verification Code</button>
+                </div>
+            {% endif %}
+        </form>
+
+        <!-- Display messages -->
+        {% if messages %}
+            <div class="message">
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <!-- Display code verification success message -->
+        {% if code_verified %}
+            <div class="message">
+                <p>You have been successfully verified!</p>
+            </div>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>

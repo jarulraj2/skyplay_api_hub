@@ -6251,3 +6251,1305 @@ Internal Server Error: /subscribe/verify_payment/
 "POST /subscribe/verify_payment/ HTTP/1.1" 500 34
 Internal Server Error: /subscribe/verify_payment/
 "POST /subscribe/verify_payment/ HTTP/1.1" 500 34
+Internal Server Error: /ott_subscription/login/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\ott_subscription\views.py", line 65, in login_view
+    return render(request, 'ott_subscription/login.html', {'form': form})
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: ott_subscription/login.html
+"GET /ott_subscription/login/ HTTP/1.1" 500 87232
+Internal Server Error: /ott_subscription/login/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\ott_subscription\views.py", line 57, in login_view
+    otp = send_otp(contact)
+  File "C:\xampp\htdocs\skyplay_api_hub\ott_subscription\views.py", line 23, in send_otp
+    message = twilio_client.messages.create(
+        body=f"Your OTP code is: {otp}",
+        from_=settings.TWILIO_PHONE_NUMBER,
+        to=phone_number
+    )
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\twilio\rest\api\v2010\account\message\__init__.py", line 583, in create
+    payload = self._version.create(
+        method="POST", uri=self._uri, data=data, headers=headers
+    )
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\twilio\base\version.py", line 463, in create
+    return self._parse_create(method, uri, response)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\twilio\base\version.py", line 435, in _parse_create
+    raise self.exception(method, uri, response, "Unable to create record")
+twilio.base.exceptions.TwilioRestException: 
+[31m[49mHTTP Error[0m [37m[49mYour request was:[0m
+
+[36m[49mPOST /Accounts/your_account_sid/Messages.json[0m
+
+[37m[49mTwilio returned the following information:[0m
+
+[34m[49mUnable to create record: Authentication Error - invalid username[0m
+
+[37m[49mMore information may be available here:[0m
+
+[34m[49mhttps://www.twilio.com/docs/errors/20003[0m
+
+
+"POST /ott_subscription/login/ HTTP/1.1" 500 93033
+Internal Server Error: /ott_subscription/login/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\ott_subscription\views.py", line 57, in login_view
+    otp = send_otp(contact)
+  File "C:\xampp\htdocs\skyplay_api_hub\ott_subscription\views.py", line 23, in send_otp
+    message = twilio_client.messages.create(
+        body=f"Your OTP code is: {otp}",
+        from_=settings.TWILIO_PHONE_NUMBER,
+        to=phone_number
+    )
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\twilio\rest\api\v2010\account\message\__init__.py", line 583, in create
+    payload = self._version.create(
+        method="POST", uri=self._uri, data=data, headers=headers
+    )
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\twilio\base\version.py", line 463, in create
+    return self._parse_create(method, uri, response)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\twilio\base\version.py", line 435, in _parse_create
+    raise self.exception(method, uri, response, "Unable to create record")
+twilio.base.exceptions.TwilioRestException: 
+[31m[49mHTTP Error[0m [37m[49mYour request was:[0m
+
+[36m[49mPOST /Accounts/your_account_sid/Messages.json[0m
+
+[37m[49mTwilio returned the following information:[0m
+
+[34m[49mUnable to create record: Authentication Error - invalid username[0m
+
+[37m[49mMore information may be available here:[0m
+
+[34m[49mhttps://www.twilio.com/docs/errors/20003[0m
+
+
+"POST /ott_subscription/login/ HTTP/1.1" 500 93014
+Internal Server Error: /ott_subscription/login/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\ott_subscription\views.py", line 87, in login_view
+    send_verification_sms(contact)  # Send verification code to phone number
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\xampp\htdocs\skyplay_api_hub\ott_subscription\views.py", line 48, in send_verification_sms
+    message = client.messages.create(
+        body=f"Your verification code is {verification_code}",
+        from_=settings.TWILIO_PHONE_NUMBER,  # Your Twilio phone number
+        to=phone_number
+    )
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\twilio\rest\api\v2010\account\message\__init__.py", line 583, in create
+    payload = self._version.create(
+        method="POST", uri=self._uri, data=data, headers=headers
+    )
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\twilio\base\version.py", line 463, in create
+    return self._parse_create(method, uri, response)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\twilio\base\version.py", line 435, in _parse_create
+    raise self.exception(method, uri, response, "Unable to create record")
+twilio.base.exceptions.TwilioRestException: 
+[31m[49mHTTP Error[0m [37m[49mYour request was:[0m
+
+[36m[49mPOST /Accounts/your_account_sid/Messages.json[0m
+
+[37m[49mTwilio returned the following information:[0m
+
+[34m[49mUnable to create record: Authentication Error - invalid username[0m
+
+[37m[49mMore information may be available here:[0m
+
+[34m[49mhttps://www.twilio.com/docs/errors/20003[0m
+
+
+"POST /ott_subscription/login/ HTTP/1.1" 500 94339
+Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.ProgrammingError: (1146, "Table 'skyplay_api_hub2.django_site' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 441, in login
+    return LoginView.as_view(**defaults)(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\debug.py", line 92, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\views.py", line 90, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\edit.py", line 144, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\views.py", line 114, in get_context_data
+    current_site = get_current_site(self.request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\shortcuts.py", line 16, in get_current_site
+    return Site.objects.get_current(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 61, in get_current
+    return self._get_site_by_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 39, in _get_site_by_request
+    SITE_CACHE[host] = self.get(domain__iexact=host)
+                       ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 633, in get
+    num = len(clone)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 380, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: (1146, "Table 'skyplay_api_hub2.django_site' doesn't exist")
+"GET /admin/login/?next=/admin/ HTTP/1.1" 500 238583
+Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 39, in _get_site_by_request
+    SITE_CACHE[host] = self.get(domain__iexact=host)
+                       ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+django.contrib.sites.models.Site.DoesNotExist: Site matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 441, in login
+    return LoginView.as_view(**defaults)(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\debug.py", line 92, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\views.py", line 90, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\edit.py", line 144, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\views.py", line 114, in get_context_data
+    current_site = get_current_site(self.request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\shortcuts.py", line 16, in get_current_site
+    return Site.objects.get_current(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 61, in get_current
+    return self._get_site_by_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 45, in _get_site_by_request
+    SITE_CACHE[domain] = self.get(domain__iexact=domain)
+                         ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+django.contrib.sites.models.Site.DoesNotExist: Site matching query does not exist.
+"GET /admin/login/?next=/admin/ HTTP/1.1" 500 168398
+Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 39, in _get_site_by_request
+    SITE_CACHE[host] = self.get(domain__iexact=host)
+                       ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+django.contrib.sites.models.Site.DoesNotExist: Site matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 441, in login
+    return LoginView.as_view(**defaults)(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\debug.py", line 92, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\views.py", line 90, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\edit.py", line 144, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\views.py", line 114, in get_context_data
+    current_site = get_current_site(self.request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\shortcuts.py", line 16, in get_current_site
+    return Site.objects.get_current(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 61, in get_current
+    return self._get_site_by_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 45, in _get_site_by_request
+    SITE_CACHE[domain] = self.get(domain__iexact=domain)
+                         ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+django.contrib.sites.models.Site.DoesNotExist: Site matching query does not exist.
+"GET /admin/login/?next=/admin/ HTTP/1.1" 500 168124
+Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 39, in _get_site_by_request
+    SITE_CACHE[host] = self.get(domain__iexact=host)
+                       ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+django.contrib.sites.models.Site.DoesNotExist: Site matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 441, in login
+    return LoginView.as_view(**defaults)(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\debug.py", line 92, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\views.py", line 90, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\edit.py", line 144, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\views.py", line 114, in get_context_data
+    current_site = get_current_site(self.request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\shortcuts.py", line 16, in get_current_site
+    return Site.objects.get_current(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 61, in get_current
+    return self._get_site_by_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 45, in _get_site_by_request
+    SITE_CACHE[domain] = self.get(domain__iexact=domain)
+                         ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+django.contrib.sites.models.Site.DoesNotExist: Site matching query does not exist.
+"GET /admin/login/?next=/admin/ HTTP/1.1" 500 168398
+Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 39, in _get_site_by_request
+    SITE_CACHE[host] = self.get(domain__iexact=host)
+                       ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+django.contrib.sites.models.Site.DoesNotExist: Site matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 441, in login
+    return LoginView.as_view(**defaults)(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\debug.py", line 92, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\views.py", line 90, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\edit.py", line 144, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\views.py", line 114, in get_context_data
+    current_site = get_current_site(self.request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\shortcuts.py", line 16, in get_current_site
+    return Site.objects.get_current(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 61, in get_current
+    return self._get_site_by_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 45, in _get_site_by_request
+    SITE_CACHE[domain] = self.get(domain__iexact=domain)
+                         ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+django.contrib.sites.models.Site.DoesNotExist: Site matching query does not exist.
+"GET /admin/login/?next=/admin/ HTTP/1.1" 500 168124
+Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 39, in _get_site_by_request
+    SITE_CACHE[host] = self.get(domain__iexact=host)
+                       ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+django.contrib.sites.models.Site.DoesNotExist: Site matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 441, in login
+    return LoginView.as_view(**defaults)(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\debug.py", line 92, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\views.py", line 90, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\edit.py", line 144, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\views.py", line 114, in get_context_data
+    current_site = get_current_site(self.request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\shortcuts.py", line 16, in get_current_site
+    return Site.objects.get_current(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 61, in get_current
+    return self._get_site_by_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 45, in _get_site_by_request
+    SITE_CACHE[domain] = self.get(domain__iexact=domain)
+                         ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+django.contrib.sites.models.Site.DoesNotExist: Site matching query does not exist.
+"GET /admin/login/?next=/admin/ HTTP/1.1" 500 168398
+Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 39, in _get_site_by_request
+    SITE_CACHE[host] = self.get(domain__iexact=host)
+                       ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+django.contrib.sites.models.Site.DoesNotExist: Site matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 441, in login
+    return LoginView.as_view(**defaults)(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\debug.py", line 92, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\views.py", line 90, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\edit.py", line 144, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\views.py", line 114, in get_context_data
+    current_site = get_current_site(self.request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\shortcuts.py", line 16, in get_current_site
+    return Site.objects.get_current(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 61, in get_current
+    return self._get_site_by_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 45, in _get_site_by_request
+    SITE_CACHE[domain] = self.get(domain__iexact=domain)
+                         ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+django.contrib.sites.models.Site.DoesNotExist: Site matching query does not exist.
+"GET /admin/login/?next=/admin/ HTTP/1.1" 500 168124
+Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 39, in _get_site_by_request
+    SITE_CACHE[host] = self.get(domain__iexact=host)
+                       ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+django.contrib.sites.models.Site.DoesNotExist: Site matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 441, in login
+    return LoginView.as_view(**defaults)(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\debug.py", line 92, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\views.py", line 90, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\edit.py", line 144, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\views.py", line 114, in get_context_data
+    current_site = get_current_site(self.request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\shortcuts.py", line 16, in get_current_site
+    return Site.objects.get_current(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 61, in get_current
+    return self._get_site_by_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 45, in _get_site_by_request
+    SITE_CACHE[domain] = self.get(domain__iexact=domain)
+                         ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+django.contrib.sites.models.Site.DoesNotExist: Site matching query does not exist.
+"GET /admin/login/?next=/admin/ HTTP/1.1" 500 168398
+Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 39, in _get_site_by_request
+    SITE_CACHE[host] = self.get(domain__iexact=host)
+                       ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+django.contrib.sites.models.Site.DoesNotExist: Site matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 441, in login
+    return LoginView.as_view(**defaults)(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\debug.py", line 92, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\views.py", line 90, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\generic\edit.py", line 144, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\views.py", line 114, in get_context_data
+    current_site = get_current_site(self.request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\shortcuts.py", line 16, in get_current_site
+    return Site.objects.get_current(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 61, in get_current
+    return self._get_site_by_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\sites\models.py", line 45, in _get_site_by_request
+    SITE_CACHE[domain] = self.get(domain__iexact=domain)
+                         ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+django.contrib.sites.models.Site.DoesNotExist: Site matching query does not exist.
+"GET /admin/login/?next=/admin/ HTTP/1.1" 500 168124
+Internal Server Error: /admin/ott_subscription/skylinkplan/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.ProgrammingError: (1146, "Table 'skyplay_api_hub2.ott_subscription_skylinkplan' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 1926, in changelist_view
+    cl = self.get_changelist_instance(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 836, in get_changelist_instance
+    return ChangeList(
+        request,
+    ...<12 lines>...
+        self.search_help_text,
+    )
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\views\main.py", line 123, in __init__
+    self.get_results(request)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\views\main.py", line 279, in get_results
+    result_count = paginator.count
+                   ^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\paginator.py", line 93, in count
+    return c()
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 608, in count
+    return self.query.get_count(using=self.db)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 568, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 554, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: (1146, "Table 'skyplay_api_hub2.ott_subscription_skylinkplan' doesn't exist")
+"GET /admin/ott_subscription/skylinkplan/ HTTP/1.1" 500 207578
+Internal Server Error: /admin/ott_subscription/ottplan/add/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.OperationalError: (1054, "Unknown column 'status' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 1886, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 1747, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 1798, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\options.py", line 1227, in save_model
+    obj.save()
+    ~~~~~~~~^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.OperationalError: (1054, "Unknown column 'status' in 'field list'")
+"POST /admin/ott_subscription/ottplan/add/ HTTP/1.1" 500 218822
+Internal Server Error: /ott_subscription/get-skylink-plans/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\ott_subscription\views.py", line 182, in get_skylink_plans
+    return JsonResponse({'plans': plans_data})
+           ^^^^^^^^^^^^
+NameError: name 'JsonResponse' is not defined
+"GET /ott_subscription/get-skylink-plans/?platform_id=1 HTTP/1.1" 500 67773
+Internal Server Error: /ott_subscription/get-skylink-plans/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\ott_subscription\views.py", line 177, in get_skylink_plans
+    JsonResponse({skylink_plan}, status=404)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\http\response.py", line 724, in __init__
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: In order to allow non-dict objects to be serialized set the safe parameter to False.
+"GET /ott_subscription/get-skylink-plans/?platform_id=1 HTTP/1.1" 500 74110
+Internal Server Error: /ott_subscription/get-skylink-plans/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\ott_subscription\views.py", line 177, in get_skylink_plans
+    JsonResponse({'error': skylink_plan}, status=404)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Python313\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "C:\Python313\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python313\Lib\json\encoder.py", line 261, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+           ~~~~~~~~~~~~~~~^^^
+  File "C:\Python313\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type SkylinkPlan is not JSON serializable
+"GET /ott_subscription/get-skylink-plans/?platform_id=1 HTTP/1.1" 500 94883
+Internal Server Error: /ott_subscription/get-skylink-plans/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\ott_subscription\views.py", line 177, in get_skylink_plans
+    return JsonResponse({'plans': skylink_plan})
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Python313\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "C:\Python313\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python313\Lib\json\encoder.py", line 261, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+           ~~~~~~~~~~~~~~~^^^
+  File "C:\Python313\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type SkylinkPlan is not JSON serializable
+"GET /ott_subscription/get-skylink-plans/?platform_id=1 HTTP/1.1" 500 94838
+Internal Server Error: /ott_subscription/get-skylink-plans/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\ott_subscription\views.py", line 177, in get_skylink_plans
+    return JsonResponse({'plans': skylink_plan})
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Python313\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "C:\Python313\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python313\Lib\json\encoder.py", line 261, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+           ~~~~~~~~~~~~~~~^^^
+  File "C:\Python313\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type SkylinkPlan is not JSON serializable
+"GET /ott_subscription/get-skylink-plans/?platform_id=1 HTTP/1.1" 500 94838
+Internal Server Error: /ott_subscription/get-skylink-plans/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\ott_subscription\views.py", line 177, in get_skylink_plans
+    return JsonResponse({'plans': skylink_plan})
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Python313\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "C:\Python313\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python313\Lib\json\encoder.py", line 261, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+           ~~~~~~~~~~~~~~~^^^
+  File "C:\Python313\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type SkylinkPlan is not JSON serializable
+"GET /ott_subscription/get-skylink-plans/?platform_id=1 HTTP/1.1" 500 94814
+Internal Server Error: /ott_subscription/get-skylink-plans/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\ott_subscription\views.py", line 174, in get_skylink_plans
+    return JsonResponse({'plans': ott_plans})
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Python313\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "C:\Python313\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python313\Lib\json\encoder.py", line 261, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+           ~~~~~~~~~~~~~~~^^^
+  File "C:\Python313\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type QuerySet is not JSON serializable
+"GET /ott_subscription/get-skylink-plans/?platform_id=1 HTTP/1.1" 500 94490
+Internal Server Error: /ott_subscription/get-skylink-plans/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\ott_subscription\views.py", line 174, in get_skylink_plans
+    return JsonResponse({'plans': ott_plans})
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Python313\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "C:\Python313\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python313\Lib\json\encoder.py", line 261, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+           ~~~~~~~~~~~~~~~^^^
+  File "C:\Python313\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type QuerySet is not JSON serializable
+"GET /ott_subscription/get-skylink-plans/?platform_id=1 HTTP/1.1" 500 94490
+Internal Server Error: /ott_subscription/get-skylink-plans/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\ott_subscription\views.py", line 174, in get_skylink_plans
+    return JsonResponse({'plans': ott_plans})
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Python313\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "C:\Python313\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python313\Lib\json\encoder.py", line 261, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+           ~~~~~~~~~~~~~~~^^^
+  File "C:\Python313\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type QuerySet is not JSON serializable
+"GET /ott_subscription/get-skylink-plans/?platform_id=watcho HTTP/1.1" 500 94799
+Internal Server Error: /ott_subscription/get-skylink-plans/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\xampp\htdocs\skyplay_api_hub\ott_subscription\views.py", line 174, in get_skylink_plans
+    return JsonResponse({'plans': ott_plans})
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Python313\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "C:\Python313\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python313\Lib\json\encoder.py", line 261, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+           ~~~~~~~~~~~~~~~^^^
+  File "C:\Python313\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type QuerySet is not JSON serializable
+"GET /ott_subscription/get-skylink-plans/?platform_id=watcho HTTP/1.1" 500 95033
+Internal Server Error: /ott_subscription/get-skylink-plans/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\allauth\account\middleware.py", line 37, in middleware
+    if _should_redirect_accounts(request, response):
+       ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\allauth\account\middleware.py", line 66, in _should_redirect_accounts
+    if response.status_code != 404:
+       ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'QuerySet' object has no attribute 'status_code'
+"GET /ott_subscription/get-skylink-plans/?platform_id=watcho HTTP/1.1" 500 67877
+Internal Server Error: /ott_subscription/get-skylink-plans/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\allauth\account\middleware.py", line 37, in middleware
+    if _should_redirect_accounts(request, response):
+       ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\allauth\account\middleware.py", line 66, in _should_redirect_accounts
+    if response.status_code != 404:
+       ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'QuerySet' object has no attribute 'status_code'
+"GET /ott_subscription/get-skylink-plans/?platform_id=watcho HTTP/1.1" 500 67877
+Internal Server Error: /ott_subscription/get-skylink-plans/
+Traceback (most recent call last):
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\allauth\account\middleware.py", line 37, in middleware
+    if _should_redirect_accounts(request, response):
+       ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Arulraj\AppData\Roaming\Python\Python313\site-packages\allauth\account\middleware.py", line 66, in _should_redirect_accounts
+    if response.status_code != 404:
+       ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'QuerySet' object has no attribute 'status_code'
+"GET /ott_subscription/get-skylink-plans/?platform_id=watcho HTTP/1.1" 500 68005
