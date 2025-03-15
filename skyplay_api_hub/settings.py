@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'ott_subscription',  # Your app
-   
+    'corsheaders',
    
 ]
 SITE_ID = 1
@@ -72,6 +72,7 @@ EMAIL_HOST_PASSWORD = 'your-email-password'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -81,6 +82,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',  # Add this line
 ]
+
+# Allow all origins for development purposes
+CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_COOKIE_HTTPONLY = True  # This makes the CSRF cookie inaccessible to JavaScript.
 CSRF_COOKIE_SECURE = False  # Set to True if you're using HTTPS.
@@ -137,6 +141,11 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),  # You can change this if needed
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Media settings
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MAX_UPLOAD_SIZE = 5 * 1024 * 1024  # 5 MB
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

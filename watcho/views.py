@@ -12,6 +12,7 @@ from drf_yasg.utils import swagger_auto_schema
 import requests
 import base64
 from requests.auth import HTTPBasicAuth
+from base64 import b64encode
 
 class EncryptionDecryptionView(View):
     def get(self, request):
@@ -78,22 +79,28 @@ class DecryptionAPI(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
-
 class SubscriptionPlanDetailsAPI(APIView):
-    def post(self, request):
-        # Assume the request data is validated with a serializer
-        input_data = request.data.get("InputData")
+    def get(self, request):
+        # Your API username and password
+        username = '152'
+        password = 'W@tCh0!$p@54321'
+
+        # Encode the username and password into Base64
+        auth_string = f"{username}:{password}"
+        base64_auth = b64encode(auth_string.encode('utf-8')).decode('utf-8')
 
         # API URL
-        url = "https://beta2-publicapis.dishtv.in/api/WatchoOne/SubscriptionPlanDetails"
+        url = "https://beta2-publicapis.dishtv.in/api/WatchoOne/SubscriptionPlanDetails/"
 
-        # Prepare headers and payload
+        # Prepare headers with the Authorization header
         headers = {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': f'Basic {base64_auth}'  # Add the Authorization header with Base64 encoded username and password
         }
 
+        # Prepare the payload (same as the data you're sending in Postman)
         payload = {
-            "InputData": input_data
+            "InputData": "Tx6oLLb1SBxTAhShSb2t7T1jviEaHPhH4kC2B6OKjb8FMd4uvahsOeubCrvvxgdp7kBWCh19Jfb1Fl/HlPc1xxeskUcP+P+KuW9UlzZSbtg="
         }
 
         # Make the POST request to the external API using Basic Authentication
@@ -101,20 +108,15 @@ class SubscriptionPlanDetailsAPI(APIView):
             # Send the request with Basic Authentication
             response = requests.post(
                 url,
-                json=payload,
-                auth=HTTPBasicAuth('152', 'W@tCh0!$p@54321'),  # Ensure username and password are correct
-                headers=headers
-            )
-
-            # Debugging: log request details
-            print("Request Headers:", headers)
-            print("Request Body:", payload)
+                json=payload,  # This automatically serializes the payload to JSON
+                headers=headers  # This sends the Authorization header
+            )           
 
             # Check the response status
             if response.status_code == 200:
                 return Response({
                     "message": "Successfully fetched subscription plans",
-                    "response": response.json()  # Parse the JSON response
+                    "response": response.json()  # Parse the JSON response from the external API
                 }, status=status.HTTP_200_OK)
             elif response.status_code == 401:
                 # Handle Unauthorized error specifically

@@ -114,14 +114,14 @@ p {
             <!-- Input for Email or Phone -->
             <div class="input-group">
                 <label for="contact">Email or Phone Number:</label>
-                <input type="text" id="contact" name="contact" value="{{ contact }}" required>
+                <input type="text" id="contact" name="contact" value="{{ contact }}" placeholder=" Enter your email or phone number" required>
             </div>
 
             <!-- Verification Process Section (visible after sending verification code) -->
             {% if verification_code_sent %}
                 <div class="verification-section" id="verification-section">
                     <h3>Enter Verification Code</h3>
-                    <p>We have sent a verification code to your {{ verification_type }}.</p>
+                    <!-- <p>We have sent a verification code to your {{ verification_type }}.</p> -->
                     <div class="input-group">
                         <label for="verification_code">Verification Code:</label>
                         <input type="text" id="verification_code" name="verification_code" value="{{ request.POST.verification_code }}" required>

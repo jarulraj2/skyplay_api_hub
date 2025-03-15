@@ -1,163 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OTT Subscription</title>
+    <title>Customer Portal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-             body {
+        body {
+            background-color: #f4f6f9;
             font-family: "Montserrat", sans-serif;
-    background: linear-gradient(to right, #c7c7c7, #ffffff);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-.input-group input::placeholder, button {
-    font-family: 'Montserrat', sans-serif;
-}
-h2{
-    margin: 0px 0px 20px 0px;
-}
-.container {
-    background: #fff;
-    padding: 20px;
-    width: 90%;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-}
+        }
 
-h2 {
-    color: #333;
-}
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid white;
+        }
 
-.input-group {
-    margin: 15px 0;
-    text-align: left;
-}
+        .dashboard-header p {
+            margin-bottom: 5px;
+        }
 
-.input-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    display:none;
-}
+        .dropdown-menu {
+            min-width: 220px;
+        }
 
-.input-group input, select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    box-sizing: border-box;
-    box-shadow: 0px 0px 3px 1px #00000047;
-    height: 48px;
-}
-select
-{
-    margin: 12px 0px;
-}
+        .sidebar {
+            width: 280px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: -280px;
+            background: #222831;
+            color: white;
+            padding: 25px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.2);
+        }
 
-.button {
-    width: auto;
-    padding: 14px 30px;
-    background: #f00000;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-    text-wrap-mode: nowrap;
-}
+        .sidebar.active {
+            left: 0;
+        }
 
-.button:hover {
-    background: #00c3ff;
-}
+        .sidebar .close-btn {
+            text-align: right;
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: bold;
+        }
 
-#extraContent {
-    display: none;
-    margin-top: 20px;
-    padding: 0px;
-    border-top: 2px solid #ddd;
-}
+        .dashboard-container {
+            transition: transform 0.3s ease-in-out;
+        }
 
-#errorMessage {
-    color: red;
-    font-size: 14px;
-    margin-top: 10px;
-}
-h1 {
-    font-size: 17px;
-    
-    text-align: left;
-}
-p {
-    text-align: left;
-    margin: 0px;
-}
-.info
-{
-    display: flex;
-    justify-content: space-between;
-}
-.info p {
-    margin-bottom: 10px;
-    padding: 10px 0px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    column-gap:10px;
-}
-label{
-    margin-top: 15px;
-}
-p.footer {
-    font-size: 12px;
-    text-align: center;
-    display: block;
-    line-height: 25px !important;
-    margin-top: 11px !important;
-}
-.form-wrap {
-    display: flex;
-    align-items: center;
-    column-gap: 10px;
-    width: 50%;
-    margin: 0 auto;
-}
-.plan-wrap {
-    display: flex;
-    justify-content: flex-start;
-    margin-top: 10px;
-    column-gap: 15px;
-}
-.plan-wrap .plan {
-    width: 25%;
-    background-color: #e7e6e6;
-    border-radius: 10px;
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        .dashboard-header {
+            background-color: #c62128;
+            background-image: linear-gradient(147deg, #c62128 0%, #a00000 74%);
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
 
-.plan-wrap .plan { flex-direction: column; row-gap: 10px; position: relative; }
-.plan-wrap .plan button { position: absolute; width: 100%; bottom: 0px; }
+        .info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 3px 2px #ebebeb;
+            border-radius: 10px;
+        }
 
+        .info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .info p {
+            display: flex;
+            justify-content: space-between;
+            margin: 0;
+            padding: 5px 0;
+            border-bottom: 1px solid #efefef;
+        }
+
+        .info p span {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #764ba2;
+        }
+
+        .table th,
+        .table td {
+            vertical-align: middle;
+        }
+
+        .info p:first-child {
+            padding-top: 0px;
+        }
+
+        .ottwrap ul.nav-tabs button.active {
+            background-color: red !important;
+            border-radius: 5px !important;
+            color: white !important;
+        }
+
+        .info p:last-child {
+            padding-bottom: 0px;
+            border: unset;
+        }
+
+        .ottwrap {
+            width: 100%;
+            color: rgb(119, 119, 119);
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgb(226, 219, 202);
+            border-image: initial;
+            background: rgb(255, 253, 248);
+            border-radius: 5px;
+            display: inline-flex;
+            padding: 10px;
+        }
+
+        .ottwrap ul {
+            border: unset;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .ottwrap ul.nav-tabs button {
+            background-color: transparent !important;
+            border: unset;
+            color: black !important;
+            font-weight: 600;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .ottwrap ul li.nav-item {
+            width: 25%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .card-container {
+            gap: 20px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            height: 50px;
+            border-radius: 100%;
+            border: 3px solid #dbdbdb;
+            width: auto;
+            margin-left: -20px;
+        }
+
+        .card-content {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .card-container .image-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            column-gap: 4px;
+            margin-bottom: 10px;
+        }
+
+        .card-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background: red;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .card-btn:hover {
+            background: #d94324;
+        }
+
+        footer p {
+            margin-bottom: 0px;
+        }
+
+        .jio-hotstar {
+            background-color: #2a2a2a;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 23px;
+        }
     </style>
 </head>
+
 <body>
 
-   
 
     <!-- Login Form Section -->
     {% if not contact %}
@@ -179,53 +279,234 @@ p.footer {
 
     <!-- Content Section (Accessible after successful login) -->
     {% if contact %}
-    <div class="container">
-        <h1>OTT Subscription</h1>
-        
-            <!-- Display User Information -->
-            <div class="info">
-              
-                <p><span>Name:</span> {{ user.name }}</p>
-                <p><span>Phone:</span> {{ user.phone }}</p>
-                <p><span>Email:</span> {{ contact }}</p>
-                <p><span>Address:</span> {{ user.address }}</p>
-                <p><span>Plan:</span> 500Mbps with 8 OTTs</p>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Skyplay</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto d-flex align-items-center">
+                    <li class="nav-item "><a class="nav-link" href="#dashboard">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#transactions">Transactions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#support">Support</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
+                            data-bs-toggle="dropdown">
+                            <img src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"
+                                alt="Profile" class="profile-pic">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="toggleSidebar()">View Profile</a></li>
+                            <li><a class="dropdown-item" href="#settings">Settings</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#logout">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-
-          
-
-            <!-- OTT Platform Selection -->
-            <label for="ott-platform"><strong>Select Your Preferred OTT Platform:</strong></label>
-    
-            <!-- Dropdown Selection for OTT Platforms -->
-            <form id="platformForm">
-                <div class="form-wrap mb-2">
-                  
-                    <select id="platform" name="platform_id" class="form-select form-select-sm small-width" required onchange="showOtts()">
-                        <option value="">Select Platform</option>
-                        <option value="watcho">Watcho</option>
-                        <option value="play_box">Play Box</option>
-                        <option value="hotstar">Hotstar</option>
-                        <option value="ottplay">OTTplay</option>
-                        <option value="tata_play_binge">Tata Play Binge</option>
-                    </select>
-                </div>
-            </form>
-            
-                <div id="skylinkPlansList" class="plan-wrap">
-                    <!-- Skylink plans will be displayed here based on the platform selection -->
-                </div>
-       
+        </div>
+    </nav>
+    <div class="sidebar" id="profileSidebar">
+        <div class="close-btn" onclick="toggleSidebar()">&times;</div>
+        <h3>Profile Details</h3>
+        <img src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250" alt="Profile"
+            class="profile-pic d-block mx-auto my-3" style="width:100px; height:100px;">
+        <p><strong>Name:</strong> Customer Name</p>
+        <p><strong>Email:</strong> customer@example.com</p>
+        <p><strong>Phone:</strong> +1234567890</p>
     </div>
+
+
+    <div class="container mt-4">
+        <div class="dashboard-container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="dashboard-header">
+                        <h2>Welcome, John Doe</h2>
+                        <p>Account Balance: <strong>$1,250.00</strong></p>
+                        <p>Last Login: March 15, 2025</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info">
+                        <p><span>Client ID:</span> 1</p>
+                        <p><span>Name:</span> {{ user.name }}</p>
+                        <p><span>Phone:</span> {{ user.phone }}</p>
+                        <p><span>Email:</span> {{ contact }}</p>
+                        <p><span>Address:</span> {{ user.address }}</p>
+                        <p><span>Plan:</span> 500Mbps with 8 OTTs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="jio-hotstar">
+            <div class="content">This is our Jio Hotstar subscription tab. Kindly click on the Jio Hotstar subscription.
+            </div>
+            <a href="#" class="card-btn mt-3">View More</a>
+        </div>
+        <div class="mt-4">
+            <h3 class="mt-2 mb-3"> <strong>Select Your Preferred OTT Platform:</strong></h3>
+            <div class="ottwrap">
+                <ul class="nav nav-tabs" id="ottTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="watcho-tab" data-bs-toggle="tab" data-bs-target="#watcho"
+                            type="button" role="tab" onclick="showOtts(this)">Watcho</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="play_box-tab" data-bs-toggle="tab" data-bs-target="#play_box"
+                            type="button" role="tab" onclick="showOtts(this)">Play Box</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="ottplay-tab" data-bs-toggle="tab" data-bs-target="#ottplay"
+                            type="button" role="tab" onclick="showOtts(this)">OTTplay</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="tatabinge-tab" data-bs-toggle="tab" data-bs-target="#tatabinge"
+                            type="button" role="tab" onclick="showOtts(this)">Tata Play Binge</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content mt-3" id="ottTabContent">
+                <div class="tab-pane fade show active" id="watcho" role="tabpanel">
+                    <div class="card-container row">
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="play_box" role="tabpanel">
+                    <div class="card-container row">
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="ottplay" role="tabpanel">
+                    <div class="card-container row">
+
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="tatabinge" role="tabpanel">
+                    <div class="card-container row">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center p-3 mt-4">
+        <p>&copy; 2025 Your Skyplay. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleSidebar() {
+            let sidebar = document.getElementById('profileSidebar');
+            sidebar.classList.toggle('active');
+        }
+        function showOtts(value) {
+            // Get the target ID from the data-bs-target attribute
+            var targetId = value.dataset.bsTarget;  // This will be something like "#watcho", "#play_box", etc.
+            var platformId = targetId.replace('#', '');  // Remove the '#' to match the platform ID
+
+            // Find the correct tab content area based on the targetId
+            var activeTabContent = document.querySelector(targetId);  // This will select the tab pane corresponding to the target ID
+            var skylinkPlansList = activeTabContent.querySelector('.card-container'); // Find the .card-container inside this tab
+
+            // Clear the previous content of the selected tab
+            skylinkPlansList.innerHTML = '';
+
+            // If we have a platform ID, fetch the plans
+            if (platformId) {
+                fetch(`/ott_subscription/get-skylink-plans/?platform_id=${platformId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // If we have Skylink plans, display them
+                        if (data.plans && data.plans.length > 0) {
+                            data.plans.forEach(plan => {
+                                // Create a new div for each plan (card)
+                                var cardDiv = document.createElement('div');
+                                cardDiv.classList.add('card', "col-md-4");  // Add the "card" class
+
+                                // Create the card content div
+                                var cardContentDiv = document.createElement('div');
+                                cardContentDiv.classList.add('card-content');
+
+                                // Add the card title (Plan name)
+                                var cardTitleDiv = document.createElement('div');
+                                cardTitleDiv.classList.add('card-title');
+                                cardTitleDiv.textContent = plan.name; // Set the plan name
+                                cardContentDiv.appendChild(cardTitleDiv);
+
+                                // Add the image wrap (OTTs)
+                                var imageWrapDiv = document.createElement('div');
+                                imageWrapDiv.classList.add('image-wrap');
+
+                                // Loop through the OTTs and add each OTT image
+                                plan.otts.forEach(ott => {
+                                    var ottImage = document.createElement('img');
+                                    ottImage.src = ott.image;  // Set the image source
+                                    ottImage.alt = ott.name;   // Set the alt text to the OTT name
+                                    imageWrapDiv.appendChild(ottImage);
+                                });
+
+                                cardContentDiv.appendChild(imageWrapDiv);
+
+                                // Add the card text (description)
+                                var cardTextDiv = document.createElement('div');
+                                cardTextDiv.classList.add('card-text');
+                                cardTextDiv.textContent = plan.description || "This is our ott check and activate now immediately."; // Plan description
+                                cardContentDiv.appendChild(cardTextDiv);
+
+                                // Add the "Subscribe Now" button
+                                var subscribeButton = document.createElement('a');
+                                subscribeButton.classList.add('card-btn');
+                                subscribeButton.href = '#';
+                                subscribeButton.textContent = 'Subscribe Now';
+
+                                // Add an event listener for the "Subscribe Now" button
+                                subscribeButton.addEventListener('click', function () {
+                                    // Handle subscription (assuming you have the client ID and other variables)
+                                    var clientId = 1; // Example client ID
+                                    var selectedPlatformId = platformId;
+                                    var selectedPlanId = plan.id;
+
+                                    // Call the ott_activation API (you can replace this with your actual activation logic)
+                                    activateOttSubscription(clientId, selectedPlatformId, selectedPlanId);
+                                });
+
+                                cardContentDiv.appendChild(subscribeButton);
+
+                                // Append the card content to the card
+                                cardDiv.appendChild(cardContentDiv);
+
+                                // Append the card to the card container of the selected tab
+                                skylinkPlansList.appendChild(cardDiv);
+                            });
+                        } else {
+                            skylinkPlansList.textContent = 'No Skylink plans available for this platform.';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching Skylink plans:', error);
+                    });
+            } else {
+                // If no platform ID, clear the card container
+                skylinkPlansList.innerHTML = '';
+            }
+        }
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
     {% endif %}
 
     <!-- Bootstrap JS (Optional for interactive components like buttons, etc.) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Modified section to handle API call -->
     <script>
-        function showOtts() {
+        function showOtts1() {
             // Get the selected platform value from the dropdown
             var platformId = document.getElementById('platform').value;
-    
+
             // Check if a platform is selected
             if (platformId) {
                 // Make an AJAX request to fetch the Skylink plans for the selected platform
@@ -234,29 +515,74 @@ p.footer {
                     .then(data => {
                         // Get the element where Skylink plans will be displayed
                         var skylinkPlansList = document.getElementById('skylinkPlansList');
-    
+
                         // Clear previous results
                         skylinkPlansList.innerHTML = '';
-    
+
                         // If we have Skylink plans, display them
                         if (data.plans && data.plans.length > 0) {
                             data.plans.forEach(plan => {
                                 // Create a new div for each plan
                                 var planDiv = document.createElement('div');
                                 planDiv.classList.add('plan');  // Add the "plan" class
-    
+
                                 // Set the text content to display the name and code of the plan
-                                planDiv.textContent = `${plan.name} - ${plan.code}`;
-    
+                                var planTitle = document.createElement('h3');
+                                planTitle.textContent = `${plan.name} - ${plan.code}`;
+                                planDiv.appendChild(planTitle);
+
+                                // Create a div to list the associated OTTs
+                                var ottsContainer = document.createElement('div');
+                                ottsContainer.classList.add('otts-container');
+
+                                // Loop through the OTTs and display each OTT's name and image
+                                plan.otts.forEach(ott => {
+                                    // Create a div for each OTT
+                                    var ottDiv = document.createElement('div');
+                                    ottDiv.classList.add('ott');  // Add the "ott" class
+
+                                    // Create an image element
+                                    var ottImage = document.createElement('img');
+                                    ottImage.src = ott.image;  // Set the image source
+                                    ottImage.alt = ott.name;   // Set the alt text to the OTT name
+                                    ottImage.style.width = '40px';  // Optional: Set image width
+
+                                    // Create a span for OTT name
+                                    var ottName = document.createElement('span');
+                                    ottName.textContent = ott.name;
+
+                                    // Append image and name to the OTT div
+                                    ottDiv.appendChild(ottImage);
+                                    ottDiv.appendChild(ottName);
+
+                                    // Append the OTT div to the OTTs container
+                                    ottsContainer.appendChild(ottDiv);
+                                });
+
+                                // Append the OTTs container to the plan div
+                                planDiv.appendChild(ottsContainer);
+
                                 // Create the "Subscribe Now" button
                                 var subscribeButton = document.createElement('button');
                                 subscribeButton.classList.add('button');
                                 subscribeButton.id = `subscribe-button-${plan.id}`; // Unique ID for each button
                                 subscribeButton.textContent = 'Subscribe Now';
-    
-                                // Append the plan text and button to the planDiv
+
+                                // Add an event listener to handle the subscription
+                                subscribeButton.addEventListener('click', function () {
+                                    // Assuming you have the client ID in the `user` object
+                                    //var clientId = '{{ user.client_id }}';
+                                    var clientId = 1;
+                                    var selectedPlatformId = platformId;
+                                    var selectedPlanId = plan.id;
+
+                                    // Call the ott_activation API
+                                    activateOttSubscription(clientId, selectedPlatformId, selectedPlanId);
+                                });
+
+                                // Append the plan text, OTTs, and button to the planDiv
                                 planDiv.appendChild(subscribeButton);
-    
+
                                 // Append the created plan div to the skylinkPlansList container
                                 skylinkPlansList.appendChild(planDiv);
                             });
@@ -272,9 +598,44 @@ p.footer {
                 document.getElementById('skylinkPlansList').innerHTML = '';
             }
         }
+
+
+        // Function to call the ott_activation API with the client ID, platform ID, and plan ID
+        function activateOttSubscription(clientId, platformId, planId) {
+            // Define the data to send in the API request
+            var data = {
+                client_id: clientId,
+                platform_id: platformId,
+                plan_id: planId
+            };
+
+            // Send the data to the ott_activation API via a POST request
+            fetch('/ott_subscription/api/ott_activation/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'  // Include CSRF token for Django security
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(result => {
+                    // Handle success response
+                    if (result.success) {
+                        alert('Subscription activated successfully!');
+                    } else {
+                        alert('Failed to activate subscription: ' + result.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error activating subscription:', error);
+                    alert('An error occurred while activating the subscription.');
+                });
+        }
     </script>
-    
-    
-    
+
+
+
 </body>
+
 </html>

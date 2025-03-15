@@ -8,8 +8,10 @@ import random
 from django.contrib.auth import logout
 import re
 from django.shortcuts import render, redirect  # <-- Add this import
-from .models import SkylinkPlan, OTTPlan
+from .models import SkylinkPlan, OTTPlan, OTTSubscription, OTTActivationLog
 from django.http import JsonResponse
+import json
+import requests
 
 def ott_page(request):
     # Retrieve user contact info from session
@@ -73,7 +75,7 @@ def send_verification_sms(phone_number):
 def login_view(request):
     verification_code_sent = False
     code_verified = False
-    contact = None
+    contact = ""
     verification_type = None  # Either 'email' or 'phone'
     
     if request.method == 'POST':
@@ -164,6 +166,7 @@ def logout_view(request):
     logout(request)
     return redirect('login')  
 
+
 def get_skylink_plans(request):
     # Get the platform from query parameters (e.g., 'watcho')
     platform_to_check = request.GET.get('platform_id', '')
@@ -184,14 +187,31 @@ def get_skylink_plans(request):
 
         # Step 4: Prepare data to return
         plans_data = []
-        
+
         if connected_ott_plans.exists():
             for ott_plan in connected_ott_plans:
+                # For each OTTPlan, fetch the associated OTTs
+                associated_otts = ott_plan.otts.all()  # This fetches the related OTTS
+                
+                # Prepare a list of OTT details
+                otts_data = []
+                for ott in associated_otts:
+                    image_url = ott.image.url if ott.image else 'default_image_url'  # Replace 'default_image_url' with an actual default image if needed
+                    otts_data.append({
+                        'id': ott.id,
+                        'name': ott.name,
+                        'code': ott.code,
+                        'is_active': ott.is_active,
+                        'image': image_url 
+                    })
+
+                # Append OTTPlan data along with its associated OTTs
                 plans_data.append({
                     'id': ott_plan.id,
                     'code': ott_plan.code,
                     'name': ott_plan.name,
-                    'platform': ott_plan.platform
+                    'platform': ott_plan.platform,
+                    'otts': otts_data  # List of OTTs associated with this plan
                 })
         else:
             plans_data = {'message': f"No matching OTT plans found for platform {platform_to_check}."}
@@ -201,3 +221,157 @@ def get_skylink_plans(request):
     else:
         # If SkylinkPlan with id=1 does not exist
         return JsonResponse({'error': 'SkylinkPlan with id=1 not found.'})
+    
+
+
+
+
+def ott_activation(request):
+    try:
+        # Get the data from the request body
+        data = json.loads(request.body)
+        client_id = data.get('client_id')
+        platform_id = data.get('platform_id')
+        plan_id = data.get('plan_id')
+
+        # Process the subscription (add your subscription logic)
+        # Assuming you have a Subscription model where you save this data
+        subscription = OTTSubscription.objects.create(
+            client_id=client_id,
+            platform_id=platform_id,
+            plan_id=plan_id,
+        )
+        """
+        Returns platform-specific data or performs a platform-specific action.
+        """
+
+        if platform_id == 'watcho':
+            platform_data = fetch_watcho_data(request)
+        elif platform_id == 'play_box':
+            platform_data = fetch_playbox_data(request)
+        elif platform_id == 'hotstar':
+            platform_data = fetch_hotstar_data(request)
+        elif platform_id == 'ottplay':
+            platform_data = fetch_ottplay_data(request)
+        elif platform_id == 'tatabinge':
+            platform_data = fetch_tatabinge_data(request)
+        else:
+            # If platform_id is invalid, return an error or handle the case
+            platform_data = None
+
+        
+        # Log the OTT activation in the OTTActivationLog
+        OTTActivationLog.objects.create(
+            client_id=client_id,
+            platform_id=platform_id,
+            plan_id=plan_id,
+            status='Success',  # Assuming the activation was successful
+            message='Activation successful',
+        )
+
+        # Return a success response
+        return JsonResponse({"success": True, "message": "Subscription activated successfully!"})
+
+    except Exception as e:
+        # Log the failure if an exception occurs
+        OTTActivationLog.objects.create(
+            client_id=client_id,
+            platform_id=platform_id,
+            plan_id=plan_id,
+            status='Failure',
+            message=str(e),
+        )
+
+        return JsonResponse({"success": False, "message": str(e)})
+    
+    
+
+def fetch_watcho_data(request):
+    # Your logic to fetch data for 'watcho' platform
+    # For example, fetching data from an API or database
+    return {"platform": "watcho", "data": "Watcho specific data"}
+
+
+def fetch_playbox_data(request):
+    # The API URL from the request
+    api_url = "https://8fjpx02rmk.execute-api.ap-south-1.amazonaws.com/prod/v3/assignPack"
+
+    # Define the headers
+    headers = {
+        'x-api-key': 'spfFnjetet705D8sngf7H7kojE04oYkn7DNECvDv',
+        'Content-Type': 'application/json',
+    }
+
+    # Prepare the JSON payload
+    data = {
+        "phone": "9715121791",  # Make sure phone number is valid as per API specs
+        "partnerKey": "8588f445e9a912e828597d43702aa89aaceacbe149db175366ca95bab1e31ebb85e191e7484116fc2de11b9d9247b5f03786ed689c53716a5a0cdc4280019887",  # Double-check partner key
+        "packCode": "4517369",
+    }
+
+    try:
+        # Make the POST request to the API
+        response = requests.post(api_url, json=data, headers=headers)
+
+        print("Status Code:", response.status_code)
+        print("Response Content:", response.text)  # Print out the entire response body
+
+        # Check if the request was successful (status code 200)
+        if response.status_code == 200:
+            # Return the response JSON as a Django JsonResponse
+            return JsonResponse(response.json())
+        else:
+            # If something went wrong, return an error message
+            return JsonResponse({'error': 'Failed to fetch packs', 'status_code': response.status_code})
+    except requests.exceptions.RequestException as e:
+        # If an error occurs while making the request, return an error message
+        return JsonResponse({'error': str(e)})
+    
+
+
+def fetch_ottplay_data(request):
+    # The URL of the API you want to send the POST request to
+    api_url = 'https://stg-partners.ottplay.com/api/v4.0/subscriber/action'
+    
+    # The payload to be sent in the request body (data)
+    payload = {
+        "mode": "CREATE_ACTIVATE",
+        "oper_code": "10276",
+        "login_id": "skylink_testISP",
+        "phone": "9715121790",
+        "email": "arul@gmail.com",
+        "first_name": "Jon",
+        "last_name": "Doe",
+        "address": "subscriber address",
+        "plan_code": "ottplay_monthly_test",
+        "use_alt_lco_code": 0,
+        "partner_reference_id": "",
+        "zone": "",
+        "service_number": "",
+        "state_code": "",
+        "subscription_type": "",
+        "subscription_id": ""
+    }
+    
+    # Headers to be included in the request
+    headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'fRGcemrfodXg5OBXh6JDJ79MNab7QSbOxlnAlmL8VvRdCNSVBdfiHmSzwvcQ24pDOPtBD2rPu8LrU0S1gOlGZ2iegAPpEKXuvIb9b3ctf3dAQStqGuNRfZYZHEwpzontQQhrmd0EixJ1378ss7sBRonQfceHO6Jyj6La8EODIymMyqhNWURo9zlUZIDjgn19rJCfNVn42nL7OA4zSqTgsA1uyy8nVx7C89l8imSpYvs8E70uqeUzAfo3w9EUpP1',  # Replace with actual authorization token
+    }
+
+    # Send the POST request with the JSON payload and headers
+    response = requests.post(api_url, json=payload, headers=headers)
+    print(response)
+    # Check the response status code
+    if response.status_code == 200:
+        # Successfully received a response from the API
+        # You can return the JSON response or any data you need
+        return JsonResponse(response.json(), status=200)
+    else:
+        # Handle error if the response is not successful
+        return JsonResponse({'error': 'Failed to make the API call', 'details': response.text}, status=response.status_code)
+
+
+def fetch_tatabinge_data(request):
+    # Your logic to fetch data for 'tatabinge' platform
+    return {"platform": "tatabinge", "data": "TataBinge specific data"}
