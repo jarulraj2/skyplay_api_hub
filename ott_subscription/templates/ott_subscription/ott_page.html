@@ -190,10 +190,10 @@
 
         .card img {
             height: 50px;
-            border-radius: 100%;
-            border: 3px solid #dbdbdb;
-            width: auto;
-            margin-left: -20px;
+            border-radius: 5px;
+            border: unset;
+            width: 50px;
+            margin-left: 0px;
         }
 
         .card-content {
@@ -220,6 +220,7 @@
             align-items: center;
             column-gap: 4px;
             margin-bottom: 10px;
+            row-gap: 10px;
         }
 
         .card-btn {
@@ -325,9 +326,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="dashboard-header">
-                        <h2>Welcome, John Doe</h2>
-                        <p>Account Balance: <strong>$1,250.00</strong></p>
-                        <p>Last Login: March 15, 2025</p>
+                        <h2>Welcome, John Doe</h2>                     
+                        <p> 500Mbps with 8 OTTs </p>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -348,7 +348,7 @@
             <a href="#" class="card-btn mt-3">View More</a>
         </div>
         <div class="mt-4">
-            <h3 class="mt-2 mb-3"> <strong>Select Your Preferred OTT Platform:</strong></h3>
+            <h3 class="mt-2 mb-3"> <strong>Choose one of the following OTT aggregators:</strong></h3>
             <div class="ottwrap">
                 <ul class="nav nav-tabs" id="ottTab" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -451,7 +451,7 @@
                                 // Add the card text (description)
                                 var cardTextDiv = document.createElement('div');
                                 cardTextDiv.classList.add('card-text');
-                                cardTextDiv.textContent = plan.description || "This is our ott check and activate now immediately."; // Plan description
+                                cardTextDiv.textContent = plan.description || "Check and activate our OTT service instantly."; // Plan description
                                 cardContentDiv.appendChild(cardTextDiv);
 
                                 // Add the "Subscribe Now" button
@@ -502,102 +502,7 @@
     <!-- Bootstrap JS (Optional for interactive components like buttons, etc.) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Modified section to handle API call -->
-    <script>
-        function showOtts1() {
-            // Get the selected platform value from the dropdown
-            var platformId = document.getElementById('platform').value;
-
-            // Check if a platform is selected
-            if (platformId) {
-                // Make an AJAX request to fetch the Skylink plans for the selected platform
-                fetch(`/ott_subscription/get-skylink-plans/?platform_id=${platformId}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        // Get the element where Skylink plans will be displayed
-                        var skylinkPlansList = document.getElementById('skylinkPlansList');
-
-                        // Clear previous results
-                        skylinkPlansList.innerHTML = '';
-
-                        // If we have Skylink plans, display them
-                        if (data.plans && data.plans.length > 0) {
-                            data.plans.forEach(plan => {
-                                // Create a new div for each plan
-                                var planDiv = document.createElement('div');
-                                planDiv.classList.add('plan');  // Add the "plan" class
-
-                                // Set the text content to display the name and code of the plan
-                                var planTitle = document.createElement('h3');
-                                planTitle.textContent = `${plan.name} - ${plan.code}`;
-                                planDiv.appendChild(planTitle);
-
-                                // Create a div to list the associated OTTs
-                                var ottsContainer = document.createElement('div');
-                                ottsContainer.classList.add('otts-container');
-
-                                // Loop through the OTTs and display each OTT's name and image
-                                plan.otts.forEach(ott => {
-                                    // Create a div for each OTT
-                                    var ottDiv = document.createElement('div');
-                                    ottDiv.classList.add('ott');  // Add the "ott" class
-
-                                    // Create an image element
-                                    var ottImage = document.createElement('img');
-                                    ottImage.src = ott.image;  // Set the image source
-                                    ottImage.alt = ott.name;   // Set the alt text to the OTT name
-                                    ottImage.style.width = '40px';  // Optional: Set image width
-
-                                    // Create a span for OTT name
-                                    var ottName = document.createElement('span');
-                                    ottName.textContent = ott.name;
-
-                                    // Append image and name to the OTT div
-                                    ottDiv.appendChild(ottImage);
-                                    ottDiv.appendChild(ottName);
-
-                                    // Append the OTT div to the OTTs container
-                                    ottsContainer.appendChild(ottDiv);
-                                });
-
-                                // Append the OTTs container to the plan div
-                                planDiv.appendChild(ottsContainer);
-
-                                // Create the "Subscribe Now" button
-                                var subscribeButton = document.createElement('button');
-                                subscribeButton.classList.add('button');
-                                subscribeButton.id = `subscribe-button-${plan.id}`; // Unique ID for each button
-                                subscribeButton.textContent = 'Subscribe Now';
-
-                                // Add an event listener to handle the subscription
-                                subscribeButton.addEventListener('click', function () {
-                                    // Assuming you have the client ID in the `user` object
-                                    //var clientId = '{{ user.client_id }}';
-                                    var clientId = 1;
-                                    var selectedPlatformId = platformId;
-                                    var selectedPlanId = plan.id;
-
-                                    // Call the ott_activation API
-                                    activateOttSubscription(clientId, selectedPlatformId, selectedPlanId);
-                                });
-
-                                // Append the plan text, OTTs, and button to the planDiv
-                                planDiv.appendChild(subscribeButton);
-
-                                // Append the created plan div to the skylinkPlansList container
-                                skylinkPlansList.appendChild(planDiv);
-                            });
-                        } else {
-                            skylinkPlansList.textContent = 'No Skylink plans available for this platform.';
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error fetching Skylink plans:', error);
-                    });
-            } else {
-                // Clear the plans if no platform is selected
-                document.getElementById('skylinkPlansList').innerHTML = '';
-            }
-        }
+    <script>   
 
 
         // Function to call the ott_activation API with the client ID, platform ID, and plan ID
@@ -633,6 +538,15 @@
                 });
         }
     </script>
+
+<script>
+    // Automatically trigger "Watcho" tab on page load
+    window.onload = function () {
+        // Simulate a click on the active tab (Watcho by default)
+        var defaultTab = document.getElementById('watcho-tab');
+        showOtts(defaultTab);  // Call the function to load content for Watcho
+    };
+</script>
 
 
 

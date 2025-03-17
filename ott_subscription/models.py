@@ -13,7 +13,8 @@ class OTT(models.Model):
     )
 
     # ForeignKey to link OTT to an OTTPlan (One plan can have many OTTs)
-    ott_plan = models.ForeignKey('OTTPlan', related_name='ott_plans', on_delete=models.CASCADE)
+    #ott_plan = models.ForeignKey('OTTPlan', related_name='ott_plans', on_delete=models.CASCADE)
+    ott_plan = models.ForeignKey('OTTPlan', related_name='ott_plans', on_delete=models.CASCADE, null=True, blank=True)
 
 
     def __str__(self):

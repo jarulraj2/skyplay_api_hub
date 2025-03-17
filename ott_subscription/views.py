@@ -287,10 +287,35 @@ def ott_activation(request):
     
 
 def fetch_watcho_data(request):
-    # Your logic to fetch data for 'watcho' platform
-    # For example, fetching data from an API or database
-    return {"platform": "watcho", "data": "Watcho specific data"}
+ # The API endpoint
+    url = "https://beta2-publicapis.dishtv.in/api/WatchoOne/SubscriptionRequestWatchoplan"
+    
+    # The headers for the request
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": "••••••"  # Replace with the actual authorization token
+    }
+    
+    # The data you want to send in the request
+    data = {
+        "InputData": "rkm1KdqGcA8KsYuZElhieCcEeA2VUQg5Kw3+Cw++kogzYmoyPyhEZP85eIZD1Zi+6McbhfD6sBt4JJz4PM1Bp120bgQDEAnBh/eGi9IaX6IS+pG4HdXPd8SPf6H5KxFrHQG5r+ckdthKQP4dH+kYACHi+OFgUgyf74C1LlQ7LsGcrwaVmUxh5ejHG4Xw+rAbmce6SZIK+A+Xq/Hz4MC7nLlvVJc2Um7Y"
+    }
 
+    try:
+        # Ensure UTF-8 encoding
+        json_data = json.dumps(data, ensure_ascii=False).encode('utf-8')
+
+        # Make the POST request to the external API
+        response = requests.post(url, headers=headers, data=json_data)
+
+        # Check if the request was successful
+        if response.status_code == 200:
+            return JsonResponse(response.json(), safe=False)
+        else:
+            return JsonResponse({'error': 'Request failed', 'status_code': response.status_code}, status=response.status_code)
+
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
 
 def fetch_playbox_data(request):
     # The API URL from the request
