@@ -113,7 +113,7 @@ WSGI_APPLICATION = 'skyplay_api_hub.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DJANGO_DATABASE_NAME', 'skyplay_api_hub'),
+        'NAME': os.getenv('DJANGO_DATABASE_NAME', 'skyplay_api_hub3'),
         'USER': os.getenv('DJANGO_DATABASE_USER', 'root'),
         'PASSWORD': os.getenv('DJANGO_DATABASE_PASSWORD', ''),
         'HOST': os.getenv('DJANGO_DATABASE_HOST', '127.0.0.1'),
@@ -179,3 +179,5 @@ LOGGING = {
 BASE_URL = os.getenv('BASE_URL', 'http://127.0.0.1:8000')
 
 ENCRYPTION_PASS_PHRASE = "1234"
+
+

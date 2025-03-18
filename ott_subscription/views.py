@@ -8,10 +8,28 @@ import random
 from django.contrib.auth import logout
 import re
 from django.shortcuts import render, redirect  # <-- Add this import
-from .models import SkylinkPlan, OTTPlan, OTTSubscription, OTTActivationLog
+from .models import SkylinkPlan, OTTPlan, OTTSubscription, OTTActivationLog,OTTAggregator
 from django.http import JsonResponse
 import json
 import requests
+from base64 import b64encode
+from django.views.decorators.csrf import csrf_exempt
+import razorpay
+import logging
+from django.utils import timezone
+
+# Initialize Logger
+logger = logging.getLogger(__name__)
+
+#razorpay_client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+RAZORPAY_KEY_ID = "rzp_test_qcFb099Pizad7S"
+RAZORPAY_SECRET = "z2ZULiDyrWgcu6GVYILGmVbt"
+
+if RAZORPAY_KEY_ID and RAZORPAY_SECRET:
+    razorpay_client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_SECRET))
+else:
+    razorpay_client = None
+    logger.error("❌ Razorpay client not initialized. API keys are missing!")
 
 def ott_page(request):
     # Retrieve user contact info from session
@@ -28,10 +46,16 @@ def ott_page(request):
     else:
         # If no contact info is available in session, redirect to login page
         return redirect('login')  # Make sure you have a name for your login view in urls.py
+    
+    # Fetch active OTT platforms
+    platform_instance = OTTAggregator.objects.filter(status='active')
 
+    # Render the OTT page with Razorpay key and platform data
     return render(request, 'ott_subscription/ott_page.html', {
         'contact': contact,
-        'verification_type': verification_type
+        'verification_type': verification_type,
+        'ott_platform': platform_instance,
+        'razorpay_key': RAZORPAY_KEY_ID,  # Pass Razorpay key to the template
     })
 
 # Function to send verification code to email
@@ -167,36 +191,72 @@ def logout_view(request):
     return redirect('login')  
 
 
+from django.http import JsonResponse
+from .models import SkylinkPlan, OTTPlan
+
 def get_skylink_plans(request):
     # Get the platform from query parameters (e.g., 'watcho')
     platform_to_check = request.GET.get('platform_id', '')
+    sky_plan_id = request.GET.get('sky_plan_id', '')
+    client_id = request.GET.get('clinet_id', '')
 
-    # Step 1: Get the SkylinkPlan with id=1
-    skylink_plan = SkylinkPlan.objects.filter(id=1).first()
-
+    # Step 1: Get the SkylinkPlan with the provided sky_plan_id
+    skylink_plan = SkylinkPlan.objects.filter(id=sky_plan_id).first()
+   
     if skylink_plan:
         # Step 2: Get the OTT plans that match the platform
-        ott_plans = OTTPlan.objects.filter(platform=platform_to_check)
-        
+        ott_plans = OTTPlan.objects.filter(platform_id=platform_to_check)
+
         # Collect OTTPlan IDs for filtering
         ott_plan_ids = ott_plans.values_list('id', flat=True)
-        
-        # Step 3: Check which of the OTTPlans in the SkylinkPlan are part of the many-to-many relation
-        # Filter out the matching OTTPlan instances that are connected to SkylinkPlan
-        connected_ott_plans = skylink_plan.ott_plans.filter(id__in=ott_plan_ids)
 
-        # Step 4: Prepare data to return
+        # Step 3: Get the connected OTT plans that are already part of the SkylinkPlan's many-to-many relation
+        connected_ott_plans = skylink_plan.ott_plans.filter(id__in=ott_plan_ids)
+    
+        # Step 4: Identify paid plans (those not yet connected but part of the platform)
+        paid_ott_plans = ott_plans.exclude(id__in=connected_ott_plans.values_list('id', flat=True))
+
+        # Prepare response data
         plans_data = []
 
+        # Include active plans first
         if connected_ott_plans.exists():
             for ott_plan in connected_ott_plans:
-                # For each OTTPlan, fetch the associated OTTs
-                associated_otts = ott_plan.otts.all()  # This fetches the related OTTS
-                
-                # Prepare a list of OTT details
+                associated_otts = ott_plan.otts.all()  # Get associated OTTs
                 otts_data = []
                 for ott in associated_otts:
-                    image_url = ott.image.url if ott.image else 'default_image_url'  # Replace 'default_image_url' with an actual default image if needed
+                    image_url = ott.image.url if ott.image else 'default_image_url'
+                    otts_data.append({
+                        'id': ott.id,
+                        'name': ott.name,
+                        'code': ott.code,
+                        'is_active': ott.is_active,
+                        'image': image_url,
+                    })
+
+                # Check if the plan is expired or not
+              # Check if the plan is expired or not and get the expiration date
+                is_expired, expiration_date = is_plan_expired(client_id, ott_plan.id)                
+                plan_status = 1 if is_expired else 0  # 0: Expired, 1: Active
+                
+                plans_data.append({
+                    'id': ott_plan.id,
+                    'code': ott_plan.code,
+                    'name': ott_plan.name,
+                    'price': ott_plan.price,
+                    'subscription_tiers': 'free',  # Mark as active
+                    'otts': otts_data,
+                    'status_flag': plan_status,  # Add the status flag for button disable
+                    'expiration_date': expiration_date if expiration_date else 'N/A'  # Add expiration date
+                })
+                
+        # Now, include paid plans
+        if paid_ott_plans.exists():
+            for ott_plan in paid_ott_plans:
+                associated_otts = ott_plan.otts.all()  # Get associated OTTs
+                otts_data = []
+                for ott in associated_otts:
+                    image_url = ott.image.url if ott.image else 'default_image_url'
                     otts_data.append({
                         'id': ott.id,
                         'name': ott.name,
@@ -204,28 +264,85 @@ def get_skylink_plans(request):
                         'is_active': ott.is_active,
                         'image': image_url 
                     })
-
-                # Append OTTPlan data along with its associated OTTs
+                # Check if the plan is expired or not
+              # Check if the plan is expired or not and get the expiration date
+                is_expired, expiration_date = is_plan_expired(client_id, ott_plan.id)
+                plan_status = 1 if is_expired else 0  # 0: Expired, 1: Active
                 plans_data.append({
                     'id': ott_plan.id,
                     'code': ott_plan.code,
                     'name': ott_plan.name,
-                    'platform': ott_plan.platform,
-                    'otts': otts_data  # List of OTTs associated with this plan
+                    'price': ott_plan.price,
+                    'subscription_tiers': 'paid',  # Mark as paid but not active
+                    'otts': otts_data,
+                    'status_flag': plan_status,  # Add the status flag for button disable
+                    'expiration_date': expiration_date if expiration_date else 'N/A'  # Add expiration date
                 })
-        else:
-            plans_data = {'message': f"No matching OTT plans found for platform {platform_to_check}."}
+            
+            # Optionally, you can also add some message if no paid plans exist:
+            if not paid_ott_plans.exists():
+                plans_data.append({'message': 'No paid OTT plans available.'})
 
         return JsonResponse({'plans': plans_data})
 
     else:
-        # If SkylinkPlan with id=1 does not exist
-        return JsonResponse({'error': 'SkylinkPlan with id=1 not found.'})
+        # If SkylinkPlan with the provided sky_plan_id does not exist
+        return JsonResponse({'error': 'SkylinkPlan not found.'})
     
+    
+def log_ott_activation(client_id, platform_instance, plan_id, status, message, input_data, response_status, output_data, endpoint="", subscription_tiers='free', razorpay_details=None):
+    """
+    Common function to log OTT activation, whether successful or failed.
+    """
+    log_data = {
+        'client_id': client_id,
+        'platform_id': platform_instance,
+        'plan_id': plan_id,
+        'status': status,
+        'message': message,
+        'input': json.dumps(input_data),
+        'response_status': response_status,
+        'output': json.dumps(output_data),
+        'endpoint': endpoint,
+        'subscription_tiers': subscription_tiers
+    }
+
+    if razorpay_details and subscription_tiers == 'paid':
+        log_data.update({
+            'razorpay_order_id': razorpay_details.get('razorpay_order_id'),
+            'razorpay_payment_id': razorpay_details.get('razorpay_payment_id'),
+            'razorpay_signature': razorpay_details.get('razorpay_signature'),
+            'payment_amount': razorpay_details.get('payment_amount'),
+            'payment_currency': razorpay_details.get('payment_currency')
+        })
+
+    # Create the log entry in the OTTActivationLog model
+    OTTActivationLog.objects.create(**log_data)
 
 
+def is_plan_expired(client_id, plan_id):
+    try:
+        # Get the existing activation log for the client_id and plan_id
+        activation_log = OTTActivationLog.objects.filter(client_id=client_id, plan_id=plan_id).first()      
+        if activation_log:
+            # Check if expiration date is reached
+            expiration_date = activation_log.expiration_date
+            
+            # Format the expiration_date to only return the date part in dd-mm-yyyy format
+            if expiration_date:
+                formatted_expiration_date = expiration_date.strftime('%d-%m-%Y')  # Format as dd-mm-yyyy
+                
+                if formatted_expiration_date <= timezone.now().strftime('%d-%m-%Y'):
+                    return True, formatted_expiration_date  # Plan expired
+                else:
+                    return False, formatted_expiration_date  # Plan is still active
+            return False, None  # If no expiration date is available
+            
+        return False, None  # No activation log found
+    except OTTActivationLog.DoesNotExist:
+        return False, None  # No activation log found for client_id and plan_id
 
-
+@csrf_exempt
 def ott_activation(request):
     try:
         # Get the data from the request body
@@ -233,54 +350,70 @@ def ott_activation(request):
         client_id = data.get('client_id')
         platform_id = data.get('platform_id')
         plan_id = data.get('plan_id')
+        subscription_tiers = data.get('subscription_tiers', 'free')
+
+        platform_instance = OTTAggregator.objects.get(id=platform_id)
+        platform_code = platform_instance.code
+
+        # Initialize variables to store API response data
+        platform_data = None
+        response_status = None
+        output = None
+        endpoint = ""
+        input_data = data  # The request data to be logged as 'input'
 
         # Process the subscription (add your subscription logic)
-        # Assuming you have a Subscription model where you save this data
         subscription = OTTSubscription.objects.create(
             client_id=client_id,
-            platform_id=platform_id,
+            platform_id=platform_instance,
             plan_id=plan_id,
         )
-        """
-        Returns platform-specific data or performs a platform-specific action.
-        """
 
-        if platform_id == 'watcho':
+        # Fetch platform-specific data based on platform code
+        if platform_code == "watcho":
             platform_data = fetch_watcho_data(request)
-        elif platform_id == 'play_box':
+        elif platform_code == 'play_box':
             platform_data = fetch_playbox_data(request)
-        elif platform_id == 'hotstar':
+        elif platform_code == 'hotstar':
             platform_data = fetch_hotstar_data(request)
-        elif platform_id == 'ottplay':
+        elif platform_code == 'ottplay':
             platform_data = fetch_ottplay_data(request)
-        elif platform_id == 'tatabinge':
+        elif platform_code == 'tatabinge':
             platform_data = fetch_tatabinge_data(request)
         else:
-            # If platform_id is invalid, return an error or handle the case
             platform_data = None
 
-        
-        # Log the OTT activation in the OTTActivationLog
-        OTTActivationLog.objects.create(
-            client_id=client_id,
-            platform_id=platform_id,
-            plan_id=plan_id,
-            status='Success',  # Assuming the activation was successful
-            message='Activation successful',
-        )
+        if platform_data:
+            response_content = platform_data.content  # This is in bytes format
+            response_json = json.loads(response_content.decode('utf-8'))  # Convert bytes to JSON
+            response_status = response_json['response_status']
+            output = response_json if response_status == 200 else response_json['output']
+            endpoint = response_json['endpoint']
+            input_data = response_json['input']
+        else:
+            response_status = 400  # Bad request if platform data is None
+            output = "Invalid platform ID or failed to fetch platform data."
+            endpoint = ""
 
-        # Return a success response
-        return JsonResponse({"success": True, "message": "Subscription activated successfully!"})
+        # Handle logging
+        if subscription_tiers == 'paid':
+              
+            razorpay_details = {
+                'razorpay_order_id': data.get('razorpay_order_id'),
+                'razorpay_payment_id': data.get('razorpay_payment_id'),
+                'razorpay_signature': data.get('razorpay_signature'),
+                'payment_amount': data.get('payment_amount', 0) / 100,   # Convert paise to INR
+                'payment_currency': data.get('payment_currency')
+            }
+            log_ott_activation(client_id, platform_instance, plan_id, 'Success', 'The activation has been completed successfully.', input_data, response_status, output, endpoint, subscription_tiers, razorpay_details)
+        else:
+            log_ott_activation(client_id, platform_instance, plan_id, 'Success', 'The activation has been completed successfully.', input_data, response_status, output, endpoint, subscription_tiers)
+
+        return JsonResponse({"success": True, "message": "The activation has been completed successfully."})
 
     except Exception as e:
-        # Log the failure if an exception occurs
-        OTTActivationLog.objects.create(
-            client_id=client_id,
-            platform_id=platform_id,
-            plan_id=plan_id,
-            status='Failure',
-            message=str(e),
-        )
+        # Log failure if an exception occurs
+        log_ott_activation(client_id, platform_instance, plan_id, 'Failure', str(e), str(e), 500, str(e), "", subscription_tiers)
 
         return JsonResponse({"success": False, "message": str(e)})
     
@@ -288,12 +421,20 @@ def ott_activation(request):
 
 def fetch_watcho_data(request):
  # The API endpoint
-    url = "https://beta2-publicapis.dishtv.in/api/WatchoOne/SubscriptionRequestWatchoplan"
+    api_url = "https://beta2-publicapis.dishtv.in/api/WatchoOne/SubscriptionRequestWatchoplan"
     
+    # Your credentials for Basic Auth
+    username = '152'
+    password = 'W@tCh0!$p@54321'
+
+    # Create the Basic Auth header value
+    auth_value = f"{username}:{password}"
+    encoded_auth_value = b64encode(auth_value.encode('utf-8')).decode('utf-8')
+
     # The headers for the request
     headers = {
         "Content-Type": "application/json",
-        "Authorization": "••••••"  # Replace with the actual authorization token
+        "Authorization": f"Basic {encoded_auth_value}"
     }
     
     # The data you want to send in the request
@@ -306,15 +447,24 @@ def fetch_watcho_data(request):
         json_data = json.dumps(data, ensure_ascii=False).encode('utf-8')
 
         # Make the POST request to the external API
-        response = requests.post(url, headers=headers, data=json_data)
+        response = requests.post(api_url, headers=headers, data=json_data)
+
+        # Create response data
+        result = {
+            "input": data,
+            "response_status": response.status_code,
+            "output": response.json() if response.status_code == 200 else response.text,
+            "endpoint":api_url
+        }   
 
         # Check if the request was successful
         if response.status_code == 200:
-            return JsonResponse(response.json(), safe=False)
+            return JsonResponse(result, safe=False)
         else:
-            return JsonResponse({'error': 'Request failed', 'status_code': response.status_code}, status=response.status_code)
+            return JsonResponse(result, status=response.status_code)
 
     except Exception as e:
+        # Return exception error if any
         return JsonResponse({'error': str(e)}, status=500)
 
 def fetch_playbox_data(request):
@@ -338,21 +488,24 @@ def fetch_playbox_data(request):
         # Make the POST request to the API
         response = requests.post(api_url, json=data, headers=headers)
 
-        print("Status Code:", response.status_code)
-        print("Response Content:", response.text)  # Print out the entire response body
+        # Prepare the result object with both request and response data
+        result = {
+            "input": data,
+            "response_status": response.status_code,
+            "output": response.json() if response.status_code == 200 else response.text,
+            "endpoint":api_url
+        } 
 
         # Check if the request was successful (status code 200)
-        if response.status_code == 200:
-            # Return the response JSON as a Django JsonResponse
-            return JsonResponse(response.json())
+        if response.status_code == 200:          
+            return JsonResponse(result, safe=False)
         else:
-            # If something went wrong, return an error message
-            return JsonResponse({'error': 'Failed to fetch packs', 'status_code': response.status_code})
+            return JsonResponse(result, status=response.status_code)
+
     except requests.exceptions.RequestException as e:
         # If an error occurs while making the request, return an error message
-        return JsonResponse({'error': str(e)})
+        return JsonResponse({'error': str(e), 'request': data}, status=500)
     
-
 
 def fetch_ottplay_data(request):
     # The URL of the API you want to send the POST request to
@@ -384,19 +537,103 @@ def fetch_ottplay_data(request):
         'Authorization': 'fRGcemrfodXg5OBXh6JDJ79MNab7QSbOxlnAlmL8VvRdCNSVBdfiHmSzwvcQ24pDOPtBD2rPu8LrU0S1gOlGZ2iegAPpEKXuvIb9b3ctf3dAQStqGuNRfZYZHEwpzontQQhrmd0EixJ1378ss7sBRonQfceHO6Jyj6La8EODIymMyqhNWURo9zlUZIDjgn19rJCfNVn42nL7OA4zSqTgsA1uyy8nVx7C89l8imSpYvs8E70uqeUzAfo3w9EUpP1',  # Replace with actual authorization token
     }
 
-    # Send the POST request with the JSON payload and headers
-    response = requests.post(api_url, json=payload, headers=headers)
-    print(response)
-    # Check the response status code
-    if response.status_code == 200:
-        # Successfully received a response from the API
-        # You can return the JSON response or any data you need
-        return JsonResponse(response.json(), status=200)
-    else:
-        # Handle error if the response is not successful
-        return JsonResponse({'error': 'Failed to make the API call', 'details': response.text}, status=response.status_code)
+    try:
+        # Send the POST request with the JSON payload and headers
+        response = requests.post(api_url, json=payload, headers=headers)
 
+        # Prepare the result object with both request and response data
+        result = {
+            "input": payload,
+            "response_status": response.status_code,
+            "output": response.json() if response.status_code == 200 else response.text,
+            "endpoint":api_url
+        } 
+        # Check if the request was successful (status code 200)
+        if response.status_code == 200:
+            return JsonResponse(result, safe=False)
+        else:
+            return JsonResponse(result, status=response.status_code)
+    
+    except requests.exceptions.RequestException as e:
+        # If an error occurs while making the request, return an error message along with the request data
+        return JsonResponse({'error': str(e), 'request': payload}, status=500)
 
 def fetch_tatabinge_data(request):
     # Your logic to fetch data for 'tatabinge' platform
     return {"platform": "tatabinge", "data": "TataBinge specific data"}
+
+
+def fetch_hotstar_data(request):
+    # Your logic to fetch data for 'tatabinge' platform
+    return {"platform": "tatabinge", "data": "TataBinge specific data"}
+
+
+
+@csrf_exempt
+def create_razorpay_order(request):
+    if request.method != "POST":
+        return JsonResponse({"error": "Method not allowed"}, status=405)
+
+    if not razorpay_client:
+        logger.error("❌ Razorpay client not initialized")
+        return JsonResponse({"error": "Razorpay client not initialized"}, status=500)
+
+    try:
+        data = json.loads(request.body)
+        amount = int(data.get("amount", 0)) * 100  # Convert to paise
+        currency = data.get("currency", "INR")
+
+        if amount <= 0:
+            return JsonResponse({"error": "Invalid amount"}, status=400)
+
+        # 🔍 Print API Key for Debugging
+        logger.info(f"🔑 API Key: {settings.RAZORPAY_KEY_ID}")
+
+        # 🔥 Debug API Response
+        order = razorpay_client.order.create({
+            "amount": amount,
+            "currency": currency,
+            "payment_capture": 1
+        })
+        logger.info(f"✅ Razorpay Order Created: {order}")
+
+        return JsonResponse(order)
+
+    except razorpay.errors.BadRequestError as e:
+        logger.error(f"❌ Razorpay API Error: {str(e)}")
+        return JsonResponse({"error": "Razorpay authentication failed"}, status=401)
+
+    except Exception as e:
+        logger.error(f"❌ Unexpected Error: {str(e)}")
+        return JsonResponse({"error": "Internal server error"}, status=500)
+    
+
+@csrf_exempt
+def confirm_payment(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        razorpay_payment_id = data.get('razorpay_payment_id')
+        razorpay_order_id = data.get('razorpay_order_id')
+        razorpay_signature = data.get('razorpay_signature')
+
+        # Verify the payment signature
+        params_dict = {
+            'razorpay_order_id': razorpay_order_id,
+            'razorpay_payment_id': razorpay_payment_id,
+            'razorpay_signature': razorpay_signature
+        }
+
+        try:
+            razorpay_client.utility.verify_payment_signature(params_dict)
+            # Payment is successful, mark the subscription as active
+            # subscription = Subscription.objects.get(razorpay_order_id=razorpay_order_id)
+            # subscription.status = 'active'  # Or whatever status you want
+            # subscription.save()
+
+            return JsonResponse({'status': 'Payment successful', 'message': 'Subscription activated.'})
+        except razorpay.errors.SignatureVerificationError:
+            return JsonResponse({'error': 'Payment signature verification failed.'}, status=400)
+
+    return JsonResponse({'error': 'Invalid request'}, status=400)
+
+

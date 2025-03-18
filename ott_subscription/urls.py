@@ -10,4 +10,10 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('get-skylink-plans/', views.get_skylink_plans, name='get_skylink_plans'),
     path('api/ott_activation/', views.ott_activation, name='ott_activation'),
+
+        # URL to create a Razorpay order
+    path('create-ott-order/', views.create_razorpay_order, name='create-razorpay-order'),    
+    # URL to confirm payment after the user makes the payment
+    path('verify_payment/', views.confirm_payment, name='confirm-payment'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
