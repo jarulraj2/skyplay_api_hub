@@ -1,8 +1,9 @@
 from django.contrib import admin
-from .models import OTTPlan, SkylinkPlan, OTTActivationLog, OTT, OTTAggregator
+from .models import  OTT, OTTPlan, SkylinkPlan, OTTActivationLog, OTTAggregator
 from django.utils.html import mark_safe
 from django.utils.html import format_html
 import json
+
 
 # Admin configuration for the OTT model
 class OTTAdmin(admin.ModelAdmin):

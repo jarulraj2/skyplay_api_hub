@@ -63,13 +63,16 @@ TWILIO_PHONE_NUMBER = 'your_twilio_phone_number'
 
 # Email settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.example.com'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'your-email@example.com'
-EMAIL_HOST_PASSWORD = 'your-email-password'
+EMAIL_HOST_USER = 'developer@skylink.net.in'
+EMAIL_HOST_PASSWORD = 'dkoqlcsxagoywdeh'
+# Optional settings (you can leave them out if not needed)
+DEFAULT_FROM_EMAIL = 'developer@skylink.net.in'  # Default from email (optional)
+EMAIL_SUBJECT_PREFIX = '[SKYLINK] '  # Optional prefix for email subject lines
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -180,4 +183,8 @@ BASE_URL = os.getenv('BASE_URL', 'http://127.0.0.1:8000')
 
 ENCRYPTION_PASS_PHRASE = "1234"
 
-
+## Ott Play
+OTTPLAY_API_URL = 'https://stg-partners.ottplay.com/api/v4.0/subscriber/action'
+OTTPLAY_AUTH_TOKEN = 'fRGcemrfodXg5OBXh6JDJ79MNab7QSbOxlnAlmL8VvRdCNSVBdfiHmSzwvcQ24pDOPtBD2rPu8LrU0S1gOlGZ2iegAPpEKXuvIb9b3ctf3dAQStqGuNRfZYZHEwpzontQQhrmd0EixJ1378ss7sBRonQfceHO6Jyj6La8EODIymMyqhNWURo9zlUZIDjgn19rJCfNVn42nL7OA4zSqTgsA1uyy8nVx7C89l8imSpYvs8E70uqeUzAfo3w9EUpP1',
+OTTPLAY_LOGIN_ID = 'skylink_testISP'
+OTTPLAY_OPER_CODE = '10276'

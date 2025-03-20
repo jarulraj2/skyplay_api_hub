@@ -17,6 +17,8 @@ from django.views.decorators.csrf import csrf_exempt
 import razorpay
 import logging
 from django.utils import timezone
+from datetime import datetime, timedelta
+from .models import VerificationCode
 
 # Initialize Logger
 logger = logging.getLogger(__name__)
@@ -58,93 +60,96 @@ def ott_page(request):
         'razorpay_key': RAZORPAY_KEY_ID,  # Pass Razorpay key to the template
     })
 
-# Function to send verification code to email
+# Function to generate a random 6-digit verification code
+def generate_verification_code():
+    """Generates a random 6-digit verification code"""
+    return str(random.randint(100000, 999999))
+
+# Function to send verification email
 def send_verification_email(email):
-    verification_code = "123456"  # Default verification code
+    verification_code = generate_verification_code()
     subject = "Your OTP Verification Code"
     message = f"Your verification code is {verification_code}"
-    from_email = settings.EMAIL_HOST_USER  # Replace with your email
+    from_email = 'your-email@example.com'  # Replace with your actual email
     send_mail(subject, message, from_email, [email])
-
-# Function to send verification code to phone number via Twilio
-def send_verification_sms(phone_number):
-    verification_code = "123456"  # Default verification code
-    # Set up Twilio client
-    client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
-    message = client.messages.create(
-        body=f"Your verification code is {verification_code}",
-        from_=settings.TWILIO_PHONE_NUMBER,  # Your Twilio phone number
-        to=phone_number
+    # Store the code in the database
+    VerificationCode.objects.update_or_create(
+        email=email,
+        defaults={"code": verification_code, "timestamp": datetime.now()}
     )
 
-# Function to send verification code to email
-def send_verification_email(email):
-    verification_code = "123456"  # Default verification code
-    subject = "Your OTP Verification Code"
-    message = f"Your verification code is {verification_code}"
-    from_email = settings.EMAIL_HOST_USER  # Replace with your email
-    send_mail(subject, message, from_email, [email])
-
-# Function to send verification code to phone number via Twilio
+# Function to send verification SMS (placeholder for actual SMS service)
 def send_verification_sms(phone_number):
-    verification_code = "123456"  # Default verification code
-    # Set up Twilio client
-    client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
-    message = client.messages.create(
-        body=f"Your verification code is {verification_code}",
-        from_=settings.TWILIO_PHONE_NUMBER,  # Your Twilio phone number
-        to=phone_number
+    verification_code = generate_verification_code()
+    message = f"Your OTP verification code is {verification_code}"
+    # Implement SMS sending logic here (using an SMS API like Twilio)
+    # Store the code in the database
+    VerificationCode.objects.update_or_create(
+        phone_number=phone_number,
+        defaults={"code": verification_code, "timestamp": datetime.now()}
     )
 
+# Login view function
 def login_view(request):
     verification_code_sent = False
     code_verified = False
     contact = ""
     verification_type = None  # Either 'email' or 'phone'
-    
+
     if request.method == 'POST':
         contact = request.POST.get('contact')  # This could be email or phone number
         entered_code = request.POST.get('verification_code')  # Verification code entered by the user
-        
+
         # Handle verification code submission
         if entered_code:
-            if entered_code == request.session.get('verification_code'):
+            # Check if it's an email or phone number
+            verification_record = None
+            verification_code_sent = True
+            if '@' in contact:  # It's an email
+                verification_record = VerificationCode.objects.filter(email=contact).first()
+            else:  # Assume it's a phone number
+                verification_record = VerificationCode.objects.filter(phone_number=contact).first()
+
+            # First check if the entered code is the default code '123456'
+            if entered_code == '123456':
                 code_verified = True
-                messages.success(request, "Verification successful!")
+                messages.success(request, "Verification successful with default code!")
                 return redirect('ott_page')  # Redirect to the ott_page on successful verification
+
+
+            if verification_record and not verification_record.is_expired():
+                # Check if the entered code matches the stored code
+                if entered_code == verification_record.code:
+                    code_verified = True
+                    messages.success(request, "Verification successful!")
+                    return redirect('ott_page')  # Redirect to the ott_page on successful verification
+                else:
+                    messages.error(request, "Invalid verification code. Please try again.")
             else:
-                messages.error(request, "Invalid verification code. Please try again.")
-                # Even on failure, we want to show the verification section again
-                verification_code_sent = True
-                verification_type = request.session.get('verification_type')  # keep track of email or phone number
-    
-        # If no verification code entered, process the contact (email or phone)
-        elif '@' in contact:  # It's an email
-            try:
-                validate_email(contact)  # Validate email format
-                send_verification_email(contact)  # Send verification code to email
-                request.session['verification_code'] = '123456'  # Store the verification code in session
-                request.session['email'] = contact
-                request.session['verification_type'] = 'email'
-                verification_code_sent = True
-                verification_type = 'email'  # Indicate that this is an email verification
-                messages.success(request, "A verification code has been sent to your email.")
-            except ValidationError:
-                messages.error(request, "Invalid email address.")
+                messages.error(request, "The verification code has expired or was not found.")
         
-        else:  # Assume it's a phone number
-            # Validate phone number format using regex (e.g., for international phone numbers)
-            phone_regex = r'^\+?[1-9]\d{1,14}$'  # E.164 format
-            if re.match(phone_regex, contact):
-                send_verification_sms(contact)  # Send verification code to phone number
-                request.session['verification_code'] = '123456'  # Store the verification code in session
-                request.session['phone_number'] = contact
-                request.session['verification_type'] = 'phone'
-                verification_code_sent = True
-                verification_type = 'phone'  # Indicate that this is a phone verification
-                messages.success(request, "A verification code has been sent to your phone.")
-            else:
-                messages.error(request, "Invalid phone number format.")
+        # If no verification code entered, process the contact (email or phone)
+        elif contact:
+            if '@' in contact:  # It's an email
+                try:
+                    validate_email(contact)  # Validate email format
+                    send_verification_email(contact)  # Send verification code to email
+                    verification_code_sent = True
+                    verification_type = 'email'  # Indicate that this is an email verification
+                    messages.success(request, "A verification code has been sent to your email.")
+                except ValidationError:
+                    messages.error(request, "Invalid email address.")
+        
+            else:  # Assume it's a phone number
+                # Validate phone number format using regex (e.g., for international phone numbers)
+                phone_regex = r'^\+?[1-9]\d{1,14}$'  # E.164 format
+                if re.match(phone_regex, contact):
+                    send_verification_sms(contact)  # Send verification code to phone number
+                    verification_code_sent = True
+                    verification_type = 'phone'  # Indicate that this is a phone verification
+                    messages.success(request, "A verification code has been sent to your phone.")
+                else:
+                    messages.error(request, "Invalid phone number format.")
     
     return render(request, 'ott_subscription/login.html', {
         'verification_code_sent': verification_code_sent,
@@ -152,38 +157,6 @@ def login_view(request):
         'contact': contact,
         'verification_type': verification_type
     })
-
-# Verification view to verify the code entered by the user
-def verify_email_view(request):
-    if request.method == 'POST':
-
-        print("call2")
-        entered_code = request.POST.get('verification_code')
-
-        # Check if entered code matches the session stored code for email
-        if entered_code == request.session.get('verification_code'):
-            messages.success(request, "Email verified successfully!")
-            return redirect('ott_page')  # Redirect to the OTT page
-
-        else:
-            messages.error(request, "Invalid verification code. Please try again.")
-    
-    return render(request, 'ott_subscription/verify_email.html')
-
-# Verification view to verify the code entered by the user for phone number
-def verify_phone_view(request):
-    if request.method == 'POST':
-        entered_code = request.POST.get('verification_code')
-
-        # Check if entered code matches the session stored code for phone number
-        if entered_code == request.session.get('verification_code'):
-            messages.success(request, "Phone number verified successfully!")
-            return redirect('ott_page')  # Redirect to the OTT page
-
-        else:
-            messages.error(request, "Invalid verification code. Please try again.")
-    
-    return render(request, 'ott_subscription/verify_phone.html')
 
 
 def logout_view(request):
@@ -509,13 +482,16 @@ def fetch_playbox_data(request):
 
 def fetch_ottplay_data(request):
     # The URL of the API you want to send the POST request to
-    api_url = 'https://stg-partners.ottplay.com/api/v4.0/subscriber/action'
-    
+    #api_url = 'https://stg-partners.ottplay.com/api/v4.0/subscriber/action'
+    api_url = settings.OTTPLAY_API_URL
+    oper_code = settings.OTTPLAY_OPER_CODE
+    login_id = settings.OTTPLAY_LOGIN_ID
+    auth_token = settings.OTTPLAY_AUTH_TOKEN
     # The payload to be sent in the request body (data)
     payload = {
         "mode": "CREATE_ACTIVATE",
-        "oper_code": "10276",
-        "login_id": "skylink_testISP",
+        "oper_code":oper_code,
+        "login_id": login_id,
         "phone": "9715121790",
         "email": "arul@gmail.com",
         "first_name": "Jon",

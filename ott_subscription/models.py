@@ -3,7 +3,7 @@ from django.core.validators import FileExtensionValidator
 from decimal import Decimal 
 from django.utils import timezone
 from datetime import timedelta
-
+from datetime import datetime, timedelta
     # Function to calculate expiration date (current date + 30 days)
 def get_expiration_date():
     return timezone.now() + timedelta(days=30)
@@ -142,3 +142,16 @@ class OTTActivationLog(models.Model):
     
 
   
+
+class VerificationCode(models.Model):
+    email = models.EmailField(unique=True, blank=True, null=True)  # Email can be null if it's a phone number verification
+    phone_number = models.CharField(max_length=15, blank=True, null=True)  # Phone number can be stored as well
+    code = models.CharField(max_length=6)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def is_expired(self):
+        """Check if the verification code has expired"""
+        expiry_time = self.timestamp + timedelta(minutes=10)  # Code is valid for 10 minutes
+        
+        # Use timezone-aware `timezone.now()` for the current time
+        return timezone.now() > expiry_time  # Compare with timezone-aware current time
