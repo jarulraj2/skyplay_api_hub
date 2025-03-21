@@ -173,6 +173,9 @@ def get_skylink_plans(request):
     sky_plan_id = request.GET.get('sky_plan_id', '')
     client_id = request.GET.get('clinet_id', '')
 
+     # Check if the platform has Hotstart enabled
+    hotstart_enabled = OTTAggregator.objects.filter(status='active', code='hotstart').exists()
+
     # Step 1: Get the SkylinkPlan with the provided sky_plan_id
     skylink_plan = SkylinkPlan.objects.filter(id=sky_plan_id).first()
    
@@ -220,7 +223,8 @@ def get_skylink_plans(request):
                     'subscription_tiers': 'free',  # Mark as active
                     'otts': otts_data,
                     'status_flag': plan_status,  # Add the status flag for button disable
-                    'expiration_date': expiration_date if expiration_date else 'N/A'  # Add expiration date
+                    'expiration_date': expiration_date if expiration_date else 'N/A',  # Add expiration date
+                    'hotstart_enabled': hotstart_enabled  
                 })
                 
         # Now, include paid plans
@@ -249,7 +253,8 @@ def get_skylink_plans(request):
                     'subscription_tiers': 'paid',  # Mark as paid but not active
                     'otts': otts_data,
                     'status_flag': plan_status,  # Add the status flag for button disable
-                    'expiration_date': expiration_date if expiration_date else 'N/A'  # Add expiration date
+                    'expiration_date': expiration_date if expiration_date else 'N/A',  # Add expiration date
+                    'hotstart_enabled': hotstart_enabled
                 })
             
             # Optionally, you can also add some message if no paid plans exist:

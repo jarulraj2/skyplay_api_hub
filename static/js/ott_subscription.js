@@ -22,6 +22,11 @@ function showOtts(value) {
         fetch(`/ott_subscription/get-skylink-plans/?platform_id=${platformId}&sky_plan_id=${sky_plan_id}&clinet_id=${clientId}`)
             .then(response => response.json())
             .then(data => {
+                /** Hot start display process */
+                if (data.plans.length > 0 && data.plans[0].hotstart_enabled) {
+                    document.getElementById('hotstar-section').style.display = 'block';
+                }
+
                 // If we have Skylink plans, display them
                 if (data.plans && data.plans.length > 0) {
                     data.plans.forEach(plan => {
@@ -103,6 +108,135 @@ function showOtts(value) {
                             // Add price for paid plans
                             var priceDiv = document.createElement('div');
                             priceDiv.classList.add('plan-price');
+                            priceDiv.textContent = 'Price: ' + plan.price;  // Show price for paid plans
+                            cardContentDiv.appendChild(priceDiv);
+
+                            // Add event listener for Razorpay payment
+                            subscribeButton.addEventListener('click', function () {
+                                if (plan.status_flag === 0) {
+                                    initiateRazorpayPayment(clientId, platformId, plan.id, plan.price);
+                                }
+                            });
+                        }
+
+                        cardContentDiv.appendChild(subscribeButton);
+
+                        cardDiv.appendChild(cardContentDiv);
+                        skylinkPlansList.appendChild(cardDiv);  // Append the card to the container
+                    });
+                } else {
+                    skylinkPlansList.textContent = 'No Skylink plans available for this platform.';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching Skylink plans:', error);
+            });
+    } else {
+        skylinkPlansList.innerHTML = '';  // Clear the content if no platform ID
+    }
+}
+
+
+function jioshowOtts(value) {
+  
+    var skylinkPlansList = document.querySelector('.jio-card-container'); // Find the .card-container inside this tab
+    skylinkPlansList.innerHTML = '';  // Clear the previous content
+    platformId =  value;
+    var sky_plan_id = 1;  // You can adjust this based on your context
+    var randomNumberElement = document.getElementById("randomNumber") // Example client ID, replace it with dynamic value based on your context
+    var clientId = randomNumberElement.textContent || randomNumberElement.innerText;
+   // var clientId =  1;
+    // Fetch the plans for the selected platform
+    if (platformId) {
+        fetch(`/ott_subscription/get-skylink-plans/?platform_id=${platformId}&sky_plan_id=${sky_plan_id}&clinet_id=${clientId}`)
+            .then(response => response.json())
+            .then(data => {
+                /** Hot start display process */
+                if (data.plans.length > 0 && data.plans[0].hotstart_enabled) {
+                    document.getElementById('hotstar-section').style.display = 'block';
+                }
+
+                // If we have Skylink plans, display them
+                if (data.plans && data.plans.length > 0) {
+                    data.plans.forEach(plan => {
+                        // Create a new div for each plan (card)
+                        var cardDiv = document.createElement('div');
+                        cardDiv.classList.add('jio-card', "col-md-4");
+
+                        var cardContentDiv = document.createElement('div');
+                        cardContentDiv.classList.add('jio-card-content');
+
+                        var cardTitleDiv = document.createElement('div');
+                        cardTitleDiv.classList.add('jio-card-title');
+                        cardTitleDiv.textContent = plan.name;
+                        cardContentDiv.appendChild(cardTitleDiv);
+
+                        // Add the image wrap (OTTs)
+                        var imageWrapDiv = document.createElement('div');
+                        imageWrapDiv.classList.add('jio-image-wrap');
+
+                        plan.otts.forEach(ott => {
+                            var ottImage = document.createElement('img');
+                            ottImage.src = ott.image;  // Set the image source
+                            ottImage.alt = ott.name;   // Set the alt text to the OTT name
+                            imageWrapDiv.appendChild(ottImage);
+                        });
+
+                        cardContentDiv.appendChild(imageWrapDiv);
+
+                        // Add the card text (description) based on plan type
+                        var cardTextDiv = document.createElement('div');
+                        cardTextDiv.classList.add('jio-card-text');
+                        if (plan.subscription_tiers === 'free') {
+                            cardTextDiv.textContent = "Activate your free plan instantly."; // Free plan text
+                        } else {
+                            cardTextDiv.textContent = "Subscribe to access premium content instantly."; // Paid plan text
+                        }
+                        cardContentDiv.appendChild(cardTextDiv);
+
+                        // Add expiration date below the plan
+                        if (plan.status_flag === 1) {
+                            var expirationDateDiv = document.createElement('div');
+                            expirationDateDiv.classList.add('expiration-date');
+                            expirationDateDiv.textContent = 'Expiration Date: ' + (plan.expiration_date || 'N/A'); // Display expiration date
+                            cardContentDiv.appendChild(expirationDateDiv);
+                        }
+
+                        // Add the subscription button and price based on the plan's tier
+                        var subscribeButton = document.createElement('a');
+                        subscribeButton.classList.add('jio-card-btn');
+
+                        // Check the subscription tier and adjust the button and price accordingly
+                        if (plan.subscription_tiers === 'free') {
+                            subscribeButton.textContent = 'Activate Now';  // Free subscription
+                            subscribeButton.href = '#';  // Link can be handled for activation
+
+                            // Disable button if the plan is expired
+                            if (plan.status_flag === 1) {
+                                subscribeButton.classList.add('disabled');
+                                subscribeButton.setAttribute('disabled', 'disabled');
+                            }
+
+                            // Add event listener for activation
+                            subscribeButton.addEventListener('click', function () {
+                                // Call the function to activate the OTT subscription for free plan
+                                if (plan.status_flag === 0) {
+                                    activateOttSubscription(clientId, platformId, plan.id);
+                                }
+                            });
+                        } else {
+                            subscribeButton.textContent = 'Pay Now';  // Paid subscription
+                            subscribeButton.href = '#';  // Link to payment page or similar
+
+                            // Disable button if the plan is expired
+                            if (plan.status_flag === 1) {
+                                subscribeButton.classList.add('disabled');
+                                subscribeButton.setAttribute('disabled', 'disabled');
+                            }
+
+                            // Add price for paid plans
+                            var priceDiv = document.createElement('div');
+                            priceDiv.classList.add('jio-plan-price');
                             priceDiv.textContent = 'Price: ' + plan.price;  // Show price for paid plans
                             cardContentDiv.appendChild(priceDiv);
 
@@ -310,4 +444,5 @@ window.onload = function () {
     // Simulate a click on the active tab (Watcho by default)
     var defaultTab = document.getElementById('watcho-tab');
     showOtts(defaultTab);  // Call the function to load content for Watcho
+    jioshowOtts(4);
 };
