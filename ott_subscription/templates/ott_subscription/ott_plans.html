@@ -1,0 +1,47 @@
+{% for plan in plans %}
+<div class="card col-md-4">
+    <div class="card-content">
+        <div class="card-title">{{ plan.name }}</div>
+
+        <div class="image-wrap">
+            {% for ott in plan.otts %}
+            <img src="{{ ott.image }}" alt="{{ ott.name }}">
+            {% endfor %}
+        </div>
+
+        <div class="card-text">
+            {% if plan.subscription_tiers == "free" %}
+            Activate your free plan instantly.
+            {% else %}
+            Subscribe to access premium content instantly.
+            {% endif %}
+        </div>
+
+        {% if plan.status_flag == 1 %}
+        <div class="expiration-date">
+            Expiration Date: {{ plan.expiration_date }}
+        </div>
+        {% endif %}
+
+        {% if plan.subscription_tiers == "free" %}
+        <a href="#" 
+           class="card-btn {% if plan.status_flag == 1 %}disabled{% endif %}" 
+           onclick="activateOttSubscription('{{ client_id }}', '{{ platform_id }}', '{{ plan.id }}')"
+           {% if plan.status_flag == 1 %}disabled{% endif %}>
+            Activate Now
+        </a>
+        {% else %}
+        <div class="plan-price">Price: ₹{{ plan.price }}</div>
+      
+        <a href="#" 
+           class="card-btn {% if plan.status_flag == 1 %}disabled{% endif %}" 
+           onclick="initiateRazorpayPayment('{{ client_id }}', '{{ platform_id }}', '{{ plan.id }}', '{{ plan.price }}')"
+           {% if plan.status_flag == 1 %}disabled{% endif %}>
+            Pay Now
+        </a>
+        {% endif %}
+    </div>
+</div>
+{% empty %}
+<p>No plans available.</p>
+{% endfor %}

@@ -74,6 +74,7 @@ EMAIL_SUBJECT_PREFIX = '[SKYLINK] '  # Optional prefix for email subject lines
 
 
 
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',

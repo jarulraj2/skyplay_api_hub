@@ -1,0 +1,70 @@
+{% extends "ott_subscription/base.html" %}  
+
+{% load static %}
+
+{% block title %}Transactions - Skyplay{% endblock %}
+
+{% block extra_head %}
+    
+    <!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="{% static 'css/ott_style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Transactions</h2>
+
+    <!-- Search and Sort -->
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search by Client ID">
+        </div>
+        <div class="col-md-4">
+            <select id="sortBy" class="form-control">
+                <option value="activation_date">Activation Date</option>
+                <option value="expiration_date">Expiration Date</option>
+                <option value="payment_amount">Payment Amount</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <select id="sortOrder" class="form-control">
+                <option value="desc">Descending</option>
+                <option value="asc">Ascending</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Transactions Table -->
+    <table class="table table-bordered" id="transactionsTable">
+        <thead>
+            <tr>
+                <th>Client ID</th>
+                <th>Platform</th>
+                <th>Plan</th>
+                <th>Activation Date</th>
+                <th>Status</th>
+                <th>Subscription Tiers</th>
+                <th>Payment Amount</th>
+                <th>Expiration Date</th>
+            </tr>
+        </thead>
+        <tbody id="transactionTableBody">
+            <tr>
+                <td colspan="8" class="text-center">Loading...</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="{% static 'js/transactions.js' %}"></script>
+
+
+{% endblock %}

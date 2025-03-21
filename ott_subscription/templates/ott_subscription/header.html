@@ -1,0 +1,113 @@
+{% if contact %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow-sm">
+    <div class="container">
+        <div class="left-side d-flex">
+            <a class="navbar-brand text-white fw-bold" href="#">Skyplay</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto d-flex align-items-center">
+                    <li class="nav-item"><a class="nav-link text-white fw-bold" href="/ott_subscription/dashboard/">Insights Hub</a></li>
+                    <li class="nav-item"><a class="nav-link text-white fw-bold" href="/ott_subscription/platforms/">OTT</a></li>
+                    <li class="nav-item"><a class="nav-link text-white fw-bold" href="/ott_subscription/transactions/">Transactions</a></li>
+                    <li class="nav-item"><a class="nav-link text-white fw-bold" href="#support">Support</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto d-flex align-items-center">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white fw-bold" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown">
+                        <img src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250" alt="Profile" class="rounded-circle border border-white" width="35">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow">
+                        <li><a class="dropdown-item" href="#" onclick="toggleSidebar()">View Profile</a></li>
+                        <li><a class="dropdown-item" href="#settings">Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger fw-bold" href="/ott_subscription/logout">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- JavaScript for Active Link Animation -->
+<script>
+ document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+
+    navLinks.forEach(link => {
+        link.addEventListener("click", function () {
+            // Remove active class from all links
+            navLinks.forEach(nav => nav.classList.remove("active", "animate-active"));
+            
+            // Add active class to the clicked link
+            this.classList.add("active", "animate-active");
+
+            // Handle internal anchor links like #support
+            if (this.getAttribute("href").startsWith("#")) {
+                const targetId = this.getAttribute("href").substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    // Scroll to the section smoothly
+                    targetElement.scrollIntoView({ behavior: "smooth" });
+                }
+            }
+        });
+    });
+
+    // Check on page load which link should be active (useful for anchor links)
+    const currentUrl = window.location.href;
+    navLinks.forEach(link => {
+        if (link.href === currentUrl || (link.getAttribute("href").startsWith("#") && window.location.hash === link.getAttribute("href"))) {
+            link.classList.add("active", "animate-active");
+        }
+    });
+});
+
+</script>
+
+<!-- Optional CSS for Active Animation -->
+<style>
+  .nav-link {
+    position: relative;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+/* Active link style */
+.nav-link.active {
+    color: #ffffff !important; /* Highlight active link */
+}
+
+/* Animated underline */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    width: 0;
+    height: 3px;
+    background-color: #519664;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+/* Expand underline on active link */
+.nav-link.active::after,
+.nav-link.animate-active::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Hover effect */
+.navbar-nav .nav-link:hover {
+    background-color: #b61b1b;
+    color: #dc3545;
+    border-radius: 5px;
+}
+
+
+</style>
+{% endif %}

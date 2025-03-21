@@ -19,9 +19,17 @@ import logging
 from django.utils import timezone
 from datetime import datetime, timedelta
 from .models import VerificationCode
-
+from django.template.loader import render_to_string
+from django.urls import reverse
+from django.utils.timezone import make_aware
+from django.db.models import Sum, Count
 # Initialize Logger
 logger = logging.getLogger(__name__)
+
+for record in VerificationCode.objects.all():
+    if record.timestamp.tzinfo is None:  # Check if it's naive
+        record.timestamp = make_aware(record.timestamp)  # Convert to timezone-aware
+        record.save()
 
 #razorpay_client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 RAZORPAY_KEY_ID = "rzp_test_qcFb099Pizad7S"
@@ -33,7 +41,7 @@ else:
     razorpay_client = None
     logger.error("❌ Razorpay client not initialized. API keys are missing!")
 
-def ott_page(request):
+def platforms_view(request):
     # Retrieve user contact info from session
     email = request.session.get('email', None)
     phone_number = request.session.get('phone_number', None)
@@ -46,14 +54,14 @@ def ott_page(request):
         contact = phone_number
         verification_type = 'phone'
     else:
-        # If no contact info is available in session, redirect to login page
-        return redirect('login')  # Make sure you have a name for your login view in urls.py
+        #If no contact info is available in session, redirect to login page
+        return redirect('ott_subscription:login')  # Make sure you have a name for your login view in urls.py
     
     # Fetch active OTT platforms
     platform_instance = OTTAggregator.objects.filter(status='active')
 
     # Render the OTT page with Razorpay key and platform data
-    return render(request, 'ott_subscription/ott_page.html', {
+    return render(request, 'ott_subscription/platforms.html', {
         'contact': contact,
         'verification_type': verification_type,
         'ott_platform': platform_instance,
@@ -112,17 +120,28 @@ def login_view(request):
 
             # First check if the entered code is the default code '123456'
             if entered_code == '123456':
+                print("call login")
                 code_verified = True
-                messages.success(request, "Verification successful with default code!")
-                return redirect('ott_page')  # Redirect to the ott_page on successful verification
+                messages.success(request, "Verification successful with default code!")               
+                if '@' in contact:
+                    request.session['email'] = contact
+                else:
+                    request.session['phone_number'] = contact
+                url = reverse("ott_subscription:platforms")
+                return redirect(reverse('ott_subscription:platforms'))
 
 
-            if verification_record and not verification_record.is_expired():
+            #if verification_record and not verification_record.is_expired():
+            if verification_record:
                 # Check if the entered code matches the stored code
                 if entered_code == verification_record.code:
                     code_verified = True
+                    if '@' in contact:
+                        request.session['email'] = contact
+                    else:
+                        request.session['phone_number'] = contact
                     messages.success(request, "Verification successful!")
-                    return redirect('ott_page')  # Redirect to the ott_page on successful verification
+                    return redirect('ott_subscription:platforms')  # Redirect to the ott_page on successful verification
                 else:
                     messages.error(request, "Invalid verification code. Please try again.")
             else:
@@ -161,7 +180,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('login')  
+    return redirect('ott_subscription:login') 
 
 
 from django.http import JsonResponse
@@ -169,10 +188,10 @@ from .models import SkylinkPlan, OTTPlan
 
 def get_skylink_plans(request):
     # Get the platform from query parameters (e.g., 'watcho')
-    platform_to_check = request.GET.get('platform_id', '')
-    sky_plan_id = request.GET.get('sky_plan_id', '')
-    client_id = request.GET.get('clinet_id', '')
-
+    platform_to_check = int(request.GET.get('platform_id', 0) or 0)
+    sky_plan_id = int(request.GET.get('sky_plan_id', 0) or 1)
+    client_id = int(request.GET.get('client_id', 0) or 0)
+    
      # Check if the platform has Hotstart enabled
     hotstart_enabled = OTTAggregator.objects.filter(status='active', code='hotstart').exists()
 
@@ -261,7 +280,13 @@ def get_skylink_plans(request):
             if not paid_ott_plans.exists():
                 plans_data.append({'message': 'No paid OTT plans available.'})
 
-        return JsonResponse({'plans': plans_data})
+        #return JsonResponse({'plans': plans_data})
+        if(platform_to_check == 4):
+            html_content = render_to_string('ott_subscription/jiostart.html', {'plans': plans_data, 'client_id': client_id, 'platform_id':platform_to_check})
+        else:
+            html_content = render_to_string('ott_subscription/ott_plans.html', {'plans': plans_data, 'client_id': client_id, 'platform_id':platform_to_check})
+
+        return JsonResponse({'html': html_content})
 
     else:
         # If SkylinkPlan with the provided sky_plan_id does not exist
@@ -300,6 +325,7 @@ def log_ott_activation(client_id, platform_instance, plan_id, status, message, i
 
 def is_plan_expired(client_id, plan_id):
     try:
+       
         # Get the existing activation log for the client_id and plan_id
         activation_log = OTTActivationLog.objects.filter(client_id=client_id, plan_id=plan_id).first()      
         if activation_log:
@@ -618,3 +644,89 @@ def confirm_payment(request):
     return JsonResponse({'error': 'Invalid request'}, status=400)
 
 
+
+
+
+def transactions_view(request):
+    return render(request, "ott_subscription/transactions.html", {"contact": True})
+
+
+def get_transactions(request):
+    # Get filters from request
+    search_query = request.GET.get('search', '')
+    sort_by = request.GET.get('sort_by', 'activation_date')
+    sort_order = request.GET.get('sort_order', 'desc')
+
+    # Get queryset
+    transactions = OTTActivationLog.objects.all()
+
+    # Apply search filter
+    if search_query:
+        transactions = transactions.filter(client_id__icontains=search_query)
+
+    # Apply sorting
+    if sort_order == 'desc':
+        sort_by = f"-{sort_by}"
+    transactions = transactions.order_by(sort_by)
+
+    # Serialize data
+    data = [
+        {
+            "client_id": t.client_id,
+            "platform": t.platform_id.name,
+            "plan_id": t.plan_id,
+            "activation_date": t.activation_date.strftime("%Y-%m-%d %H:%M"),
+            "status": t.status,
+            "subscription_tiers": t.subscription_tiers,
+            "payment_amount": t.payment_amount,
+            "expiration_date": t.expiration_date.strftime("%Y-%m-%d"),
+        }
+        for t in transactions
+    ]
+    return JsonResponse({"transactions": data}, safe=False)
+
+
+
+
+def dashboard_view(request):
+    return render(request, 'ott_subscription/dashboard.html',  {"contact": True})
+
+def get_dashboard_data(request):
+    # 🆕 Total transactions (only for paid subscriptions)
+    total_transactions = OTTActivationLog.objects.filter(subscription_tiers="paid").count()
+
+    # Total revenue (only for paid subscriptions)
+    total_revenue = OTTActivationLog.objects.filter(subscription_tiers="paid").aggregate(total=Sum('payment_amount'))['total'] or 0
+
+    # Total activations (both free and paid)
+    total_activations = OTTActivationLog.objects.count()
+
+    # Activations by platform (both free and paid)
+    activations_by_platform = (
+        OTTActivationLog.objects.values('platform_id__name')
+        .annotate(count=Count('id'))
+    )
+
+    # Revenue by platform (only for paid subscriptions)
+    revenue_by_platform = (
+        OTTActivationLog.objects.filter(subscription_tiers="paid")
+        .values('platform_id__name')
+        .annotate(total=Sum('payment_amount'))
+    )
+
+    # Activations over time (both free and paid)
+    activations_over_time = (
+        OTTActivationLog.objects.extra(select={'date': "DATE(activation_date)"})
+        .values('date')
+        .annotate(count=Count('id'))
+        .order_by('date')
+    )
+
+    return JsonResponse({
+        "total_revenue": total_revenue,  # ✅ Only paid revenue
+        "total_activations": total_activations,  # ✅ Both free and paid
+        "total_transactions": total_transactions,  # ✅ Only paid subscriptions
+        "activations_by_platform": list(activations_by_platform),
+        "revenue_by_platform": list(revenue_by_platform),
+        "activations_over_time": list(activations_over_time)
+    })

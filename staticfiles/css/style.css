@@ -1,0 +1,248 @@
+    body {
+            font-family: 'Poppins', sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            
+        }
+
+        /* Container Card */
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 450px;
+            transition: transform 0.2s ease-in-out, box-shadow 0.3s;
+            
+        }
+
+        .container:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Title Styling */
+        h2 {
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        /* Data Row Styling */
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            transition: background 0.3s;
+        }
+
+        .data-row:hover {
+            background: rgba(0, 123, 255, 0.1);
+        }
+
+        .data-label {
+            font-weight: 600;
+            color: #444;
+            font-size: 15px;
+            width: 50%;
+            padding-left: 10px;
+        }
+
+        .data-value {
+            font-weight: 500;
+            color: #222;
+            font-size: 16px;
+            width: 50%;
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 10px;
+            overflow-wrap: anywhere;
+        }
+        .data-row:nth-child(even) {
+            background-color: white;
+        }
+
+        .data-row:last-child {
+            border-bottom: none;
+        }
+
+        /* Pay Button */
+        .btm-event {
+            display: block; /* Ensure it behaves like a button */
+            width: 100%;
+            background: linear-gradient(135deg, #E91A2F, #E91A2F);
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 17px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+            margin-top: 40px; /* Increased spacing */
+            box-shadow: 0 5px 12px #e91a2f60;
+            text-decoration: none;
+            text-align: center; /* Center text */
+        }
+        
+       .btm-event:hover {
+            background: linear-gradient(135deg, #000000, #000000);
+            transform: scale(1.03);
+        }
+
+        .btm-event:active {
+            transform: scale(0.98);
+        }
+        .image-wrap {
+            background-color: #fff2f3;
+            border-radius: 10px;
+        }
+        .data-row-wrap {
+            border-radius: 10px;
+            background-color: #F5F5F8;
+            border: 1px solid #e9e9e9;
+    overflow: hidden;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            .data-row {
+                flex-direction: row;
+                align-items: flex-start;
+                padding: 14px 0;
+            }
+            .data-label {
+                font-size: 14px;
+            }
+            .data-value {
+                font-size: 15px;
+            }
+        }   
+
+
+
+        .wallet-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .wallet-balance {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .wallet-payment-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .wallet-label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .wallet-amount {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+        .wallet-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .wallet-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .wallet-btn:hover {
+            background-color: #0056b3;
+        }
+        .add-amount-btn {
+            background-color: #28a745;
+        }
+        .add-amount-btn:hover {
+            background-color: #218838;
+        }
+
+        * Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px; /* Optional max-width */
+}
+
+/* The Close Button */
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+.transaction-table th, .transaction-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.transaction-table th {
+    background-color: #f2f2f2;
+}
+.transaction-table .no-data {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+}
+.transaction-table tr:hover {
+    background-color: #f9f9f9;
+}

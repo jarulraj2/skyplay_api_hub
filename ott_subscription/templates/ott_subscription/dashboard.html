@@ -1,0 +1,113 @@
+{% extends "ott_subscription/base.html" %}
+{% load static %}
+
+{% block title %}OTT Dashboard - Skyplay{% endblock %}
+
+{% block extra_head %}
+<!-- Chart.js for visualizations -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+    .dashboard-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        font-size: 1.5rem;
+    }
+    .dashboard-card i {
+        font-size: 2rem;
+    }
+    .loading-spinner {
+        display: none;
+        text-align: center;
+        margin-top: 20px;
+    }
+    /* Chart Container Styling */
+    .chart-container {
+        position: relative;
+        height: 300px; /* Adjust height */
+        width: 100%;
+    }
+    /* Enable Scroll for Large Datasets */
+    .overflow-scroll {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>OTT Dashboard <i class="fas fa-chart-line"></i></h2>
+    <div id="loading" class="loading-spinner">
+        <i class="fas fa-spinner fa-spin fa-3x"></i>
+        <p>Loading data...</p>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3 dashboard-card">
+                <div>
+                    <h5 class="card-title">Total Activations</h5>
+                    <p class="card-text"><span id="total-activations">0</span></p>
+                </div>
+                <i class="fas fa-users"></i>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3 dashboard-card">
+                <div>
+                    <h5 class="card-title">Total Transactions (Paid)</h5>
+                    <p class="card-text"><span id="total-transactions">0</span></p>
+                </div>
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-warning mb-3 dashboard-card">
+                <div>
+                    <h5 class="card-title">Total Revenue</h5>
+                    <p class="card-text">$<span id="total-revenue">0.00</span></p>
+                </div>
+                <i class="fas fa-dollar-sign"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Activations by Platform</h4>
+            <div class="chart-container">
+                <canvas id="activationsChart"></canvas>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4>Spend by Platform</h4>
+            <div class="chart-container">
+                <canvas id="revenueChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h4>Activations Over Time</h4>
+            <div class="overflow-scroll">
+                <div class="chart-container">
+                    <canvas id="activationsOverTimeChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/dashboard.js' %}"></script>
+{% endblock %}
